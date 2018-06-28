@@ -6,7 +6,7 @@ $base = "http://localhost/inspeksimonitoring/";
 
 session_start();
 
-if($_SESSION['status'] != "login admin"){
+if($_SESSION['status'] != ("login admin" || "login monitoring")){
     header("location:". $base."login");
 }
 
@@ -17,7 +17,7 @@ if($_SESSION['status'] != "login admin"){
     <link rel="apple-touch-icon" sizes="76x76" href="<?php echo $base; ?>assets/img/apple-icon.png" />
     <link rel="icon" type="image/png" href="<?php echo $base; ?>assets/img/favicon.png" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Dashboard - Admin</title>
+    <title>Dashboard - Monitoring</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <!-- Bootstrap core CSS     -->
@@ -44,40 +44,61 @@ if($_SESSION['status'] != "login admin"){
                     Creative Tim
                 </a>
             </div> -->
-            <div class="sidebar-wrapper">
-                <ul class="nav">
-                    <li class="active">
-                        <a href="<?php echo $base; ?>admin">
-                            <i class="material-icons">dashboard</i>
-                            <p>Dashboard</p>
-                        </a>
-                    </li>
-                    <li>
-                    	<a href="<?php echo $base; ?>admin/hasil_inspeksi_berkala">
-                    		<i class="material-icons">content_paste</i>
-                    		<p>Inspeksi Berkala</p>
-                    	</a>
-                    </li>
-                    <li>
-                    	<a href="<?php echo $base; ?>admin/hasil_inspeksi_bulanan">
-                    		<i class="material-icons">content_paste</i>
-                    		<p>Inspeksi Bulanan</p>
-                    	</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo $base; ?>monitoring">
-                            <i class="material-icons">graphic_eq</i>
-                            <p>Hasil Monitor</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo $base; ?>logout">
-                            <i class="material-icons">exit_to_app</i>
-                            <p>Logout</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <?php
+            	if ($_SESSION['status'] == "login admin") { ?>
+            		<div class="sidebar-wrapper">
+            			<ul class="nav">
+            				<li>
+            					<a href="<?php echo $base; ?>admin">
+            						<i class="material-icons">dashboard</i>
+            						<p>Dashboard</p>
+            					</a>
+            				</li>
+            				<li>
+            					<a href="<?php echo $base; ?>admin/hasil_inspeksi_berkala">
+            						<i class="material-icons">content_paste</i>
+            						<p>Inspeksi Berkala</p>
+            					</a>
+            				</li>
+            				<li>
+            					<a href="<?php echo $base; ?>admin/hasil_inspeksi_bulanan">
+            						<i class="material-icons">content_paste</i>
+            						<p>Inspeksi Bulanan</p>
+            					</a>
+            				</li>
+            				<li class="active">
+            					<a href="<?php echo $base; ?>monitoring">
+            						<i class="material-icons">graphic_eq</i>
+            						<p>Hasil Monitor</p>
+            					</a>
+            				</li>
+            				<li>
+            					<a href="<?php echo $base; ?>logout">
+            						<i class="material-icons">exit_to_app</i>
+            						<p>Logout</p>
+            					</a>
+            				</li>
+            			</ul>
+            		</div>
+            <?php } elseif ($_SESSION['status'] == "login monitoring") { ?>
+            	<div class="sidebar-wrapper">
+            		<ul class="nav">
+            			<li class="active">
+            				<a href="<?php echo $base; ?>monitoring">
+            					<i class="material-icons">graphic_eq</i>
+            					<p>Hasil Monitor</p>
+            				</a>
+            			</li>
+            			<li>
+            				<a href="<?php echo $base; ?>logout">
+            					<i class="material-icons">exit_to_app</i>
+            					<p>Logout</p>
+            				</a>
+            			</li>
+            		</ul>
+            	</div>
+            <?php } ?>
+            
         </div>
         <div class="main-panel">
             <nav class="navbar navbar-transparent navbar-absolute">
@@ -89,7 +110,7 @@ if($_SESSION['status'] != "login admin"){
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#"> Admin Dashboard </a>
+                        <a class="navbar-brand" href="#"> Monitoring Dashboard </a>
                     </div>
                 </div>
             </nav>

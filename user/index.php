@@ -6,7 +6,7 @@ $base = "http://localhost/inspeksimonitoring/";
 
 session_start();
 
-if($_SESSION['status'] != "login admin"){
+if($_SESSION['status'] != "login inspektor"){
     header("location:". $base."login");
 }
 
@@ -47,27 +47,21 @@ if($_SESSION['status'] != "login admin"){
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li class="active">
-                        <a href="<?php echo $base; ?>admin">
+                        <a href="<?php echo $base; ?>user">
                             <i class="material-icons">dashboard</i>
                             <p>Dashboard</p>
                         </a>
                     </li>
                     <li>
-                    	<a href="<?php echo $base; ?>admin/hasil_inspeksi_berkala">
-                    		<i class="material-icons">content_paste</i>
-                    		<p>Inspeksi Berkala</p>
-                    	</a>
+                        <a href="<?php echo $base; ?>user/inspeksi_berkala">
+                            <i class="material-icons">content_paste</i>
+                            <p>Inspeksi Berkala</p>
+                        </a>
                     </li>
                     <li>
-                    	<a href="<?php echo $base; ?>admin/hasil_inspeksi_bulanan">
-                    		<i class="material-icons">content_paste</i>
-                    		<p>Inspeksi Bulanan</p>
-                    	</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo $base; ?>monitoring">
-                            <i class="material-icons">graphic_eq</i>
-                            <p>Hasil Monitor</p>
+                        <a href="<?php echo $base; ?>user/inspeksi_bulanan">
+                            <i class="material-icons">content_paste</i>
+                            <p>Inspeksi Bulanan</p>
                         </a>
                     </li>
                     <li>
@@ -89,7 +83,7 @@ if($_SESSION['status'] != "login admin"){
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#"> Admin Dashboard </a>
+                        <a class="navbar-brand" href="#"> User Dashboard </a>
                     </div>
                 </div>
             </nav>

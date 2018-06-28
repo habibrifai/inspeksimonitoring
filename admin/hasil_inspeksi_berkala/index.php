@@ -46,13 +46,13 @@ if($_SESSION['status'] != "login admin"){
             </div> -->
             <div class="sidebar-wrapper">
                 <ul class="nav">
-                    <li class="active">
+                    <li>
                         <a href="<?php echo $base; ?>admin">
                             <i class="material-icons">dashboard</i>
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li>
+                    <li class="active">
                     	<a href="<?php echo $base; ?>admin/hasil_inspeksi_berkala">
                     		<i class="material-icons">content_paste</i>
                     		<p>Inspeksi Berkala</p>
@@ -89,7 +89,7 @@ if($_SESSION['status'] != "login admin"){
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#"> Admin Dashboard </a>
+                        <a class="navbar-brand" href="#"> List Hasil Inspeksi Berkala </a>
                     </div>
                 </div>
             </nav>

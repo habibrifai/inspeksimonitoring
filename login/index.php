@@ -25,13 +25,13 @@ session_start();
                     </div>
                     <div class="card-body">
                         <div class="col-md-10 col-md-offset-1">
-                        <?php if(isset($error_message)) { echo "<br/><p style='text-align: center; font-weight: bold;color: red;'>" . $error_message ."</small>";} ?>
+                        <?php if(isset($_SESSION['err_message'])) { echo "<br/><p style='text-align: center; font-weight: bold;color: red;'>" . $_SESSION['err_message'] ."</small>";unset($_SESSION['err_message']);} ?>
                         <form action="doLogin.php" method="POST">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="nip" placeholder="NIP User" name="nip" autofocus="">
+                                <input type="text" class="form-control" id="nip" placeholder="Nip" name="nip" autofocus="" required="">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                                <input type="password" class="form-control" id="password" placeholder="Password" name="password" required="">
                             </div>
                             <button type="submit" class="btn btn-success">Masuk</button>
                         </form>

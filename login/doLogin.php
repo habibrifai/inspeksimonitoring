@@ -28,7 +28,7 @@ if ($cek > 0) {
 			session_start();
 			$_SESSION['nip'] = $nip;
 			$_SESSION['status'] = "login inspektor";
-			header("location:../inspeksi");
+			header("location:../user");
 		}elseif($cek > 0 && $row['jabatan']=='Monitoring'){
 			session_start();
 			$_SESSION['nip'] = $nip;
@@ -37,9 +37,9 @@ if ($cek > 0) {
 		}
 	}
 } else {	
-	echo "<script>alert('Username atau password salah!!')</script>";
+	session_start();
+	$_SESSION['err_message'] = 'Nip atau Password Salah';
 	echo "<script>location.href='../login';</script>";	
 }
 
 ?>
-
