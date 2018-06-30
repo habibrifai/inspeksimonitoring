@@ -10,6 +10,50 @@ if($_SESSION['status'] != "login inspektor"){
     header("location:". $base."login");
 }
 
+
+$dataUmum = array(array('no' => 1, 'nama_inspeksi' => 'Isolasi/Selubung badan bejana uap tidak terkelupas'), 
+                    array('no' => 2, 'nama_inspeksi' => 'Tidak terdapat korosi dan kerak pada dinding pipa'),
+                    array('no' => 3, 'nama_inspeksi' => 'Bejana uap digunakan pada tekanan yang diijinkan'),
+                    array('no' => 4, 'nama_inspeksi' => 'Instalasi listrik pada kontrol panel baik dan sesuai standar '),
+                    array('no' => 5, 'nama_inspeksi' => 'Telah dilakukan pembersihan tangki bejana uap '));
+
+$dataBejana = array(array('no' => 7, 'nama_inspeksi' => 'Nomer Serie'), 
+                    array('no' => 8, 'nama_inspeksi' => 'Tempat pembuatan'),
+                    array('no' => 9, 'nama_inspeksi' => 'Tahun pembuatan'),
+                    array('no' => 10, 'nama_inspeksi' => 'Tekanan kerja max'),
+                    array('no' => 11, 'nama_inspeksi' => 'Tinggi badan'),
+                    array('no' => 12, 'nama_inspeksi' => 'Diameter badan'),
+                    array('no' => 13, 'nama_inspeksi' => 'Luas pemanas'),
+                    array('no' => 14, 'nama_inspeksi' => 'Diameter pipa pemanas'),
+                    array('no' => 15, 'nama_inspeksi' => 'Panjang pipa pemanas'),
+                    array('no' => 16, 'nama_inspeksi' => 'Jumlah pipa pemanas'),
+                    array('no' => 17, 'nama_inspeksi' => 'Diameter pipa jiwa'),
+                    array('no' => 18, 'nama_inspeksi' => 'Jumlah pipa amoniak'),
+                    array('no' => 19, 'nama_inspeksi' => 'Isi'),
+                    array('no' => 20, 'nama_inspeksi' => 'Bahan'));
+
+$dataKelengkapan1 = array(array('no' => 21, 'nama_inspeksi' => 'Pondasi', 'placeholder' => 'keterangan'), 
+                    array('no' => 22, 'nama_inspeksi' => 'Support/penompang', 'placeholder' => 'keterangan'),
+                    array('no' => 23, 'nama_inspeksi' => 'Anchort Bolt', 'placeholder' => 'jumlah dalam buah'),
+                    array('no' => 24, 'nama_inspeksi' => 'Penutup Isolasi', 'placeholder' => 'jumlah dalam buah'),
+                    array('no' => 25, 'nama_inspeksi' => 'Safety Valve', 'placeholder' => 'keterangan'),
+                    array('no' => 26, 'nama_inspeksi' => 'Pressure gauge', 'placeholder' => 'jumlah dalam buah'),
+                    array('no' => 27, 'nama_inspeksi' => 'Thermometer clock', 'placeholder' => 'jumlah dalam buah'),
+                    array('no' => 28, 'nama_inspeksi' => 'Sight glass', 'placeholder' => 'jumlah dalam buah'),
+                    array('no' => 29, 'nama_inspeksi' => 'Pelat nama', 'placeholder' => 'keterangan'));
+
+$dataKelengkapan2 = array(array('no' => 30, 'nama_inspeksi' => 'Dipasang pada bagian bejana yang mudah dilihat oleh operator'), 
+                    array('no' => 31, 'nama_inspeksi' => 'Apakah dapat menunjukkan tekanan kerja yang diperbolehkan'),
+                    array('no' => 32, 'nama_inspeksi' => 'Terdapat tanda pada tekanan kerja maximum'));
+
+$dataKelengkapan41 = array(array('no' => 34, 'nama_inspeksi' => 'Asli/telah diganti'), 
+                     array('no' => 35, 'nama_inspeksi' => 'Ukuran'));
+
+$dataKelengkapan42 = array(array('no' => 36, 'nama_inspeksi' => 'Nama dan tempat pembuatan'), 
+                     array('no' => 37, 'nama_inspeksi' => 'Tahun pembuatan'),
+                     array('no' => 38, 'nama_inspeksi' => 'Nomor serie'),
+                     array('no' => 39, 'nama_inspeksi' => 'Tekanan kerja max yang diijinkan'));
+
 ?>
 
 <head>
@@ -90,385 +134,418 @@ if($_SESSION['status'] != "login inspektor"){
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="card card-stats">
-                                <div class="card-header" data-background-color="orange">
-                                    <i class="material-icons">content_copy</i>
-                                </div>
-                                <div class="card-content">
-                                    <p class="category">Used Space</p>
-                                    <h3 class="title">49/50
-                                        <small>GB</small>
-                                    </h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons text-danger">warning</i>
-                                        <a href="#pablo">Get More Space...</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="card card-stats">
-                                <div class="card-header" data-background-color="green">
-                                    <i class="material-icons">store</i>
-                                </div>
-                                <div class="card-content">
-                                    <p class="category">Revenue</p>
-                                    <h3 class="title">$34,245</h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">date_range</i> Last 24 Hours
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="card card-stats">
-                                <div class="card-header" data-background-color="red">
-                                    <i class="material-icons">info_outline</i>
-                                </div>
-                                <div class="card-content">
-                                    <p class="category">Fixed Issues</p>
-                                    <h3 class="title">75</h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">local_offer</i> Tracked from Github
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="card card-stats">
-                                <div class="card-header" data-background-color="blue">
-                                    <i class="fa fa-twitter"></i>
-                                </div>
-                                <div class="card-content">
-                                    <p class="category">Followers</p>
-                                    <h3 class="title">+245</h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">update</i> Just Updated
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-12">
                             <div class="card">
-                                <div class="card-header card-chart" data-background-color="green">
-                                    <div class="ct-chart" id="dailySalesChart"></div>
-                                </div>
-                                <div class="card-content">
-                                    <h4 class="title">Daily Sales</h4>
-                                    <p class="category">
-                                        <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">access_time</i> updated 4 minutes ago
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-header card-chart" data-background-color="orange">
-                                    <div class="ct-chart" id="emailsSubscriptionChart"></div>
-                                </div>
-                                <div class="card-content">
-                                    <h4 class="title">Email Subscriptions</h4>
-                                    <p class="category">Last Campaign Performance</p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">access_time</i> campaign sent 2 days ago
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-header card-chart" data-background-color="red">
-                                    <div class="ct-chart" id="completedTasksChart"></div>
-                                </div>
-                                <div class="card-content">
-                                    <h4 class="title">Completed Tasks</h4>
-                                    <p class="category">Last Campaign Performance</p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">access_time</i> campaign sent 2 days ago
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-12">
-                            <div class="card card-nav-tabs">
                                 <div class="card-header" data-background-color="purple">
-                                    <div class="nav-tabs-navigation">
-                                        <div class="nav-tabs-wrapper">
-                                            <span class="nav-tabs-title">Tasks:</span>
-                                            <ul class="nav nav-tabs" data-tabs="tabs">
-                                                <li class="active">
-                                                    <a href="#profile" data-toggle="tab">
-                                                        <i class="material-icons">bug_report</i> Bugs
-                                                        <div class="ripple-container"></div>
-                                                    </a>
-                                                </li>
-                                                <li class="">
-                                                    <a href="#messages" data-toggle="tab">
-                                                        <i class="material-icons">code</i> Website
-                                                        <div class="ripple-container"></div>
-                                                    </a>
-                                                </li>
-                                                <li class="">
-                                                    <a href="#settings" data-toggle="tab">
-                                                        <i class="material-icons">cloud</i> Server
-                                                        <div class="ripple-container"></div>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                    <h5 class="title">Inspeksi Bulanan</h5>
+                                    <!-- <p class="category">Pelanggan yang hari ini berulang tahun</p> -->
                                 </div>
                                 <div class="card-content">
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="profile">
+                                    <form>
+                                        <div class="card-content table-responsive">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group label-floating">
+                                                        <label style="color: black;" class="">NIP</label>
+                                                        <input type="text" class="form-control" name="nip">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group label-floating">
+                                                        <label style="color: black;" class="">TANGGAL</label>
+                                                        <input type="date" class="form-control" name="tanggal">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group label-floating">
+                                                        <label style="color: black;" class="">NO TANGKI</label>
+                                                        <input type="text" class="form-control" name="no_tangki">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group label-floating">
+                                                        <label style="color: black;" class="">NO FORM</label>
+                                                        <input type="text" class="form-control" name="no_form">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group label-floating">
+                                                        <label style="color: black;" class="">JENIS</label>
+                                                        <input type="text" class="form-control" name="jenis">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group label-floating">
+                                                        <label style="color: black;" class="">UKURAN TANGKI</label>
+                                                        <input type="text" class="form-control" name="ukuran_tangki">
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <table class="table">
-                                                <tbody>
+                                                <thead class="text-primary">
+                                                    <th>No</th>
+                                                    <th>Picture</th>
+                                                    <th>Pertanyaan</th>
+                                                    <th>Jawaban</th>
+                                                    <th>Kondisi</th>
+                                                    <th>Keterangan</th>
+                                                    <th>Rekomendasi</th>
+                                                </thead>
+                                                <tbody> 
                                                     <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox" name="optionsCheckboxes" checked>
+                                                        <td></td>
+                                                        <td colspan="3"><strong>DATA UMUM BEJANA UAP</strong></td>
+                                                    </tr> 
+                                                    <!-- Pertanyaan 1 sampai 5 -->
+                                                    <?php $no = 1; foreach ($dataUmum as $value) { ?>                                  
+                                                    <tr>
+                                                        <td width="10px">
+                                                            <?php echo $no; ?>
+                                                            <input type="hidden" <?php echo "name=no".$value['no']; ?> value="<?php echo $value['no']; ?>">
+                                                        </td>
+                                                        <td><input type="file" <?php echo "name=picture".$value['no']; ?> style="width: 180px;"></td>
+                                                        <td width="150px"><strong><?php echo $value['nama_inspeksi']; ?></strong></td>
+                                                        <td width="120px">
+                                                            <div class="form_group">
+                                                                <label class="radio-inline">
+                                                                    <input type="radio" <?php echo "name=radio".''.$value['no']; ?> <?php echo "id=baik".''.$value['no']; ?> value="baik" checked >Ya
+                                                                </label>
+                                                                <label class="radio-inline">
+                                                                    <input type="radio" <?php echo "name=radio".''.$value['no']; ?> <?php echo "id=tidak".''.$value['no']; ?> value="tidak baik">Tidak
                                                                 </label>
                                                             </div>
                                                         </td>
-                                                        <td>Sign contract for "What are conference organizers afraid of?"</td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-                                                                <i class="material-icons">edit</i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="material-icons">close</i>
-                                                            </button>
+                                                        <td>
+                                                            <div class="form-group label-floating">
+                                                                <label class="control-label">kondisi</label>
+                                                                <input type="text" class="form-control" <?php echo "name=kondisi".$value['no']; ?>>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group label-floating">
+                                                                <label class="control-label">keterangan</label>
+                                                                <input type="text" class="form-control" <?php echo "name=keterangan".$value['no']; ?>>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group label-floating">
+                                                                <label class="control-label">rekomendasi</label>
+                                                                <input type="text" class="form-control" <?php echo "name=rekomendasi".$value['no']; ?>>
+                                                            </div>
                                                         </td>
                                                     </tr>
+                                                    <?php $no++; } ?>
                                                     <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox" name="optionsCheckboxes">
+                                                        <td></td>
+                                                        <td colspan="6"><strong>DATA BEJANA UAP</strong></td>
+                                                    </tr>
+                                                    <!-- Pertanyaan baris 6 -->
+                                                    <tr>
+                                                        <td width="10px">1
+                                                            <input type="hidden" name="no6" value="6">
+                                                        </td>
+                                                        <td><input type="file" name="picture6" style="width: 180px;"></td>
+                                                        <td width="150px"><strong>Bejana uap memiliki ijin sesuai peraturan</strong></td>
+                                                        <td width="120px">
+                                                            <div class="form_group">
+                                                                <label class="radio-inline">
+                                                                    <input type="radio" <?php echo "name=radio6"; ?> <?php echo "id=baik6"; ?> value="baik" checked >Ya
+                                                                </label>
+                                                                <label class="radio-inline">
+                                                                    <input type="radio" <?php echo "name=radio6"; ?> <?php echo "id=tidak6"; ?> value="tidak baik">Tidak
                                                                 </label>
                                                             </div>
                                                         </td>
-                                                        <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-                                                                <i class="material-icons">edit</i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="material-icons">close</i>
-                                                            </button>
+                                                        <td>
+                                                            <div class="form-group label-floating">
+                                                                <label class="control-label">kondisi</label>
+                                                                <input type="text" class="form-control" name="kondisi6">
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group label-floating">
+                                                                <label class="control-label">keterangan</label>
+                                                                <input type="text" class="form-control" name="keterangan6">
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group label-floating">
+                                                                <label class="control-label">rekomendasi</label>
+                                                                <input type="text" class="form-control" name="rekomendasi6">
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox" name="optionsCheckboxes">
+                                                        <td>2</td>
+                                                        <td colspan="6">Data teknik bejana uap</td>
+                                                    </tr>
+                                                    <!-- Pertanyaan baris 7 sampai 21 -->
+                                                    <?php foreach ($dataBejana as $dtBjn) { ?> 
+                                                        <tr>
+                                                            <td width="10px">
+                                                                <td>
+                                                                    <input type="hidden" <?php echo "name=no".$dtBjn['no']; ?> value="<?php echo $dtBjn['no']; ?>">
+                                                                    <input type="file" <?php echo "name=picture".$dtBjn['no']; ?> style="width: 180px;">
+                                                                </td>
+                                                                <td>
+                                                                    <strong><?php echo $dtBjn['nama_inspeksi']; ?></strong>
+                                                                </td>
+                                                                <td colspan="4">
+                                                                    <div class="form-group label-floating">
+                                                                        <label class="control-label">jawaban</label>
+                                                                        <input type="text" class="form-control" <?php echo "name=radio".$dtBjn['no']; ?>>
+                                                                    </div>
+                                                                </td>
+                                                            </td>
+
+                                                        </tr>
+                                                    <?php } ?>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td colspan="3"><strong>KELENGKAPAN/ALAT BANTU OPERASI</strong></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td colspan="6">Apakah bejana uap dilengkapi dengan:</td>
+                                                    </tr>
+                                                    <!-- Pertanyaan baris 22 sampai 30 -->
+                                                    <?php foreach ($dataKelengkapan1 as $dtKel1) { ?> 
+                                                        <tr>
+                                                            <td width="10px">
+                                                                <td>
+                                                                    <input type="hidden" <?php echo "name=no".$dtKel1['no']; ?> value="<?php echo $dtKel1['no']; ?>">
+                                                                    <input type="file" <?php echo "name=picture".$dtKel1['no']; ?> style="width: 180px;">
+                                                                </td>
+                                                                <td>
+                                                                    <strong><?php echo $dtKel1['nama_inspeksi']; ?></strong>
+                                                                </td>
+                                                                <td width="120px">
+                                                                    <div class="form_group">
+                                                                        <label class="radio-inline">
+                                                                            <input type="radio" <?php echo "name=radio".''.$dtKel1['no']; ?> <?php echo "id=baik".''.$dtKel1['no']; ?> value="baik" checked >Ya
+                                                                        </label>
+                                                                        <label class="radio-inline">
+                                                                            <input type="radio" <?php echo "name=radio".''.$dtKel1['no']; ?> <?php echo "id=tidak".''.$dtKel1['no']; ?> value="tidak baik">Tidak
+                                                                        </label>
+                                                                    </div>
+                                                                </td>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group label-floating">
+                                                                    <label class="control-label">kondisi</label>
+                                                                    <input type="text" class="form-control" <?php echo "name=kondisi".$dtKel1['no']; ?>>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group label-floating">
+                                                                    <label class="control-label"><?php echo $dtKel1['placeholder']; ?></label>
+                                                                    <input 
+
+                                                                    <?php
+                                                                        if ($dtKel1['placeholder'] == 'keterangan') {
+                                                                            echo "type=text";
+                                                                        } else {
+                                                                            echo "type=number min=0 onkeypress='return isNumberKey(event)'";
+                                                                        }
+                                                                    ?>
+
+                                                                    class="form-control" <?php echo "name=keterangan".$dtKel1['no']; ?>>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group label-floating">
+                                                                    <label class="control-label">rekomendasi</label>
+                                                                    <input type="text" class="form-control" <?php echo "name=rekomendasi".$dtKel1['no']; ?>>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td colspan="6">Pressure gauge</td>
+                                                    </tr>
+                                                    <!-- Pertanyaan baris 30 sampai 32 -->
+                                                    <?php foreach ($dataKelengkapan2 as $dtKel2) { ?> 
+                                                        <tr>
+                                                            <td width="10px">
+                                                                <td>
+                                                                    <input type="hidden" <?php echo "name=no".$dtKel2['no']; ?> value="<?php echo $dtKel2['no']; ?>">
+                                                                    <input type="file" <?php echo "name=picture".$dtKel2['no']; ?> style="width: 180px;">
+                                                                </td>
+                                                                <td>
+                                                                    <strong><?php echo $dtKel2['nama_inspeksi']; ?></strong>
+                                                                </td>
+                                                                <td width="120px">
+                                                                    <div class="form_group">
+                                                                        <label class="radio-inline">
+                                                                            <input type="radio" <?php echo "name=radio".''.$dtKel2['no']; ?> <?php echo "id=baik".''.$dtKel2['no']; ?> value="baik" checked >Ya
+                                                                        </label>
+                                                                        <label class="radio-inline">
+                                                                            <input type="radio" <?php echo "name=radio".''.$dtKel2['no']; ?> <?php echo "id=tidak".''.$dtKel2['no']; ?> value="tidak baik">Tidak
+                                                                        </label>
+                                                                    </div>
+                                                                </td>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group label-floating">
+                                                                    <label class="control-label">kondisi</label>
+                                                                    <input type="text" class="form-control" <?php echo "name=kondisi".$dtKel2['no']; ?>>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group label-floating">
+                                                                    <label class="control-label">keterangan</label>
+                                                                    <input class="form-control" <?php echo "name=keterangan".$dtKel2['no']; ?>>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group label-floating">
+                                                                    <label class="control-label">rekomendasi</label>
+                                                                    <input type="text" class="form-control" <?php echo "name=rekomendasi".$dtKel2['no']; ?>>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                    <tr>
+                                                        <td>3</td>
+                                                        <td colspan="6">Safety valve</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="10px">
+                                                            <input type="hidden" name="no33" value="33">
+                                                        </td>
+                                                        <td><input type="file" name="picture6" style="width: 180px;"></td>
+                                                        <td width="150px"><strong>Dapat bekerja apabila tekanan pada bejana uap melebihi tekanan maximum /strong></td>
+                                                        <td width="120px">
+                                                            <div class="form_group">
+                                                                <label class="radio-inline">
+                                                                    <input type="radio" <?php echo "name=radio33"; ?> <?php echo "id=baik33"; ?> value="baik" checked >Ya
+                                                                </label>
+                                                                <label class="radio-inline">
+                                                                    <input type="radio" <?php echo "name=radio33"; ?> <?php echo "id=tidak33"; ?> value="tidak baik">Tidak
                                                                 </label>
                                                             </div>
                                                         </td>
-                                                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                                                        <td>
+                                                            <div class="form-group label-floating">
+                                                                <label class="control-label">kondisi</label>
+                                                                <input type="text" class="form-control" name="kondisi33">
+                                                            </div>
                                                         </td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-                                                                <i class="material-icons">edit</i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="material-icons">close</i>
-                                                            </button>
+                                                        <td>
+                                                            <div class="form-group label-floating">
+                                                                <label class="control-label">keterangan</label>
+                                                                <input type="text" class="form-control" name="keterangan33">
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group label-floating">
+                                                                <label class="control-label">rekomendasi</label>
+                                                                <input type="text" class="form-control" name="rekomendasi33">
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox" name="optionsCheckboxes" checked>
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                        <td>Create 4 Invisible User Experiences you Never Knew About</td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-                                                                <i class="material-icons">edit</i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="material-icons">close</i>
-                                                            </button>
-                                                        </td>
+                                                        <td>4</td>
+                                                        <td colspan="6">Pelat nama</td>
                                                     </tr>
+                                                    <!-- Pertanyaan baris 34 sampai 35 -->
+                                                    <?php foreach ($dataKelengkapan41 as $dtKel41) { ?> 
+                                                        <tr>
+                                                            <td width="10px">
+                                                                <td>
+                                                                    <input type="hidden" <?php echo "name=no".$dtKel41['no']; ?> value="<?php echo $dtKel41['no']; ?>">
+                                                                    <input type="file" <?php echo "name=picture".$dtKel41['no']; ?> style="width: 180px;">
+                                                                </td>
+                                                                <td>
+                                                                    <strong><?php echo $dtKel41['nama_inspeksi']; ?></strong>
+                                                                </td>
+                                                                <td width="120px">
+                                                                    <div class="form_group">
+                                                                        <label class="radio-inline">
+                                                                            <input type="radio" <?php echo "name=radio".''.$dtKel41['no']; ?> <?php echo "id=baik".''.$dtKel41['no']; ?> value="baik" checked >Ya
+                                                                        </label>
+                                                                        <label class="radio-inline">
+                                                                            <input type="radio" <?php echo "name=radio".''.$dtKel41['no']; ?> <?php echo "id=tidak".''.$dtKel41['no']; ?> value="tidak baik">Tidak
+                                                                        </label>
+                                                                    </div>
+                                                                </td>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group label-floating">
+                                                                    <label class="control-label">kondisi</label>
+                                                                    <input type="text" class="form-control" <?php echo "name=kondisi".$dtKel41['no']; ?>>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group label-floating">
+                                                                    <label class="control-label">keterangan</label>
+                                                                    <input class="form-control" <?php echo "name=keterangan".$dtKel41['no']; ?>>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group label-floating">
+                                                                    <label class="control-label">rekomendasi</label>
+                                                                    <input type="text" class="form-control" <?php echo "name=rekomendasi".$dtKel41['no']; ?>>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td colspan="6">Memuat identitas bejana uap</td>
+                                                    </tr>
+                                                    <!-- Pertanyaan baris 36 sampai 39 -->
+                                                    <?php foreach ($dataKelengkapan42 as $dtKel42) { ?> 
+                                                        <tr>
+                                                            <td width="10px">
+                                                                <td>
+                                                                    <input type="hidden" <?php echo "name=no".$dtKel42['no']; ?> value="<?php echo $dtKel42['no']; ?>">
+                                                                    <input type="file" <?php echo "name=picture".$dtKel42['no']; ?> style="width: 180px;">
+                                                                </td>
+                                                                <td>
+                                                                    <strong><?php echo $dtKel42['nama_inspeksi']; ?></strong>
+                                                                </td>
+                                                                <td width="120px">
+                                                                    <div class="form_group">
+                                                                        <label class="radio-inline">
+                                                                            <input type="radio" <?php echo "name=radio".''.$dtKel42['no']; ?> <?php echo "id=baik".''.$dtKel42['no']; ?> value="baik" checked >Ya
+                                                                        </label>
+                                                                        <label class="radio-inline">
+                                                                            <input type="radio" <?php echo "name=radio".''.$dtKel42['no']; ?> <?php echo "id=tidak".''.$dtKel42['no']; ?> value="tidak baik">Tidak
+                                                                        </label>
+                                                                    </div>
+                                                                </td>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group label-floating">
+                                                                    <label class="control-label">kondisi</label>
+                                                                    <input type="text" class="form-control" <?php echo "name=kondisi".$dtKel42['no']; ?>>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group label-floating">
+                                                                    <label class="control-label">keterangan</label>
+                                                                    <input class="form-control" <?php echo "name=keterangan".$dtKel42['no']; ?>>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group label-floating">
+                                                                    <label class="control-label">rekomendasi</label>
+                                                                    <input type="text" class="form-control" <?php echo "name=rekomendasi".$dtKel42['no']; ?>>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    <?php } ?>
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <div class="tab-pane" id="messages">
-                                            <table class="table">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox" name="optionsCheckboxes" checked>
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                                                        </td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-                                                                <i class="material-icons">edit</i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="material-icons">close</i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox" name="optionsCheckboxes">
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                        <td>Sign contract for "What are conference organizers afraid of?"</td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-                                                                <i class="material-icons">edit</i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="material-icons">close</i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                        <div style="text-align: center; vertical-align: middle; margin: 40px auto 30px;">
+                                            <input class="btn btn-md btn-success" type="submit" name="submit" value="Simpan Hasil Inspeksi">
                                         </div>
-                                        <div class="tab-pane" id="settings">
-                                            <table class="table">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox" name="optionsCheckboxes">
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                        <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-                                                                <i class="material-icons">edit</i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="material-icons">close</i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox" name="optionsCheckboxes" checked>
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                                                        </td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-                                                                <i class="material-icons">edit</i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="material-icons">close</i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox" name="optionsCheckboxes">
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                        <td>Sign contract for "What are conference organizers afraid of?"</td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-                                                                <i class="material-icons">edit</i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="material-icons">close</i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12">
-                            <div class="card">
-                                <div class="card-header" data-background-color="orange">
-                                    <h4 class="title">Employees Stats</h4>
-                                    <p class="category">New employees on 15th September, 2016</p>
-                                </div>
-                                <div class="card-content table-responsive">
-                                    <table class="table table-hover">
-                                        <thead class="text-warning">
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Salary</th>
-                                            <th>Country</th>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Dakota Rice</td>
-                                                <td>$36,738</td>
-                                                <td>Niger</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Minerva Hooper</td>
-                                                <td>$23,789</td>
-                                                <td>Curaçao</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Sage Rodriguez</td>
-                                                <td>$56,142</td>
-                                                <td>Netherlands</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Philip Chaney</td>
-                                                <td>$38,735</td>
-                                                <td>Korea, South</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -503,6 +580,14 @@ if($_SESSION['status'] != "login inspektor"){
         demo.initDashboardPageCharts();
 
     });
+</script>
+<script type="text/javascript">
+    function isNumberKey(evt){
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if(charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
 </script>
 
 </html>
