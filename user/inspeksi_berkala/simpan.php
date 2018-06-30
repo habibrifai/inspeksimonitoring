@@ -22,7 +22,7 @@ if ($insert = mysqli_query($conn, "INSERT INTO form_teknisi(`no_form`, `jenis`, 
   			$fileData = fread($tmpFile, filesize($_FILES['picture'.$i]['tmp_name']));  
   			$fileData = addslashes($fileData);  
 
-  			$kodeGambar = mysqli_query($conn, "SELECT kd_gmbar FROM gambar_teknisi ORDER BY kd_gmbar DESC LIMIT 1");
+  			$kodeGambar = mysqli_query($conn, "SELECT kd_gmbar FROM gambar_teknisi ORDER BY ABS(kd_gmbar) DESC LIMIT 1");
             $kdGambar = mysqli_fetch_assoc($kodeGambar);
 
             if (isset($kdGambar)) {

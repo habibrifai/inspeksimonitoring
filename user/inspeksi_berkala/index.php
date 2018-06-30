@@ -213,7 +213,7 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
                                                         <label style="color: black;" class="">NO FORM</label>
 
                                                         <?php
-                                                            $no_form = mysqli_query($conn, "SELECT no_form FROM form_teknisi WHERE jenis = 'Berkala' ORDER BY no_form DESC LIMIT 1");
+                                                            $no_form = mysqli_query($conn, "SELECT no_form FROM form_teknisi WHERE jenis = 'Berkala' ORDER BY ABS(no_form) DESC LIMIT 1");
                                                             $noForm = mysqli_fetch_assoc($no_form);
 
                                                             if (isset($noForm)) {
@@ -225,7 +225,7 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
                                                             // var_dump($noForm);
                                                         ?>
 
-                                                        <input type="text" class="form-control" name="no_form" readonly="" value="<?php echo $noForm['no_form']; ?>">
+                                                        <input type="text" class="form-control" name="no_form" readonly="" value="<?php echo $nomor; ?>">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
