@@ -4,6 +4,8 @@
 <?php
 $base = "http://localhost/inspeksimonitoring/";
 
+include '../../config.php';
+
 session_start();
 
 if($_SESSION['status'] != "login inspektor"){
@@ -75,7 +77,7 @@ $dataKelengkapan42 = array(array('no' => 36, 'nama_inspeksi' => 'Nama dan tempat
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons" rel='stylesheet'>
 </head>
 
-<body>
+<body onload="select();">
     <div class="wrapper">
         <div class="sidebar" data-color="purple" data-image="<?php echo $base; ?>assets/img/sidebar-1.jpg">
             <!--
@@ -135,31 +137,40 @@ $dataKelengkapan42 = array(array('no' => 36, 'nama_inspeksi' => 'Nama dan tempat
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
+                            <?php if (isset($_SESSION['failed_message'])) { ?>
+                            <div class="alert alert-danger">
+                                <span>
+                                    <?php echo $_SESSION['failed_message'];unset($_SESSION['failed_message']); ?>
+                                </span>
+                            </div>
+                            <?php } ?>
+                            <?php if (isset($_SESSION['success_message'])) { ?>
+                            <div class="alert alert-success">
+                                <span>
+                                    <?php echo $_SESSION['success_message'];unset($_SESSION['success_message']); ?>
+                                </span>
+                            </div>
+                            <?php } ?>
                             <div class="card">
                                 <div class="card-header" data-background-color="purple">
                                     <h5 class="title">Inspeksi Bulanan</h5>
                                     <!-- <p class="category">Pelanggan yang hari ini berulang tahun</p> -->
                                 </div>
                                 <div class="card-content">
-                                    <form>
+                                    <form method="POST" action="simpan.php" enctype="multipart/form-data">
                                         <div class="card-content table-responsive">
                                             <div class="row">
-                                                <div class="col-md-4">
-                                                    <div class="form-group label-floating">
-                                                        <label style="color: black;" class="">NIP</label>
-                                                        <input type="text" class="form-control" name="nip">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group label-floating">
-                                                        <label style="color: black;" class="">TANGGAL</label>
-                                                        <input type="date" class="form-control" name="tanggal">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-12">
                                                     <div class="form-group label-floating">
                                                         <label style="color: black;" class="">NO TANGKI</label>
-                                                        <input type="text" class="form-control" name="no_tangki">
+                                                        <select class="form-control" id="no_tangki" onclick="select()" required="">
+                                                            <?php $read_data = mysqli_query($conn, "SELECT no_tangki, uk_tangki, jenis_tangki FROM tangki") or die(mysqli_error());
+                                                            while ($data = mysqli_fetch_array($read_data)) { ?>
+                                                                <option value="<?php echo $data['jenis_tangki'].$data['uk_tangki']; ?>"><?php echo $data['no_tangki']; ?></option>
+                                                            <?php } ?>
+                                                        </select>
+                                                        <input type="hidden" class="form-control" name="noTangki" id="noTangki" value="">
+                                                        <input type="hidden" class="form-control" name="nip" value="<?php echo $_SESSION['nip']; ?>">
                                                     </div>
                                                 </div>
                                             </div>
@@ -167,19 +178,31 @@ $dataKelengkapan42 = array(array('no' => 36, 'nama_inspeksi' => 'Nama dan tempat
                                                 <div class="col-md-4">
                                                     <div class="form-group label-floating">
                                                         <label style="color: black;" class="">NO FORM</label>
-                                                        <input type="text" class="form-control" name="no_form">
+
+                                                        <?php
+                                                            $no_form = mysqli_query($conn, "SELECT no_form FROM form_teknisi WHERE jenis = 'Bulanan' ORDER BY ABS(SUBSTRING(no_form,4,LENGTH(no_form))) DESC LIMIT 1");
+                                                            $noForm = mysqli_fetch_assoc($no_form);
+
+                                                            if (isset($noForm)) {
+                                                                $nomor = 'BL-'.(substr($noForm['no_form'], -(strlen($noForm['no_form'])-3)) + 1);
+                                                            } else {
+                                                                $nomor = 'BL-1';
+                                                            }  
+                                                        ?>
+
+                                                        <input type="text" class="form-control" name="no_form" readonly="" value="<?php echo $nomor; ?>">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group label-floating">
                                                         <label style="color: black;" class="">JENIS</label>
-                                                        <input type="text" class="form-control" name="jenis">
+                                                        <input id="jenis" type="text" class="form-control" name="jenis" disabled="">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group label-floating">
                                                         <label style="color: black;" class="">UKURAN TANGKI</label>
-                                                        <input type="text" class="form-control" name="ukuran_tangki">
+                                                        <input id="ukuran" type="text" class="form-control" name="ukuran_tangki" disabled="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -210,10 +233,10 @@ $dataKelengkapan42 = array(array('no' => 36, 'nama_inspeksi' => 'Nama dan tempat
                                                         <td width="120px">
                                                             <div class="form_group">
                                                                 <label class="radio-inline">
-                                                                    <input type="radio" <?php echo "name=radio".''.$value['no']; ?> <?php echo "id=baik".''.$value['no']; ?> value="baik" checked >Ya
+                                                                    <input type="radio" <?php echo "name=radio".''.$value['no']; ?> <?php echo "id=Ya".''.$value['no']; ?> value="Ya" checked >Ya
                                                                 </label>
                                                                 <label class="radio-inline">
-                                                                    <input type="radio" <?php echo "name=radio".''.$value['no']; ?> <?php echo "id=tidak".''.$value['no']; ?> value="tidak baik">Tidak
+                                                                    <input type="radio" <?php echo "name=radio".''.$value['no']; ?> <?php echo "id=tidak".''.$value['no']; ?> value="Tidak">Tidak
                                                                 </label>
                                                             </div>
                                                         </td>
@@ -251,10 +274,10 @@ $dataKelengkapan42 = array(array('no' => 36, 'nama_inspeksi' => 'Nama dan tempat
                                                         <td width="120px">
                                                             <div class="form_group">
                                                                 <label class="radio-inline">
-                                                                    <input type="radio" <?php echo "name=radio6"; ?> <?php echo "id=baik6"; ?> value="baik" checked >Ya
+                                                                    <input type="radio" <?php echo "name=radio6"; ?> <?php echo "id=baik6"; ?> value="Ya" checked >Ya
                                                                 </label>
                                                                 <label class="radio-inline">
-                                                                    <input type="radio" <?php echo "name=radio6"; ?> <?php echo "id=tidak6"; ?> value="tidak baik">Tidak
+                                                                    <input type="radio" <?php echo "name=radio6"; ?> <?php echo "id=tidak6"; ?> value="Tidak">Tidak
                                                                 </label>
                                                             </div>
                                                         </td>
@@ -299,7 +322,24 @@ $dataKelengkapan42 = array(array('no' => 36, 'nama_inspeksi' => 'Nama dan tempat
                                                                     </div>
                                                                 </td>
                                                             </td>
-
+                                                            <td>
+                                                                <div class="form-group label-floating">
+                                                                    <!-- <label class="control-label">kondisi</label> -->
+                                                                    <input type="hidden" class="form-control" <?php echo "name=kondisi".$dtBjn['no']; ?>>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group label-floating">
+                                                                    <!-- <label class="control-label">keterangan</label> -->
+                                                                    <input type="hidden" class="form-control" <?php echo "name=keterangan".$dtBjn['no']; ?>>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group label-floating">
+                                                                    <!-- <label class="control-label">rekomendasi</label> -->
+                                                                    <input type="hidden" class="form-control" <?php echo "name=rekomendasi".$dtBjn['no']; ?>>
+                                                                </div>
+                                                            </td>
                                                         </tr>
                                                     <?php } ?>
                                                     <tr>
@@ -324,10 +364,10 @@ $dataKelengkapan42 = array(array('no' => 36, 'nama_inspeksi' => 'Nama dan tempat
                                                                 <td width="120px">
                                                                     <div class="form_group">
                                                                         <label class="radio-inline">
-                                                                            <input type="radio" <?php echo "name=radio".''.$dtKel1['no']; ?> <?php echo "id=baik".''.$dtKel1['no']; ?> value="baik" checked >Ya
+                                                                            <input type="radio" <?php echo "name=radio".''.$dtKel1['no']; ?> <?php echo "id=Ya".''.$dtKel1['no']; ?> value="Ya" checked >Ya
                                                                         </label>
                                                                         <label class="radio-inline">
-                                                                            <input type="radio" <?php echo "name=radio".''.$dtKel1['no']; ?> <?php echo "id=tidak".''.$dtKel1['no']; ?> value="tidak baik">Tidak
+                                                                            <input type="radio" <?php echo "name=radio".''.$dtKel1['no']; ?> <?php echo "id=tidak".''.$dtKel1['no']; ?> value="Tidak">Tidak
                                                                         </label>
                                                                     </div>
                                                                 </td>
@@ -380,10 +420,10 @@ $dataKelengkapan42 = array(array('no' => 36, 'nama_inspeksi' => 'Nama dan tempat
                                                                 <td width="120px">
                                                                     <div class="form_group">
                                                                         <label class="radio-inline">
-                                                                            <input type="radio" <?php echo "name=radio".''.$dtKel2['no']; ?> <?php echo "id=baik".''.$dtKel2['no']; ?> value="baik" checked >Ya
+                                                                            <input type="radio" <?php echo "name=radio".''.$dtKel2['no']; ?> <?php echo "id=Ya".''.$dtKel2['no']; ?> value="Ya" checked >Ya
                                                                         </label>
                                                                         <label class="radio-inline">
-                                                                            <input type="radio" <?php echo "name=radio".''.$dtKel2['no']; ?> <?php echo "id=tidak".''.$dtKel2['no']; ?> value="tidak baik">Tidak
+                                                                            <input type="radio" <?php echo "name=radio".''.$dtKel2['no']; ?> <?php echo "id=tidak".''.$dtKel2['no']; ?> value="Tidak">Tidak
                                                                         </label>
                                                                     </div>
                                                                 </td>
@@ -397,7 +437,7 @@ $dataKelengkapan42 = array(array('no' => 36, 'nama_inspeksi' => 'Nama dan tempat
                                                             <td>
                                                                 <div class="form-group label-floating">
                                                                     <label class="control-label">keterangan</label>
-                                                                    <input class="form-control" <?php echo "name=keterangan".$dtKel2['no']; ?>>
+                                                                    <input type="text" class="form-control" <?php echo "name=keterangan".$dtKel2['no']; ?>>
                                                                 </div>
                                                             </td>
                                                             <td>
@@ -416,15 +456,15 @@ $dataKelengkapan42 = array(array('no' => 36, 'nama_inspeksi' => 'Nama dan tempat
                                                         <td width="10px">
                                                             <input type="hidden" name="no33" value="33">
                                                         </td>
-                                                        <td><input type="file" name="picture6" style="width: 180px;"></td>
+                                                        <td><input type="file" name="picture33" style="width: 180px;"></td>
                                                         <td width="150px"><strong>Dapat bekerja apabila tekanan pada bejana uap melebihi tekanan maximum /strong></td>
                                                         <td width="120px">
                                                             <div class="form_group">
                                                                 <label class="radio-inline">
-                                                                    <input type="radio" <?php echo "name=radio33"; ?> <?php echo "id=baik33"; ?> value="baik" checked >Ya
+                                                                    <input type="radio" <?php echo "name=radio33"; ?> <?php echo "id=baik33"; ?> value="Ya" checked >Ya
                                                                 </label>
                                                                 <label class="radio-inline">
-                                                                    <input type="radio" <?php echo "name=radio33"; ?> <?php echo "id=tidak33"; ?> value="tidak baik">Tidak
+                                                                    <input type="radio" <?php echo "name=radio33"; ?> <?php echo "id=tidak33"; ?> value="Tidak">Tidak
                                                                 </label>
                                                             </div>
                                                         </td>
@@ -465,10 +505,10 @@ $dataKelengkapan42 = array(array('no' => 36, 'nama_inspeksi' => 'Nama dan tempat
                                                                 <td width="120px">
                                                                     <div class="form_group">
                                                                         <label class="radio-inline">
-                                                                            <input type="radio" <?php echo "name=radio".''.$dtKel41['no']; ?> <?php echo "id=baik".''.$dtKel41['no']; ?> value="baik" checked >Ya
+                                                                            <input type="radio" <?php echo "name=radio".''.$dtKel41['no']; ?> <?php echo "id=Ya".''.$dtKel41['no']; ?> value="Ya" checked >Ya
                                                                         </label>
                                                                         <label class="radio-inline">
-                                                                            <input type="radio" <?php echo "name=radio".''.$dtKel41['no']; ?> <?php echo "id=tidak".''.$dtKel41['no']; ?> value="tidak baik">Tidak
+                                                                            <input type="radio" <?php echo "name=radio".''.$dtKel41['no']; ?> <?php echo "id=tidak".''.$dtKel41['no']; ?> value="Tidak">Tidak
                                                                         </label>
                                                                     </div>
                                                                 </td>
@@ -482,7 +522,7 @@ $dataKelengkapan42 = array(array('no' => 36, 'nama_inspeksi' => 'Nama dan tempat
                                                             <td>
                                                                 <div class="form-group label-floating">
                                                                     <label class="control-label">keterangan</label>
-                                                                    <input class="form-control" <?php echo "name=keterangan".$dtKel41['no']; ?>>
+                                                                    <input type="text" class="form-control" <?php echo "name=keterangan".$dtKel41['no']; ?>>
                                                                 </div>
                                                             </td>
                                                             <td>
@@ -511,10 +551,10 @@ $dataKelengkapan42 = array(array('no' => 36, 'nama_inspeksi' => 'Nama dan tempat
                                                                 <td width="120px">
                                                                     <div class="form_group">
                                                                         <label class="radio-inline">
-                                                                            <input type="radio" <?php echo "name=radio".''.$dtKel42['no']; ?> <?php echo "id=baik".''.$dtKel42['no']; ?> value="baik" checked >Ya
+                                                                            <input type="radio" <?php echo "name=radio".''.$dtKel42['no']; ?> <?php echo "id=Ya".''.$dtKel42['no']; ?> value="Ya" checked >Ya
                                                                         </label>
                                                                         <label class="radio-inline">
-                                                                            <input type="radio" <?php echo "name=radio".''.$dtKel42['no']; ?> <?php echo "id=tidak".''.$dtKel42['no']; ?> value="tidak baik">Tidak
+                                                                            <input type="radio" <?php echo "name=radio".''.$dtKel42['no']; ?> <?php echo "id=tidak".''.$dtKel42['no']; ?> value="Tidak">Tidak
                                                                         </label>
                                                                     </div>
                                                                 </td>
@@ -528,7 +568,7 @@ $dataKelengkapan42 = array(array('no' => 36, 'nama_inspeksi' => 'Nama dan tempat
                                                             <td>
                                                                 <div class="form-group label-floating">
                                                                     <label class="control-label">keterangan</label>
-                                                                    <input class="form-control" <?php echo "name=keterangan".$dtKel42['no']; ?>>
+                                                                    <input type="text" class="form-control" <?php echo "name=keterangan".$dtKel42['no']; ?>>
                                                                 </div>
                                                             </td>
                                                             <td>
@@ -588,6 +628,15 @@ $dataKelengkapan42 = array(array('no' => 36, 'nama_inspeksi' => 'Nama dan tempat
             return false;
         return true;
     }
+
+    function select(){
+        var e = document.getElementById("no_tangki");
+        var value = e.options[e.selectedIndex].value;
+        document.getElementById('jenis').value = value.substr(0,10);
+        document.getElementById('ukuran').value = value.substr(10,value.length);
+        document.getElementById('noTangki').value = e.options[e.selectedIndex].text;
+    }
+
 </script>
 
 </html>

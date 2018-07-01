@@ -20,7 +20,7 @@ session_start();
         <div class="row" style="margin-top:80px">
             <div class="col-md-4 col-md-offset-4">
                 <div class="card">
-                    <div class="card-header" style="background-color: #FD9C17">
+                    <div class="card-header" data-background-color="purple">
                         <h3 style="text-align: center; font-weight: bold; color: #FFF">LOGIN</h3>
                     </div>
                     <div class="card-body">
@@ -33,7 +33,7 @@ session_start();
                             <div class="form-group">
                                 <input type="password" class="form-control" id="password" placeholder="Password" name="password" required="">
                             </div>
-                            <button type="submit" class="btn btn-success">Masuk</button>
+                            <button type="submit" class="btn btn-warning">Masuk</button>
                         </form>
                         </div>
                     </div>

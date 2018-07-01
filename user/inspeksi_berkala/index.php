@@ -213,16 +213,14 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
                                                         <label style="color: black;" class="">NO FORM</label>
 
                                                         <?php
-                                                            $no_form = mysqli_query($conn, "SELECT no_form FROM form_teknisi WHERE jenis = 'Berkala' ORDER BY ABS(no_form) DESC LIMIT 1");
+                                                            $no_form = mysqli_query($conn, "SELECT no_form FROM form_teknisi WHERE jenis = 'Berkala' ORDER BY ABS(SUBSTRING(no_form,4,LENGTH(no_form))) DESC LIMIT 1");
                                                             $noForm = mysqli_fetch_assoc($no_form);
 
                                                             if (isset($noForm)) {
-                                                                $nomor = (int)($noForm['no_form']) + 1;
+                                                                $nomor = 'BR-'.(substr($noForm['no_form'], -(strlen($noForm['no_form'])-3)) + 1);
                                                             } else {
-                                                                $nomor = 1;
-                                                            }
-
-                                                            // var_dump($noForm);
+                                                                $nomor = 'BR-1';
+                                                            }  
                                                         ?>
 
                                                         <input type="text" class="form-control" name="no_form" readonly="" value="<?php echo $nomor; ?>">
@@ -330,7 +328,7 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
                                                             <td>
                                                                 <div class="form-group label-floating">
                                                                     <label class="control-label">keterangan</label>
-                                                                    <input class="form-control" <?php echo "name=keterangan".$dtUmum5['no']; ?>>
+                                                                    <input type="text" class="form-control" <?php echo "name=keterangan".$dtUmum5['no']; ?>>
                                                                 </div>
                                                             </td>
                                                             <td>
@@ -376,7 +374,7 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
                                                             <td>
                                                                 <div class="form-group label-floating">
                                                                     <label class="control-label">keterangan</label>
-                                                                    <input class="form-control" <?php echo "name=keterangan".$dtUmum6['no']; ?>>
+                                                                    <input type="text" class="form-control" <?php echo "name=keterangan".$dtUmum6['no']; ?>>
                                                                 </div>
                                                             </td>
                                                             <td>
@@ -422,7 +420,7 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
                                                             <td>
                                                                 <div class="form-group label-floating">
                                                                     <label class="control-label">keterangan</label>
-                                                                    <input class="form-control" <?php echo "name=keterangan".$dtUmum7['no']; ?>>
+                                                                    <input type="text" class="form-control" <?php echo "name=keterangan".$dtUmum7['no']; ?>>
                                                                 </div>
                                                             </td>
                                                             <td>
@@ -652,7 +650,7 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
                                                             <td>
                                                                 <div class="form-group label-floating">
                                                                     <label class="control-label">keterangan</label>
-                                                                    <input class="form-control" <?php echo "name=keterangan".$dtKel2['no']; ?>>
+                                                                    <input type="text" class="form-control" <?php echo "name=keterangan".$dtKel2['no']; ?>>
                                                                 </div>
                                                             </td>
                                                             <td>
@@ -698,7 +696,7 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
                                                             <td>
                                                                 <div class="form-group label-floating">
                                                                     <label class="control-label">keterangan</label>
-                                                                    <input class="form-control" <?php echo "name=keterangan".$dtKel3['no']; ?>>
+                                                                    <input type="text" class="form-control" <?php echo "name=keterangan".$dtKel3['no']; ?>>
                                                                 </div>
                                                             </td>
                                                             <td>
@@ -744,7 +742,7 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
                                                             <td>
                                                                 <div class="form-group label-floating">
                                                                     <label class="control-label"><?php echo $dtKel41['placeholder']; ?></label>
-                                                                    <input class="form-control" <?php echo "name=keterangan".$dtKel41['no']; ?>>
+                                                                    <input type="text" class="form-control" <?php echo "name=keterangan".$dtKel41['no']; ?>>
                                                                 </div>
                                                             </td>
                                                             <td>
@@ -790,7 +788,7 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
                                                             <td>
                                                                 <div class="form-group label-floating">
                                                                     <label class="control-label"><?php echo $dtKel42['placeholder']; ?></label>
-                                                                    <input class="form-control" <?php echo "name=keterangan".$dtKel42['no']; ?>>
+                                                                    <input type="text" class="form-control" <?php echo "name=keterangan".$dtKel42['no']; ?>>
                                                                 </div>
                                                             </td>
                                                             <td>
@@ -836,7 +834,7 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
                                                             <td>
                                                                 <div class="form-group label-floating">
                                                                     <label class="control-label"><?php echo $dtKel5['placeholder']; ?></label>
-                                                                    <input class="form-control" <?php echo "name=keterangan".$dtKel5['no']; ?>>
+                                                                    <input type="text" class="form-control" <?php echo "name=keterangan".$dtKel5['no']; ?>>
                                                                 </div>
                                                             </td>
                                                             <td>
