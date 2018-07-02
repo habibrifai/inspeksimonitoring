@@ -4,6 +4,8 @@
 <?php
 $base = "http://localhost/inspeksimonitoring/";
 
+include "../config.php";
+
 session_start();
 
 if($_SESSION['status'] != ("login admin" || "login monitoring")){
@@ -34,16 +36,6 @@ if($_SESSION['status'] != ("login admin" || "login monitoring")){
 <body>
     <div class="wrapper">
         <div class="sidebar" data-color="purple" data-image="<?php echo $base; ?>assets/img/sidebar-1.jpg">
-            <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
-
-        Tip 2: you can also add an image using data-image tag
-    -->
-            <!-- <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
-                    Creative Tim
-                </a>
-            </div> -->
             <?php
             	if ($_SESSION['status'] == "login admin") { ?>
             		<div class="sidebar-wrapper">
@@ -117,7 +109,8 @@ if($_SESSION['status'] != ("login admin" || "login monitoring")){
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        
+                        <canvas id="tekanan" width="600" height="300"></canvas>
+                        <p id="output"></p>
                     </div>
                 </div>
             </div>
@@ -128,27 +121,83 @@ if($_SESSION['status'] != ("login admin" || "login monitoring")){
 <script src="<?php echo $base; ?>assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="<?php echo $base; ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="<?php echo $base; ?>assets/js/material.min.js" type="text/javascript"></script>
-<!--  Charts Plugin -->
-<script src="<?php echo $base; ?>assets/js/chartist.min.js"></script>
+<script src="<?php echo $base; ?>assets/js/Chart.min.js"></script>
 <!--  Dynamic Elements plugin -->
 <script src="<?php echo $base; ?>assets/js/arrive.min.js"></script>
 <!--  PerfectScrollbar Library -->
 <script src="<?php echo $base; ?>assets/js/perfect-scrollbar.jquery.min.js"></script>
 <!--  Notifications Plugin    -->
 <script src="<?php echo $base; ?>assets/js/bootstrap-notify.js"></script>
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!-- Material Dashboard javascript methods -->
 <script src="<?php echo $base; ?>assets/js/material-dashboard.js?v=1.2.0"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="<?php echo $base; ?>assets/js/demo.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
 
-        // Javascript method's body can be found in assets/js/demos.js
-        demo.initDashboardPageCharts();
+<?php 
+$dtTekanan = mysqli_query($conn,"SELECT tekanan FROM tekanan ORDER BY id_tekanan ASC");
+foreach ($dtTekanan as $value) {
+    $arr[] = $value;
+}
+?>
 
+var result = [];
+
+var ajax = function(){
+    $.ajax({                                  
+        url: 'php_handler.php',                     
+        data: "",                             
+        dataType: 'json',          
+        success: function(data)          
+        {
+            $('#output').html("<b>tekanan: </b>"+data);
+
+            result = data;
+
+            var speedCanvas = document.getElementById("tekanan");
+
+            Chart.defaults.global.defaultFontFamily = "Lato";
+            Chart.defaults.global.defaultFontSize = 18;
+
+            var chartOptions = {
+                legend: {
+                    display: true,
+                    position: 'top',
+                    labels: {
+                        boxWidth: 80,
+                        fontColor: 'black'
+                    }
+                },
+                animation: {
+                    duration: 0
+                },
+                showTooltips: true
+            };
+            var dataTekanan = {
+                labels: [1,2,3,4,5,6,7,8,9,10],
+                datasets: [{
+                    label: "Tekanan",
+                    data: [result[0],result[1],result[2],result[3],result[4],result[5],result[6],result[7],result[8],result[9]],
+                    backgroundColor: '#ccbadc',
+                    fill: false,
+                    radius:8,
+                    borderColor: '#000000'
+                }]
+            };
+
+            var lineChart = new Chart(speedCanvas, {
+                type: 'line',
+                data: dataTekanan,
+                options: chartOptions,
+                animation: false
+            });
+        }
     });
+}
+
+setTimeout(ajax, 0);
+setInterval(ajax, 1000 * 60 * 0.066);
+
 </script>
 
 </html>
