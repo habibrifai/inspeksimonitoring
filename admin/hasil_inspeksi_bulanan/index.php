@@ -91,7 +91,7 @@ if($_SESSION['status'] != "login admin"){
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#"> List Hasil Inspeksi Berkala </a>
+                        <a class="navbar-brand" href="#"> List Hasil Inspeksi Perbulan </a>
                     </div>
                 </div>
             </nav>
