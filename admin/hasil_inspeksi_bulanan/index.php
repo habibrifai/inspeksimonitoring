@@ -36,16 +36,6 @@ if($_SESSION['status'] != "login admin"){
 <body>
     <div class="wrapper">
         <div class="sidebar" data-color="purple" data-image="<?php echo $base; ?>assets/img/sidebar-1.jpg">
-            <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
-
-        Tip 2: you can also add an image using data-image tag
-    -->
-            <!-- <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
-                    Creative Tim
-                </a>
-            </div> -->
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li>
@@ -151,13 +141,17 @@ if($_SESSION['status'] != "login admin"){
 
                                             $no = 1;
 
-                                            $dataBerkala = mysqli_query($conn, "SELECT form_teknisi.no_form, tanggal FROM form_teknisi JOIN hasil_form_teknisi ON form_teknisi.no_form = hasil_form_teknisi.no_form WHERE form_teknisi.jenis = 'Bulanan' GROUP BY ABS(SUBSTRING(form_teknisi.no_form,4,LENGTH(form_teknisi.no_form))) ASC HAVING COUNT(*) > 1");
+                                            $dataBerkala = mysqli_query($conn, "SELECT form_teknisi.no_form, tanggal,nip, no_tangki FROM form_teknisi JOIN hasil_form_teknisi ON form_teknisi.no_form = hasil_form_teknisi.no_form WHERE form_teknisi.jenis = 'Bulanan' GROUP BY ABS(SUBSTRING(form_teknisi.no_form,4,LENGTH(form_teknisi.no_form))) ASC HAVING COUNT(*) > 1");
 
                                             while($row = mysqli_fetch_array($dataBerkala)) { ?>
                                             <tr>
                                                 <td><?php echo $no; ?></td>
                                                 <form method="POST" action="detail.php">
                                                     <td><?php echo $row['no_form']; ?></td>
+                                                    <input type="hidden" name="noform" value="<?php echo $row['no_form']; ?>">
+                                                    <input type="hidden" name="nip" value="<?php echo $row['nip']; ?>">
+                                                    <input type="hidden" name="notangki" value="<?php echo $row['no_tangki']; ?>">
+                                                    <input type="hidden" name="tanggal" value="<?php echo tanggal_indo($row['tanggal']); ?>">
                                                     <td><?php echo tanggal_indo($row['tanggal'], true); ?></td>
                                                     <td class="form-group"><input class="btn btn-primary" type="submit" value="Detail"></td>
                                                 </form>

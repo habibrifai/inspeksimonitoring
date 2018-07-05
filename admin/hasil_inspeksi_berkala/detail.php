@@ -828,7 +828,7 @@ $jmlLine = array_sum($width)+1;
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10);
 $pdf->Cell(10,($jmlLine * $h),'5.',1,0,'C');
-$pdf->Cell(20,($newLine * $h),'',1,0,'C');
+$pdf->Cell(20,(1 * $h),'',1,0,'C');
 $pdf->Cell(235,7,'Pipa masih memiliki ketebalan yang cukup',1,0,'L');
 $pdf->Ln();
 
@@ -1569,7 +1569,7 @@ $jmlLine1 = array_sum($width1)+1;
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10);
 $pdf->Cell(10,($jmlLine1 * 7),'6.',1,0,'C');
-$pdf->Cell(20,($newLine * $h),'',1,0,'C');
+$pdf->Cell(20,(1 * $h),'',1,0,'C');
 $pdf->Cell(235,7,'Dokumen bejana uap',1,0,'L');
 $pdf->Ln();
 
@@ -2283,7 +2283,7 @@ $jmlLine2 = array_sum($width2)+1;
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10);
 $pdf->Cell(10,($jmlLine2 * 7),'7.',1,0,'C');
-$pdf->Cell(20,($newLine * $h),'',1,0,'C');
+$pdf->Cell(20,(1 * $h),'',1,0,'C');
 $pdf->Cell(235,7,'Pengesahan',1,0,'L');
 $pdf->Ln();
 
@@ -3557,7 +3557,7 @@ $jmlLine3 = array_sum($width3)+1;
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10);
 $pdf->Cell(10,($jmlLine3 * 7),'2.',1,0,'C');
-$pdf->Cell(20,($newLine * $h),'',1,0,'C');
+$pdf->Cell(20,(1 * $h),'',1,0,'C');
 $pdf->Cell(235,7,'Bejana uap dilakukan reparasi karena cacad/kerusakan',1,0,'L');
 $pdf->Ln();
 
@@ -4293,7 +4293,7 @@ $jmlLine4 = array_sum($width4)+1;
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10);
 $pdf->Cell(10,($jmlLine4 * 7),'3.',1,0,'C');
-$pdf->Cell(20,($newLine * $h),'',1,0,'C');
+$pdf->Cell(20,(1 * $h),'',1,0,'C');
 $pdf->Cell(235,7,'Data teknik bejana uap',1,0,'L');
 $pdf->Ln();
 
@@ -5050,7 +5050,7 @@ $jmlLine5 = array_sum($width5)+1;
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10);
 $pdf->Cell(10,($jmlLine5 * $h),'1.',1,0,'C');
-$pdf->Cell(20,($newLine * $h),'',1,0,'C');
+$pdf->Cell(20,(1 * $h),'',1,0,'C');
 $pdf->Cell(235,7,'Apakah bejana uap dilengkapi dengan:',1,0,'L');
 $pdf->Ln();
 
@@ -5786,7 +5786,7 @@ $jmlLine6 = array_sum($width6)+1;
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10);
 $pdf->Cell(10,($jmlLine6 * $h),'2.',1,0,'C');
-$pdf->Cell(20,($newLine * $h),'',1,0,'C');
+$pdf->Cell(20,(1 * $h),'',1,0,'C');
 $pdf->SetFont('Times','I',12);
 $pdf->Cell(235,7,'Pressure gauge',1,0,'L');
 $pdf->Ln();
@@ -6366,7 +6366,7 @@ for ($i=49; $i <= 52; $i++) {
 // ini untuk nomer 3 alat bantu operasi
 for ($i=53; $i <= 55; $i++) {
 	if ($noPertanyaan[$i-1] == 53) {
-		$pertanyaan = "a. Dapat bekerja apabila tekanan pada bejana uap melebihi tekanan maksimum               ";
+		$pertanyaan = "a. Dapat bekerja apabila tekanan pada bejana uap melebihi tekanan maksimum";
 	}
 	if ($noPertanyaan[$i-1] == 54) {
 		$pertanyaan = "b. Diset maksimum pada tekanan kerja yang diijinkan";
@@ -6501,14 +6501,14 @@ $jmlLine7 = array_sum($width7)+1;
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10);
 $pdf->Cell(10,($jmlLine7 * $h),'3.',1,0,'C');
-$pdf->Cell(20,($newLine * $h),'',1,0,'C');
+$pdf->Cell(20,(1 * $h),'',1,0,'C');
 $pdf->SetFont('Times','I',12);
 $pdf->Cell(235,7,'Savety valve',1,0,'L');
 $pdf->Ln();
 
 for ($i=53; $i <= 55; $i++) {
 	if ($noPertanyaan[$i-1] == 53) {
-		$pertanyaan = "a. Dapat bekerja apabila tekanan pada bejana uap melebihi tekanan maksimum        ";
+		$pertanyaan = "a. Dapat bekerja apabila tekanan pada bejana uap melebihi tekanan maksimum";
 	}
 	if ($noPertanyaan[$i-1] == 54) {
 		$pertanyaan = "b. Diset maksimum pada tekanan kerja yang diijinkan";
@@ -7222,7 +7222,7 @@ $jmlLine8 = array_sum($width8)+1;
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10);
 $pdf->Cell(10,($jmlLine8 * $h),'4.',1,0,'C');
-$pdf->Cell(20,($newLine * $h),'',1,0,'C');
+$pdf->Cell(20,(1 * $h),'',1,0,'C');
 // $pdf->SetFont('Times','I',12);
 $pdf->Cell(235,7,'Pelat nama',1,0,'L');
 $pdf->Ln();
@@ -7940,7 +7940,7 @@ $jmlLine9 = array_sum($width9)+1;
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10);
 $pdf->Cell(10,($jmlLine9 * $h),'5.',1,0,'C');
-$pdf->Cell(20,($newLine * $h),'',1,0,'C');
+$pdf->Cell(20,(1 * $h),'',1,0,'C');
 $pdf->Cell(235,7,'Korosi yang terjadi pada bagian dalam bejana uap',1,0,'L');
 $pdf->Ln();
 
