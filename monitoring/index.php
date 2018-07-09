@@ -32,7 +32,7 @@ if($_SESSION['status'] != ("login admin" || "login monitoring")){
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons" rel='stylesheet'>
 </head>
-
+<meta http-equiv="refresh" content="120">
 <body>
     <div class="wrapper">
         <div class="sidebar" data-color="purple" data-image="<?php echo $base; ?>assets/img/sidebar-1.jpg">
@@ -109,7 +109,7 @@ if($_SESSION['status'] != ("login admin" || "login monitoring")){
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <canvas id="tekanan" width="600" height="280"></canvas>
+                        <canvas id="tekanan" width="600" height="290"></canvas>
                         <p id="output"></p>
                     </div>
                 </div>
@@ -142,22 +142,28 @@ foreach ($dtTekanan as $value) {
 ?>
 
 var result = [];
+// var time = [];
 
 var ajax = function(){
     $.ajax({                                  
         url: 'php_handler.php',                     
         data: "",                             
         dataType: 'json',          
-        success: function(data)          
-        {
-            $('#output').html("<b>tekanan: </b>"+data);
+        success: function(data){
 
             result = data;
 
-            var speedCanvas = document.getElementById("tekanan");
+            // for(var i in data) {
+            //     time.push(data[i].Time);
+            //     result.push(data[i].Tekanan);
+            // }
+
+             $('#output').html("<b>tekanan: </b>"+data);
+
+            var pressureCanvas = document.getElementById("tekanan");
 
             Chart.defaults.global.defaultFontFamily = "Lato";
-            Chart.defaults.global.defaultFontSize = 18;
+            Chart.defaults.global.defaultFontSize = 14;
 
             var chartOptions = {
                 legend: {
@@ -177,15 +183,15 @@ var ajax = function(){
                 labels: [1,2,3,4,5,6,7,8,9,10],
                 datasets: [{
                     label: "Tekanan",
-                    data: [result[0],result[1],result[2],result[3],result[4],result[5],result[6],result[7],result[8],result[9]],
-                    backgroundColor: '#ccbadc',
+                    data: result,
+                    backgroundColor: '#663096',
                     fill: false,
-                    radius:8,
+                    radius:3,
                     borderColor: '#663096'
                 }]
             };
 
-            var lineChart = new Chart(speedCanvas, {
+            var lineChart = new Chart(pressureCanvas, {
                 type: 'line',
                 data: dataTekanan,
                 options: chartOptions,
