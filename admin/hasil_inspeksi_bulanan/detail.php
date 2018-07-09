@@ -297,6 +297,7 @@ for ($i=1; $i <= 5; $i++) {
 	} else {
 		$linex = 1;
 	}
+	
 	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
 		$ls0 = $linex - $line;
 		$ls1 = $linex - $line1;

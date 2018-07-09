@@ -486,13 +486,16 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
                                                             <td>
                                                                 <strong><?php echo $dtBjn2['nama_inspeksi']; ?></strong>
                                                             </td>
-                                                            <td>
-                                                                <div class="form-group label-floating">
-                                                                    <label class="control-label">jawaban</label>
-                                                                    <input type="text" class="form-control" <?php echo "name=radio".$dtBjn2['no']; ?>>
+                                                            <td width="120px">
+                                                                <div class="form_group">
+                                                                    <label class="radio-inline">
+                                                                        <input type="radio" <?php echo "name=radio".''.$dtBjn2['no']; ?> <?php echo "id=Ya".''.$dtBjn2['no']; ?> value="Ya" checked >Ya
+                                                                    </label>
+                                                                    <label class="radio-inline">
+                                                                        <input type="radio" <?php echo "name=radio".''.$dtBjn2['no']; ?> <?php echo "id=tidak".''.$dtBjn2['no']; ?> value="Tidak">Tidak
+                                                                    </label>
                                                                 </div>
                                                             </td>
-                                                            
                                                             <td>
                                                                 <div class="form-group label-floating">
                                                                     <label class="control-label">kondisi</label>

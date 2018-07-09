@@ -54,11 +54,11 @@ if ($insert = mysqli_query($conn, "INSERT INTO form_teknisi(`no_form`, `jenis`, 
   	}
   	session_start();
 	$_SESSION['success_message'] = 'Data berhasil disimpan..';
-	echo "<script>location.href='../inspeksi_berkala';</script>";
+	// echo "<script>location.href='../inspeksi_berkala';</script>";
 } else {
 	session_start();
 	$_SESSION['failed_message'] = 'Data gagal disimpan..';
-	echo "<script>location.href='../inspeksi_berkala';</script>";
+	// echo "<script>location.href='../inspeksi_berkala';</script>";
 }
 
 ?>

@@ -57,8 +57,8 @@ class myPDF extends FPDF{
 		$this->SetFont('Times','',12);
 		$this->Cell(10);
 		$this->Cell(10,8,'No',1,0,'C');
-		$this->Cell(20,8,'Picture',1,0,'C'); 
-		$this->Cell(55,8,'Permasalahan/Pertanyaan',1,0,'C'); 
+		$this->Cell(30,8,'Picture',1,0,'C'); 
+		$this->Cell(45,8,'Permasalahan/Pertanyaan',1,0,'C'); 
 		$this->Cell(30,8,'Hasil/Jawaban',1,0,'C');
 		$this->Cell(50,8,'Kondisi',1,0,'C'); 
 		$this->Cell(50,8,'Keterangan',1,0,'C'); 
@@ -93,9 +93,11 @@ while ($data = mysqli_fetch_array($data_inspeksi)) {
 }
 $no = 1;
 $pdf->SetFont('Times','',12);
-$wp = 55;
+$wp = 45;
 $wk = 50;
 $h = 7;
+$wpict = 30;
+
 for ($i=1; $i <= 4; $i++) {
 
 	if ($noPertanyaan[$i-1] == 1) {
@@ -212,6 +214,7 @@ for ($i=1; $i <= 4; $i++) {
 	} else {
 		$linex = 1;
 	}
+
 	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
 		$ls0 = $linex - $line;
 		$ls1 = $linex - $line1;
@@ -775,7 +778,16 @@ for ($i=1; $i <= 4; $i++) {
 	$pdf->SetFont('Times','',12);
 	$pdf->Cell(10);
 	$pdf->Cell(10,($newLine * $h),$no.'.',1,0,'C');
-	$pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	// $pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+
+	if ($picture[$i-1] == NULL) {
+		$pdf->Cell(30,($newLine * $h),'-',1,0,'C');
+	} else {
+		$xPos = $pdf->GetX();
+		$yPos = $pdf->GetY();
+		$pdf->MultiCell($wpict,$h,$pdf->MemImage($picture[$i-1],$xPos+1,$yPos+1,$wpict-2,($h * $newLine)-2),0,'C');
+		$pdf->SetXY($xPos + $wpict , $yPos);
+	}
 
 	$xPos = $pdf->GetX();
 	$yPos = $pdf->GetY();
@@ -827,7 +839,7 @@ for ($i=5; $i <= 15; $i++) {
 		$pertanyaan = "f. Pipa amonia";
 	}
 	if ($noPertanyaan[$i-1] == 11) {
-		$pertanyaan = "g. Pipa pancingan vacuum";
+		$pertanyaan = "g. Pipa pancingan vacuum            ";
 	}
 	if ($noPertanyaan[$i-1] == 12) {
 		$pertanyaan = "h. Pipa uap nira";
@@ -976,8 +988,8 @@ $jmlLine = array_sum($width)+1;
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10);
 $pdf->Cell(10,($jmlLine * $h),'5.',1,0,'C');
-$pdf->Cell(20,(1 * $h),'',1,0,'C');
-$pdf->Cell(235,7,'Pipa masih memiliki ketebalan yang cukup',1,0,'L');
+$pdf->Cell(30,(1 * $h),'',1,0,'C');
+$pdf->Cell(225,7,'Pipa masih memiliki ketebalan yang cukup',1,0,'L');
 $pdf->Ln();
 
 for ($i=5; $i <= 15; $i++) {
@@ -1000,7 +1012,7 @@ for ($i=5; $i <= 15; $i++) {
 		$pertanyaan = "f. Pipa amonia";
 	}
 	if ($noPertanyaan[$i-1] == 11) {
-		$pertanyaan = "g. Pipa pancingan vacuum";
+		$pertanyaan = "g. Pipa pancingan vacuum            ";
 	}
 	if ($noPertanyaan[$i-1] == 12) {
 		$pertanyaan = "h. Pipa uap nira";
@@ -1111,7 +1123,7 @@ for ($i=5; $i <= 15; $i++) {
 		$line3 = count($textArray3);
 	}
 
-if ($picture[$i-1] != NULL) {
+	if ($picture[$i-1] != NULL) {
 		$linex = 3;
 	} else {
 		$linex = 1;
@@ -1679,19 +1691,27 @@ if ($picture[$i-1] != NULL) {
 	$pdf->SetFont('Times','',12);
 	$pdf->Cell(10);
 	$pdf->Cell(10);
-	$pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	// $pdf->Cell(20,($newLine * $h),'Picture',1,0,'C');
+	if ($picture[$i-1] == NULL) {
+		$pdf->Cell(30,($newLine * $h),'-',1,0,'C');
+	} else {
+		$xPos = $pdf->GetX();
+		$yPos = $pdf->GetY();
+		$pdf->MultiCell($wpict,$h,$pdf->MemImage($picture[$i-1],$xPos+1,$yPos+1,$wpict-2,($h * $newLine)-2),0,'C');
+		$pdf->SetXY($xPos + $wpict , $yPos);
+	} 
 
 	$xPos = $pdf->GetX();
 	$yPos = $pdf->GetY();
 	$pdf->MultiCell($wp,$h,$pertanyaan.$spacep,1,'L');
 	$pdf->SetXY($xPos + $wp , $yPos);
 
-	// $pdf->Cell(30,($newLine * $h),$jawaban[$i-1],1,0,'C');
+	$pdf->Cell(30,($newLine * $h),$jawaban[$i-1],1,0,'C');
 
-	$xPos = $pdf->GetX();
-	$yPos = $pdf->GetY();
-	$pdf->MultiCell(30,$h,$jawaban[$i-1].$spacep,1,'C'); 
-	$pdf->SetXY($xPos + 30 , $yPos);
+	// $xPos = $pdf->GetX();
+	// $yPos = $pdf->GetY();
+	// $pdf->MultiCell(30,$h,$jawaban[$i-1].$spacep,1,'C'); 
+	// $pdf->SetXY($xPos + 30 , $yPos);
 
 	$xPos = $pdf->GetX();
 	$yPos = $pdf->GetY();
@@ -1866,8 +1886,8 @@ $jmlLine1 = array_sum($width1)+1;
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10);
 $pdf->Cell(10,($jmlLine1 * 7),'6.',1,0,'C');
-$pdf->Cell(20,(1 * $h),'',1,0,'C');
-$pdf->Cell(235,7,'Dokumen bejana uap',1,0,'L');
+$pdf->Cell(30,(1 * $h),'',1,0,'C');
+$pdf->Cell(225,7,'Dokumen bejana uap',1,0,'L');
 $pdf->Ln();
 
 for ($i=16; $i <= 20; $i++) {
@@ -2551,7 +2571,15 @@ for ($i=16; $i <= 20; $i++) {
 	$pdf->SetFont('Times','',12);
 	$pdf->Cell(10);
 	$pdf->Cell(10);
-	$pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	// $pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	if ($picture[$i-1] == NULL) {
+		$pdf->Cell(30,($newLine * $h),'-',1,0,'C');
+	} else {
+		$xPos = $pdf->GetX();
+		$yPos = $pdf->GetY();
+		$pdf->MultiCell($wpict,$h,$pdf->MemImage($picture[$i-1],$xPos+1,$yPos+1,$wpict-2,($h * $newLine)-2),0,'C');
+		$pdf->SetXY($xPos + $wpict , $yPos);
+	}
 
 	$xPos = $pdf->GetX();
 	$yPos = $pdf->GetY();
@@ -2728,8 +2756,8 @@ $jmlLine2 = array_sum($width2)+1;
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10);
 $pdf->Cell(10,($jmlLine2 * 7),'7.',1,0,'C');
-$pdf->Cell(20,(1 * $h),'',1,0,'C');
-$pdf->Cell(235,7,'Pengesahan',1,0,'L');
+$pdf->Cell(30,(1 * $h),'',1,0,'C');
+$pdf->Cell(225,7,'Pengesahan',1,0,'L');
 $pdf->Ln();
 
 for ($i=21; $i <= 22; $i++) {
@@ -3404,7 +3432,15 @@ for ($i=21; $i <= 22; $i++) {
 	$pdf->SetFont('Times','',12);
 	$pdf->Cell(10);
 	$pdf->Cell(10);
-	$pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	// $pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	if ($picture[$i-1] == NULL) {
+		$pdf->Cell(30,($newLine * $h),'-',1,0,'C');
+	} else {
+		$xPos = $pdf->GetX();
+		$yPos = $pdf->GetY();
+		$pdf->MultiCell($wpict,$h,$pdf->MemImage($picture[$i-1],$xPos+1,$yPos+1,$wpict-2,($h * $newLine)-2),0,'C');
+		$pdf->SetXY($xPos + $wpict , $yPos);
+	}
 
 	$xPos = $pdf->GetX();
 	$yPos = $pdf->GetY();
@@ -4118,7 +4154,15 @@ for ($i=23; $i <= 23; $i++) {
 	$pdf->SetFont('Times','',12);
 	$pdf->Cell(10);
 	$pdf->Cell(10,($newLine * $h),'1.',1,0,'C'); 
-	$pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	// $pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	if ($picture[$i-1] == NULL) {
+		$pdf->Cell(30,($newLine * $h),'-',1,0,'C');
+	} else {
+		$xPos = $pdf->GetX();
+		$yPos = $pdf->GetY();
+		$pdf->MultiCell($wpict,$h,$pdf->MemImage($picture[$i-1],$xPos+1,$yPos+1,$wpict-2,($h * $newLine)-2),0,'C');
+		$pdf->SetXY($xPos + $wpict , $yPos);
+	}
 
 	$xPos = $pdf->GetX();
 	$yPos = $pdf->GetY();
@@ -4290,8 +4334,8 @@ $jmlLine3 = array_sum($width3)+1;
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10);
 $pdf->Cell(10,($jmlLine3 * 7),'2.',1,0,'C');
-$pdf->Cell(20,(1 * $h),'',1,0,'C');
-$pdf->Cell(235,7,'Bejana uap dilakukan reparasi karena cacad/kerusakan',1,0,'L');
+$pdf->Cell(30,(1 * $h),'',1,0,'C');
+$pdf->Cell(225,7,'Bejana uap dilakukan reparasi karena cacad/kerusakan',1,0,'L');
 $pdf->Ln();
 
 for ($i=24; $i <= 25; $i++) {
@@ -4966,7 +5010,15 @@ for ($i=24; $i <= 25; $i++) {
 	$pdf->SetFont('Times','',12);
 	$pdf->Cell(10);
 	$pdf->Cell(10);
-	$pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	// $pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	if ($picture[$i-1] == NULL) {
+		$pdf->Cell(30,($newLine * $h),'-',1,0,'C');
+	} else {
+		$xPos = $pdf->GetX();
+		$yPos = $pdf->GetY();
+		$pdf->MultiCell($wpict,$h,$pdf->MemImage($picture[$i-1],$xPos+1,$yPos+1,$wpict-2,($h * $newLine)-2),0,'C');
+		$pdf->SetXY($xPos + $wpict , $yPos);
+	}
 
 	$xPos = $pdf->GetX();
 	$yPos = $pdf->GetY();
@@ -5019,7 +5071,7 @@ for ($i=26; $i <= 39; $i++) {
 		$pertanyaan = "g. Luas pemanas";
 	}
 	if ($noPertanyaan[$i-1] == 33) {
-		$pertanyaan = "h. Diameter pipa pemanas";
+		$pertanyaan = "h. Diameter pipa pemanas             ";
 	}
 	if ($noPertanyaan[$i-1] == 34) {
 		$pertanyaan = "i. Panjang pipa pemanas";
@@ -5174,8 +5226,8 @@ $jmlLine4 = array_sum($width4)+1;
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10);
 $pdf->Cell(10,($jmlLine4 * 7),'3.',1,0,'C');
-$pdf->Cell(20,(1 * $h),'',1,0,'C');
-$pdf->Cell(235,7,'Data teknik bejana uap',1,0,'L');
+$pdf->Cell(30,(1 * $h),'',1,0,'C');
+$pdf->Cell(225,7,'Data teknik bejana uap',1,0,'L');
 $pdf->Ln();
 
 for ($i=26; $i <= 39; $i++) {
@@ -5201,7 +5253,7 @@ for ($i=26; $i <= 39; $i++) {
 		$pertanyaan = "g. Luas pemanas";
 	}
 	if ($noPertanyaan[$i-1] == 33) {
-		$pertanyaan = "h. Diameter pipa pemanas";
+		$pertanyaan = "h. Diameter pipa pemanas               ";
 	}
 	if ($noPertanyaan[$i-1] == 34) {
 		$pertanyaan = "i. Panjang pipa pemanas";
@@ -5886,7 +5938,15 @@ for ($i=26; $i <= 39; $i++) {
 	$pdf->SetFont('Times','',12);
 	$pdf->Cell(10);
 	$pdf->Cell(10);
-	$pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	// $pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	if ($picture[$i-1] == NULL) {
+		$pdf->Cell(30,($newLine * $h),'-',1,0,'C');
+	} else {
+		$xPos = $pdf->GetX();
+		$yPos = $pdf->GetY();
+		$pdf->MultiCell($wpict,$h,$pdf->MemImage($picture[$i-1],$xPos+1,$yPos+1,$wpict-2,($h * $newLine)-2),0,'C');
+		$pdf->SetXY($xPos + $wpict , $yPos);
+	}
 
 	$xPos = $pdf->GetX();
 	$yPos = $pdf->GetY();
@@ -6079,8 +6139,8 @@ $jmlLine5 = array_sum($width5)+1;
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10);
 $pdf->Cell(10,($jmlLine5 * $h),'1.',1,0,'C');
-$pdf->Cell(20,(1 * $h),'',1,0,'C');
-$pdf->Cell(235,7,'Apakah bejana uap dilengkapi dengan:',1,0,'L');
+$pdf->Cell(30,(1 * $h),'',1,0,'C');
+$pdf->Cell(225,7,'Apakah bejana uap dilengkapi dengan:',1,0,'L');
 $pdf->Ln();
 
 for ($i=40; $i <= 48; $i++) {
@@ -6776,7 +6836,15 @@ for ($i=40; $i <= 48; $i++) {
 	$pdf->SetFont('Times','',12);
 	$pdf->Cell(10);
 	$pdf->Cell(10);
-	$pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	// $pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	if ($picture[$i-1] == NULL) {
+		$pdf->Cell(30,($newLine * $h),'-',1,0,'C');
+	} else {
+		$xPos = $pdf->GetX();
+		$yPos = $pdf->GetY();
+		$pdf->MultiCell($wpict,$h,$pdf->MemImage($picture[$i-1],$xPos+1,$yPos+1,$wpict-2,($h * $newLine)-2),0,'C');
+		$pdf->SetXY($xPos + $wpict , $yPos);
+	}
 
 	if ($pertanyaan == "e. Safety Valve" || $pertanyaan == "f. Pressure gauge" || $pertanyaan == "g. Thermometer clock") {
 		$pdf->SetFont('Times','I',12);
@@ -6820,10 +6888,10 @@ for ($i=49; $i <= 52; $i++) {
 		$pertanyaan = "a. Dipasang pada bagian bejana yang mudah dilihat oleh operator";
 	}
 	if ($noPertanyaan[$i-1] == 50) {
-		$pertanyaan = "b. Apakah dapat menunjukkan tekanan kerja yang diperbolehkan";
+		$pertanyaan = "b. Apakah dapat menunjukkan tekanan kerja yang diperbolehkan             ";
 	}
 	if ($noPertanyaan[$i-1] == 51) {
-		$pertanyaan = "c. Terdapat tanda pada tekanan kerja maximum";
+		$pertanyaan = "c. Terdapat tanda pada tekanan kerja maximum         ";
 	}
 	if ($noPertanyaan[$i-1] == 52) {
 		$pertanyaan = "d. Telah dilakukan kalibrasi";
@@ -6963,9 +7031,9 @@ $jmlLine6 = array_sum($width6)+1;
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10);
 $pdf->Cell(10,($jmlLine6 * $h),'2.',1,0,'C');
-$pdf->Cell(20,(1 * $h),'',1,0,'C');
+$pdf->Cell(30,(1 * $h),'',1,0,'C');
 $pdf->SetFont('Times','I',12);
-$pdf->Cell(235,7,'Pressure gauge',1,0,'L');
+$pdf->Cell(225,7,'Pressure gauge',1,0,'L');
 $pdf->Ln();
 
 for ($i=49; $i <= 52; $i++) {
@@ -6973,10 +7041,10 @@ for ($i=49; $i <= 52; $i++) {
 		$pertanyaan = "a. Dipasang pada bagian bejana yang mudah dilihat oleh operator";
 	}
 	if ($noPertanyaan[$i-1] == 50) {
-		$pertanyaan = "b. Apakah dapat menunjukkan tekanan kerja yang diperbolehkan";
+		$pertanyaan = "b. Apakah dapat menunjukkan tekanan kerja yang diperbolehkan              ";
 	}
 	if ($noPertanyaan[$i-1] == 51) {
-		$pertanyaan = "c. Terdapat tanda pada tekanan kerja maximum";
+		$pertanyaan = "c. Terdapat tanda pada tekanan kerja maximum        ";
 	}
 	if ($noPertanyaan[$i-1] == 52) {
 		$pertanyaan = "d. Telah dilakukan kalibrasi";
@@ -7506,7 +7574,15 @@ for ($i=49; $i <= 52; $i++) {
 	$pdf->SetFont('Times','',12);
 	$pdf->Cell(10);
 	$pdf->Cell(10);
-	$pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	// $pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	if ($picture[$i-1] == NULL) {
+		$pdf->Cell(30,($newLine * $h),'-',1,0,'C');
+	} else {
+		$xPos = $pdf->GetX();
+		$yPos = $pdf->GetY();
+		$pdf->MultiCell($wpict,$h,$pdf->MemImage($picture[$i-1],$xPos+1,$yPos+1,$wpict-2,($h * $newLine)-2),0,'C');
+		$pdf->SetXY($xPos + $wpict , $yPos);
+	}
 
 	$xPos = $pdf->GetX();
 	$yPos = $pdf->GetY();
@@ -7549,7 +7625,7 @@ for ($i=53; $i <= 55; $i++) {
 		$pertanyaan = "b. Diset maksimum pada tekanan kerja yang diijinkan";
 	}
 	if ($noPertanyaan[$i-1] == 55) {
-		$pertanyaan = "c. Telah diuji kemampuannya pada tekanan kerja yang diijinkan selama 10 menit dan tidak terjadi kenaikan pada tekanan bejana uap";
+		$pertanyaan = "c. Telah diuji kemampuannya pada tekanan kerja yang diijinkan selama 10 menit dan tidak terjadi kenaikan pada tekanan bejana uap          ";
 	}
 
 	if ($pdf->GetStringWidth($pertanyaan) < $wp) {
@@ -7685,9 +7761,9 @@ $jmlLine7 = array_sum($width7)+1;
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10);
 $pdf->Cell(10,($jmlLine7 * $h),'3.',1,0,'C');
-$pdf->Cell(20,(1 * $h),'',1,0,'C');
+$pdf->Cell(30,(1 * $h),'',1,0,'C');
 $pdf->SetFont('Times','I',12);
-$pdf->Cell(235,7,'Savety valve',1,0,'L');
+$pdf->Cell(225,7,'Savety valve',1,0,'L');
 $pdf->Ln();
 
 for ($i=53; $i <= 55; $i++) {
@@ -7698,7 +7774,7 @@ for ($i=53; $i <= 55; $i++) {
 		$pertanyaan = "b. Diset maksimum pada tekanan kerja yang diijinkan";
 	}
 	if ($noPertanyaan[$i-1] == 55) {
-		$pertanyaan = "c. Telah diuji kemampuannya pada tekanan kerja yang diijinkan selama 10 menit dan tidak terjadi kenaikan pada tekanan bejana uap";
+		$pertanyaan = "c. Telah diuji kemampuannya pada tekanan kerja yang diijinkan selama 10 menit dan tidak terjadi kenaikan pada tekanan bejana uap           ";
 	}
 
 	if ($pdf->GetStringWidth($pertanyaan) < $wp) {
@@ -8365,7 +8441,15 @@ for ($i=53; $i <= 55; $i++) {
 	$pdf->SetFont('Times','',12);
 	$pdf->Cell(10);
 	$pdf->Cell(10);
-	$pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	// $pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	if ($picture[$i-1] == NULL) {
+		$pdf->Cell(30,($newLine * $h),'-',1,0,'C');
+	} else {
+		$xPos = $pdf->GetX();
+		$yPos = $pdf->GetY();
+		$pdf->MultiCell($wpict,$h,$pdf->MemImage($picture[$i-1],$xPos+1,$yPos+1,$wpict-2,($h * $newLine)-2),0,'C');
+		$pdf->SetXY($xPos + $wpict , $yPos);
+	}
 
 	$xPos = $pdf->GetX();
 	$yPos = $pdf->GetY();
@@ -8554,9 +8638,9 @@ $jmlLine8 = array_sum($width8)+1;
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10);
 $pdf->Cell(10,($jmlLine8 * $h),'4.',1,0,'C');
-$pdf->Cell(20,(1 * $h),'',1,0,'C');
+$pdf->Cell(30,(1 * $h),'',1,0,'C');
 // $pdf->SetFont('Times','I',12);
-$pdf->Cell(235,7,'Pelat nama',1,0,'L');
+$pdf->Cell(225,7,'Pelat nama',1,0,'L');
 $pdf->Ln();
 
 for ($i=56; $i <= 61; $i++) {
@@ -8567,7 +8651,7 @@ for ($i=56; $i <= 61; $i++) {
 		$pertanyaan = "b. Ukuran";
 	}
 	if ($noPertanyaan[$i-1] == 58) {
-		$pertanyaan = "c. Memuat identitas bejana uap"."\n"."  - Nama dan tempat pembuatan";
+		$pertanyaan = "c. Memuat identitas bejana uap"."\n"."  - Nama dan tempat pembuatan           ";
 	}
 	if ($noPertanyaan[$i-1] == 59) {
 		$pertanyaan = "  - Tahun pembuatan";
@@ -9243,7 +9327,15 @@ for ($i=56; $i <= 61; $i++) {
 	$pdf->SetFont('Times','',12);
 	$pdf->Cell(10);
 	$pdf->Cell(10);
-	$pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	// $pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	if ($picture[$i-1] == NULL) {
+		$pdf->Cell(30,($newLine * $h),'-',1,0,'C');
+	} else {
+		$xPos = $pdf->GetX();
+		$yPos = $pdf->GetY();
+		$pdf->MultiCell($wpict,$h,$pdf->MemImage($picture[$i-1],$xPos+1,$yPos+1,$wpict-2,($h * $newLine)-2),0,'C');
+		$pdf->SetXY($xPos + $wpict , $yPos);
+	}
 
 	$xPos = $pdf->GetX();
 	$yPos = $pdf->GetY();
@@ -9420,8 +9512,8 @@ $jmlLine9 = array_sum($width9)+1;
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10);
 $pdf->Cell(10,($jmlLine9 * $h),'5.',1,0,'C');
-$pdf->Cell(20,(1 * $h),'',1,0,'C');
-$pdf->Cell(235,7,'Korosi yang terjadi pada bagian dalam bejana uap',1,0,'L');
+$pdf->Cell(30,(1 * $h),'',1,0,'C');
+$pdf->Cell(225,7,'Korosi yang terjadi pada bagian dalam bejana uap',1,0,'L');
 $pdf->Ln();
 
 for ($i=62; $i <= 63; $i++) {
@@ -10096,7 +10188,15 @@ for ($i=62; $i <= 63; $i++) {
 	$pdf->SetFont('Times','',12);
 	$pdf->Cell(10);
 	$pdf->Cell(10);
-	$pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	// $pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	if ($picture[$i-1] == NULL) {
+		$pdf->Cell(30,($newLine * $h),'-',1,0,'C');
+	} else {
+		$xPos = $pdf->GetX();
+		$yPos = $pdf->GetY();
+		$pdf->MultiCell($wpict,$h,$pdf->MemImage($picture[$i-1],$xPos+1,$yPos+1,$wpict-2,($h * $newLine)-2),0,'C');
+		$pdf->SetXY($xPos + $wpict , $yPos);
+	}
 
 	$xPos = $pdf->GetX();
 	$yPos = $pdf->GetY();
