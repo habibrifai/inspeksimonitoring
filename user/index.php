@@ -37,19 +37,19 @@ if($_SESSION['status'] != "login inspektor"){
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li class="active">
-                        <a href="<?php echo $base; ?>admin">
+                        <a href="<?php echo $base; ?>user">
                             <i class="material-icons">dashboard</i>
                             <p>Dashboard</p>
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo $base; ?>admin/hasil_inspeksi_berkala">
+                        <a href="<?php echo $base; ?>user/inspeksi_berkala">
                             <i class="material-icons">content_paste</i>
                             <p>Inspeksi Berkala</p>
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo $base; ?>admin/hasil_inspeksi_bulanan">
+                        <a href="<?php echo $base; ?>user/inspeksi_bulanan">
                             <i class="material-icons">content_paste</i>
                             <p>Inspeksi Bulanan</p>
                         </a>
