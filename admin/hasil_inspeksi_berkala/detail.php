@@ -80,12 +80,12 @@ $pdf->Cell(10,8,'',1,0,'C');
 $pdf->Cell(255,8,'DATA UMUM BEJANA UAP',1,0,'L');
 $pdf->Ln();
 
-$data_inspeksi = mysqli_query($conn, "SELECT * FROM hasil_form_teknisi WHERE no_form = '$noForm'");
+$data_inspeksi = mysqli_query($conn, "SELECT * FROM hasil_form_teknisi LEFT JOIN gambar_teknisi ON hasil_form_teknisi.kd_gambar = gambar_teknisi.kd_gmbar WHERE no_form = '$noForm'");
 // var_dump($data);
 
 while ($data = mysqli_fetch_array($data_inspeksi)) {
 	$noPertanyaan[] = $data['no_pertanyaan'];
-	// $picture[] = $data['']
+	$picture[] = $data['gambar'];
 	$jawaban[] = $data['jawaban'];
 	$kondisi[] = $data['kondisi'];
 	$keterangan[] = $data['keterangan'];
