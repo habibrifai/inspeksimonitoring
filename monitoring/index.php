@@ -181,7 +181,7 @@ var ajax = function(){
                     backgroundColor: '#ccbadc',
                     fill: false,
                     radius:8,
-                    borderColor: '#000000'
+                    borderColor: '#663096'
                 }]
             };
 
