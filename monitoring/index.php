@@ -109,7 +109,7 @@ if($_SESSION['status'] != ("login admin" || "login monitoring")){
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <canvas id="tekanan" width="600" height="300"></canvas>
+                        <canvas id="tekanan" width="600" height="280"></canvas>
                         <p id="output"></p>
                     </div>
                 </div>
