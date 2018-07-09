@@ -207,8 +207,148 @@ for ($i=1; $i <= 4; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$ls0 = $linex - $line;
+		$ls1 = $linex - $line1;
+		$ls2 = $linex - $line2;
+		$ls3 = $linex - $line3;
+		$newLine = $linex;
+		$spacek = " ";
+		$spacep = " ";
+		$spacet = " ";
+		$spacer = " ";
+
+		if ($ls0 == 1) {
+			$GLOBALS['spacep'] = "\n ";
+		}
+		if ($ls0 == 2) {
+			$GLOBALS['spacep'] = "\n\n ";
+		}
+		if ($ls0 == 3) {
+			$GLOBALS['spacep'] = "\n\n\n ";
+		}
+		if ($ls0 == 4) {
+			$GLOBALS['spacep'] = "\n\n\n\n ";
+		}
+		if ($ls0 == 5) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n ";
+		}
+		if ($ls0 == 6) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 7) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 8) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 9) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 10) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls1 == 1) {
+			$GLOBALS['spacek'] = "\n ";
+		}
+		if ($ls1 == 2) {
+			$GLOBALS['spacek'] = "\n\n ";
+		}
+		if ($ls1 == 3) {
+			$GLOBALS['spacek'] = "\n\n\n ";
+		}
+		if ($ls1 == 4) {
+			$GLOBALS['spacek'] = "\n\n\n\n ";
+		}
+		if ($ls1 == 5) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n ";
+		}
+		if ($ls1 == 6) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 7) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 8) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 9) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 10) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls2 == 1) {
+			$GLOBALS['spacet'] = "\n ";
+		}
+		if ($ls2 == 2) {
+			$GLOBALS['spacet'] = "\n\n ";
+		}
+		if ($ls2 == 3) {
+			$GLOBALS['spacet'] = "\n\n\n ";
+		}
+		if ($ls2 == 4) {
+			$GLOBALS['spacet'] = "\n\n\n\n ";
+		}
+		if ($ls2 == 5) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n ";
+		}
+		if ($ls2 == 6) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 7) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 8) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 9) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 10) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls3 == 1) {
+			$GLOBALS['spacer'] = "\n ";
+		}
+		if ($ls3 == 2) {
+			$GLOBALS['spacer'] = "\n\n ";
+		}
+		if ($ls3 == 3) {
+			$GLOBALS['spacer'] = "\n\n\n ";
+		}
+		if ($ls3 == 4) {
+			$GLOBALS['spacer'] = "\n\n\n\n ";
+		}
+		if ($ls3 == 5) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n ";
+		}
+		if ($ls3 == 6) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 7) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 8) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 9) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 10) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$ls1 = $line - $line1;
 		$ls2 = $line - $line2;
 		$ls3 = $line - $line3;
@@ -312,7 +452,7 @@ for ($i=1; $i <= 4; $i++) {
 		}
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$ls1 = $line1 - $line;
 		$ls2 = $line1 - $line2;
 		$ls3 = $line1 - $line3;
@@ -416,7 +556,7 @@ for ($i=1; $i <= 4; $i++) {
 		}
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$ls1 = $line2 - $line;
 		$ls2 = $line2 - $line1;
 		$ls3 = $line2 - $line3;
@@ -520,7 +660,7 @@ for ($i=1; $i <= 4; $i++) {
 		}
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$ls1 = $line3 - $line;
 		$ls2 = $line3 - $line1;
 		$ls3 = $line3 - $line2;
@@ -798,20 +938,28 @@ for ($i=5; $i <= 15; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$newLine = $linex;
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$newLine = $line;
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$newLine = $line1;
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$newLine = $line2;
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$newLine = $line3;
 
 	// jika semua kolom memiliki besar yang sama
@@ -963,8 +1111,148 @@ for ($i=5; $i <= 15; $i++) {
 		$line3 = count($textArray3);
 	}
 
+if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$ls0 = $linex - $line;
+		$ls1 = $linex - $line1;
+		$ls2 = $linex - $line2;
+		$ls3 = $linex - $line3;
+		$newLine = $linex;
+		$spacek = " ";
+		$spacep = " ";
+		$spacet = " ";
+		$spacer = " ";
+
+		if ($ls0 == 1) {
+			$GLOBALS['spacep'] = "\n ";
+		}
+		if ($ls0 == 2) {
+			$GLOBALS['spacep'] = "\n\n ";
+		}
+		if ($ls0 == 3) {
+			$GLOBALS['spacep'] = "\n\n\n ";
+		}
+		if ($ls0 == 4) {
+			$GLOBALS['spacep'] = "\n\n\n\n ";
+		}
+		if ($ls0 == 5) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n ";
+		}
+		if ($ls0 == 6) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 7) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 8) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 9) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 10) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls1 == 1) {
+			$GLOBALS['spacek'] = "\n ";
+		}
+		if ($ls1 == 2) {
+			$GLOBALS['spacek'] = "\n\n ";
+		}
+		if ($ls1 == 3) {
+			$GLOBALS['spacek'] = "\n\n\n ";
+		}
+		if ($ls1 == 4) {
+			$GLOBALS['spacek'] = "\n\n\n\n ";
+		}
+		if ($ls1 == 5) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n ";
+		}
+		if ($ls1 == 6) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 7) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 8) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 9) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 10) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls2 == 1) {
+			$GLOBALS['spacet'] = "\n ";
+		}
+		if ($ls2 == 2) {
+			$GLOBALS['spacet'] = "\n\n ";
+		}
+		if ($ls2 == 3) {
+			$GLOBALS['spacet'] = "\n\n\n ";
+		}
+		if ($ls2 == 4) {
+			$GLOBALS['spacet'] = "\n\n\n\n ";
+		}
+		if ($ls2 == 5) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n ";
+		}
+		if ($ls2 == 6) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 7) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 8) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 9) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 10) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls3 == 1) {
+			$GLOBALS['spacer'] = "\n ";
+		}
+		if ($ls3 == 2) {
+			$GLOBALS['spacer'] = "\n\n ";
+		}
+		if ($ls3 == 3) {
+			$GLOBALS['spacer'] = "\n\n\n ";
+		}
+		if ($ls3 == 4) {
+			$GLOBALS['spacer'] = "\n\n\n\n ";
+		}
+		if ($ls3 == 5) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n ";
+		}
+		if ($ls3 == 6) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 7) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 8) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 9) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 10) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$ls1 = $line - $line1;
 		$ls2 = $line - $line2;
 		$ls3 = $line - $line3;
@@ -1068,7 +1356,7 @@ for ($i=5; $i <= 15; $i++) {
 		}
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$ls1 = $line1 - $line;
 		$ls2 = $line1 - $line2;
 		$ls3 = $line1 - $line3;
@@ -1172,7 +1460,7 @@ for ($i=5; $i <= 15; $i++) {
 		}
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$ls1 = $line2 - $line;
 		$ls2 = $line2 - $line1;
 		$ls3 = $line2 - $line3;
@@ -1276,7 +1564,7 @@ for ($i=5; $i <= 15; $i++) {
 		}
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$ls1 = $line3 - $line;
 		$ls2 = $line3 - $line1;
 		$ls3 = $line3 - $line2;
@@ -1539,20 +1827,29 @@ for ($i=16; $i <= 20; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$newLine = $linex;
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$newLine = $line;
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$newLine = $line1;
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$newLine = $line2;
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$newLine = $line3;
 
 	// jika semua kolom memiliki besar yang sama
@@ -1686,8 +1983,148 @@ for ($i=16; $i <= 20; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$ls0 = $linex - $line;
+		$ls1 = $linex - $line1;
+		$ls2 = $linex - $line2;
+		$ls3 = $linex - $line3;
+		$newLine = $linex;
+		$spacek = " ";
+		$spacep = " ";
+		$spacet = " ";
+		$spacer = " ";
+
+		if ($ls0 == 1) {
+			$GLOBALS['spacep'] = "\n ";
+		}
+		if ($ls0 == 2) {
+			$GLOBALS['spacep'] = "\n\n ";
+		}
+		if ($ls0 == 3) {
+			$GLOBALS['spacep'] = "\n\n\n ";
+		}
+		if ($ls0 == 4) {
+			$GLOBALS['spacep'] = "\n\n\n\n ";
+		}
+		if ($ls0 == 5) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n ";
+		}
+		if ($ls0 == 6) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 7) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 8) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 9) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 10) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls1 == 1) {
+			$GLOBALS['spacek'] = "\n ";
+		}
+		if ($ls1 == 2) {
+			$GLOBALS['spacek'] = "\n\n ";
+		}
+		if ($ls1 == 3) {
+			$GLOBALS['spacek'] = "\n\n\n ";
+		}
+		if ($ls1 == 4) {
+			$GLOBALS['spacek'] = "\n\n\n\n ";
+		}
+		if ($ls1 == 5) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n ";
+		}
+		if ($ls1 == 6) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 7) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 8) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 9) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 10) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls2 == 1) {
+			$GLOBALS['spacet'] = "\n ";
+		}
+		if ($ls2 == 2) {
+			$GLOBALS['spacet'] = "\n\n ";
+		}
+		if ($ls2 == 3) {
+			$GLOBALS['spacet'] = "\n\n\n ";
+		}
+		if ($ls2 == 4) {
+			$GLOBALS['spacet'] = "\n\n\n\n ";
+		}
+		if ($ls2 == 5) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n ";
+		}
+		if ($ls2 == 6) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 7) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 8) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 9) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 10) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls3 == 1) {
+			$GLOBALS['spacer'] = "\n ";
+		}
+		if ($ls3 == 2) {
+			$GLOBALS['spacer'] = "\n\n ";
+		}
+		if ($ls3 == 3) {
+			$GLOBALS['spacer'] = "\n\n\n ";
+		}
+		if ($ls3 == 4) {
+			$GLOBALS['spacer'] = "\n\n\n\n ";
+		}
+		if ($ls3 == 5) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n ";
+		}
+		if ($ls3 == 6) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 7) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 8) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 9) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 10) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$ls1 = $line - $line1;
 		$ls2 = $line - $line2;
 		$ls3 = $line - $line3;
@@ -1791,7 +2228,7 @@ for ($i=16; $i <= 20; $i++) {
 		}
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$ls1 = $line1 - $line;
 		$ls2 = $line1 - $line2;
 		$ls3 = $line1 - $line3;
@@ -1895,7 +2332,7 @@ for ($i=16; $i <= 20; $i++) {
 		}
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$ls1 = $line2 - $line;
 		$ls2 = $line2 - $line1;
 		$ls3 = $line2 - $line3;
@@ -1999,7 +2436,7 @@ for ($i=16; $i <= 20; $i++) {
 		}
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$ls1 = $line3 - $line;
 		$ls2 = $line3 - $line1;
 		$ls3 = $line3 - $line2;
@@ -2253,20 +2690,28 @@ for ($i=21; $i <= 22; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$newLine = $linex;
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$newLine = $line;
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$newLine = $line1;
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$newLine = $line2;
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$newLine = $line3;
 
 	// jika semua kolom memiliki besar yang sama
@@ -2391,8 +2836,148 @@ for ($i=21; $i <= 22; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$ls0 = $linex - $line;
+		$ls1 = $linex - $line1;
+		$ls2 = $linex - $line2;
+		$ls3 = $linex - $line3;
+		$newLine = $linex;
+		$spacek = " ";
+		$spacep = " ";
+		$spacet = " ";
+		$spacer = " ";
+
+		if ($ls0 == 1) {
+			$GLOBALS['spacep'] = "\n ";
+		}
+		if ($ls0 == 2) {
+			$GLOBALS['spacep'] = "\n\n ";
+		}
+		if ($ls0 == 3) {
+			$GLOBALS['spacep'] = "\n\n\n ";
+		}
+		if ($ls0 == 4) {
+			$GLOBALS['spacep'] = "\n\n\n\n ";
+		}
+		if ($ls0 == 5) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n ";
+		}
+		if ($ls0 == 6) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 7) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 8) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 9) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 10) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls1 == 1) {
+			$GLOBALS['spacek'] = "\n ";
+		}
+		if ($ls1 == 2) {
+			$GLOBALS['spacek'] = "\n\n ";
+		}
+		if ($ls1 == 3) {
+			$GLOBALS['spacek'] = "\n\n\n ";
+		}
+		if ($ls1 == 4) {
+			$GLOBALS['spacek'] = "\n\n\n\n ";
+		}
+		if ($ls1 == 5) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n ";
+		}
+		if ($ls1 == 6) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 7) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 8) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 9) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 10) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls2 == 1) {
+			$GLOBALS['spacet'] = "\n ";
+		}
+		if ($ls2 == 2) {
+			$GLOBALS['spacet'] = "\n\n ";
+		}
+		if ($ls2 == 3) {
+			$GLOBALS['spacet'] = "\n\n\n ";
+		}
+		if ($ls2 == 4) {
+			$GLOBALS['spacet'] = "\n\n\n\n ";
+		}
+		if ($ls2 == 5) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n ";
+		}
+		if ($ls2 == 6) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 7) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 8) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 9) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 10) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls3 == 1) {
+			$GLOBALS['spacer'] = "\n ";
+		}
+		if ($ls3 == 2) {
+			$GLOBALS['spacer'] = "\n\n ";
+		}
+		if ($ls3 == 3) {
+			$GLOBALS['spacer'] = "\n\n\n ";
+		}
+		if ($ls3 == 4) {
+			$GLOBALS['spacer'] = "\n\n\n\n ";
+		}
+		if ($ls3 == 5) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n ";
+		}
+		if ($ls3 == 6) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 7) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 8) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 9) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 10) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$ls1 = $line - $line1;
 		$ls2 = $line - $line2;
 		$ls3 = $line - $line3;
@@ -2496,7 +3081,7 @@ for ($i=21; $i <= 22; $i++) {
 		}
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$ls1 = $line1 - $line;
 		$ls2 = $line1 - $line2;
 		$ls3 = $line1 - $line3;
@@ -2600,7 +3185,7 @@ for ($i=21; $i <= 22; $i++) {
 		}
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$ls1 = $line2 - $line;
 		$ls2 = $line2 - $line1;
 		$ls3 = $line2 - $line3;
@@ -2704,7 +3289,7 @@ for ($i=21; $i <= 22; $i++) {
 		}
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$ls1 = $line3 - $line;
 		$ls2 = $line3 - $line1;
 		$ls3 = $line3 - $line2;
@@ -2965,8 +3550,148 @@ for ($i=23; $i <= 23; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$ls0 = $linex - $line;
+		$ls1 = $linex - $line1;
+		$ls2 = $linex - $line2;
+		$ls3 = $linex - $line3;
+		$newLine = $linex;
+		$spacek = " ";
+		$spacep = " ";
+		$spacet = " ";
+		$spacer = " ";
+
+		if ($ls0 == 1) {
+			$GLOBALS['spacep'] = "\n ";
+		}
+		if ($ls0 == 2) {
+			$GLOBALS['spacep'] = "\n\n ";
+		}
+		if ($ls0 == 3) {
+			$GLOBALS['spacep'] = "\n\n\n ";
+		}
+		if ($ls0 == 4) {
+			$GLOBALS['spacep'] = "\n\n\n\n ";
+		}
+		if ($ls0 == 5) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n ";
+		}
+		if ($ls0 == 6) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 7) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 8) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 9) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 10) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls1 == 1) {
+			$GLOBALS['spacek'] = "\n ";
+		}
+		if ($ls1 == 2) {
+			$GLOBALS['spacek'] = "\n\n ";
+		}
+		if ($ls1 == 3) {
+			$GLOBALS['spacek'] = "\n\n\n ";
+		}
+		if ($ls1 == 4) {
+			$GLOBALS['spacek'] = "\n\n\n\n ";
+		}
+		if ($ls1 == 5) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n ";
+		}
+		if ($ls1 == 6) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 7) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 8) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 9) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 10) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls2 == 1) {
+			$GLOBALS['spacet'] = "\n ";
+		}
+		if ($ls2 == 2) {
+			$GLOBALS['spacet'] = "\n\n ";
+		}
+		if ($ls2 == 3) {
+			$GLOBALS['spacet'] = "\n\n\n ";
+		}
+		if ($ls2 == 4) {
+			$GLOBALS['spacet'] = "\n\n\n\n ";
+		}
+		if ($ls2 == 5) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n ";
+		}
+		if ($ls2 == 6) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 7) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 8) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 9) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 10) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls3 == 1) {
+			$GLOBALS['spacer'] = "\n ";
+		}
+		if ($ls3 == 2) {
+			$GLOBALS['spacer'] = "\n\n ";
+		}
+		if ($ls3 == 3) {
+			$GLOBALS['spacer'] = "\n\n\n ";
+		}
+		if ($ls3 == 4) {
+			$GLOBALS['spacer'] = "\n\n\n\n ";
+		}
+		if ($ls3 == 5) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n ";
+		}
+		if ($ls3 == 6) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 7) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 8) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 9) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 10) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$ls1 = $line - $line1;
 		$ls2 = $line - $line2;
 		$ls3 = $line - $line3;
@@ -3070,7 +3795,7 @@ for ($i=23; $i <= 23; $i++) {
 		}
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$ls1 = $line1 - $line;
 		$ls2 = $line1 - $line2;
 		$ls3 = $line1 - $line3;
@@ -3174,7 +3899,7 @@ for ($i=23; $i <= 23; $i++) {
 		}
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$ls1 = $line2 - $line;
 		$ls2 = $line2 - $line1;
 		$ls3 = $line2 - $line3;
@@ -3278,7 +4003,7 @@ for ($i=23; $i <= 23; $i++) {
 		}
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$ls1 = $line3 - $line;
 		$ls2 = $line3 - $line1;
 		$ls3 = $line3 - $line2;
@@ -3527,20 +4252,28 @@ for ($i=24; $i <= 25; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$newLine = $linex;
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$newLine = $line;
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$newLine = $line1;
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$newLine = $line2;
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$newLine = $line3;
 
 	// jika semua kolom memiliki besar yang sama
@@ -3665,8 +4398,148 @@ for ($i=24; $i <= 25; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$ls0 = $linex - $line;
+		$ls1 = $linex - $line1;
+		$ls2 = $linex - $line2;
+		$ls3 = $linex - $line3;
+		$newLine = $linex;
+		$spacek = " ";
+		$spacep = " ";
+		$spacet = " ";
+		$spacer = " ";
+
+		if ($ls0 == 1) {
+			$GLOBALS['spacep'] = "\n ";
+		}
+		if ($ls0 == 2) {
+			$GLOBALS['spacep'] = "\n\n ";
+		}
+		if ($ls0 == 3) {
+			$GLOBALS['spacep'] = "\n\n\n ";
+		}
+		if ($ls0 == 4) {
+			$GLOBALS['spacep'] = "\n\n\n\n ";
+		}
+		if ($ls0 == 5) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n ";
+		}
+		if ($ls0 == 6) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 7) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 8) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 9) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 10) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls1 == 1) {
+			$GLOBALS['spacek'] = "\n ";
+		}
+		if ($ls1 == 2) {
+			$GLOBALS['spacek'] = "\n\n ";
+		}
+		if ($ls1 == 3) {
+			$GLOBALS['spacek'] = "\n\n\n ";
+		}
+		if ($ls1 == 4) {
+			$GLOBALS['spacek'] = "\n\n\n\n ";
+		}
+		if ($ls1 == 5) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n ";
+		}
+		if ($ls1 == 6) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 7) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 8) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 9) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 10) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls2 == 1) {
+			$GLOBALS['spacet'] = "\n ";
+		}
+		if ($ls2 == 2) {
+			$GLOBALS['spacet'] = "\n\n ";
+		}
+		if ($ls2 == 3) {
+			$GLOBALS['spacet'] = "\n\n\n ";
+		}
+		if ($ls2 == 4) {
+			$GLOBALS['spacet'] = "\n\n\n\n ";
+		}
+		if ($ls2 == 5) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n ";
+		}
+		if ($ls2 == 6) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 7) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 8) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 9) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 10) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls3 == 1) {
+			$GLOBALS['spacer'] = "\n ";
+		}
+		if ($ls3 == 2) {
+			$GLOBALS['spacer'] = "\n\n ";
+		}
+		if ($ls3 == 3) {
+			$GLOBALS['spacer'] = "\n\n\n ";
+		}
+		if ($ls3 == 4) {
+			$GLOBALS['spacer'] = "\n\n\n\n ";
+		}
+		if ($ls3 == 5) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n ";
+		}
+		if ($ls3 == 6) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 7) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 8) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 9) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 10) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$ls1 = $line - $line1;
 		$ls2 = $line - $line2;
 		$ls3 = $line - $line3;
@@ -3770,7 +4643,7 @@ for ($i=24; $i <= 25; $i++) {
 		}
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$ls1 = $line1 - $line;
 		$ls2 = $line1 - $line2;
 		$ls3 = $line1 - $line3;
@@ -3874,7 +4747,7 @@ for ($i=24; $i <= 25; $i++) {
 		}
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$ls1 = $line2 - $line;
 		$ls2 = $line2 - $line1;
 		$ls3 = $line2 - $line3;
@@ -3978,7 +4851,7 @@ for ($i=24; $i <= 25; $i++) {
 		}
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$ls1 = $line3 - $line;
 		$ls2 = $line3 - $line1;
 		$ls3 = $line3 - $line2;
@@ -4263,20 +5136,28 @@ for ($i=26; $i <= 39; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$newLine = $linex;
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$newLine = $line;
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$newLine = $line1;
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$newLine = $line2;
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$newLine = $line3;
 
 	// jika semua kolom memiliki besar yang sama
@@ -4437,8 +5318,148 @@ for ($i=26; $i <= 39; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$ls0 = $linex - $line;
+		$ls1 = $linex - $line1;
+		$ls2 = $linex - $line2;
+		$ls3 = $linex - $line3;
+		$newLine = $linex;
+		$spacek = " ";
+		$spacep = " ";
+		$spacet = " ";
+		$spacer = " ";
+
+		if ($ls0 == 1) {
+			$GLOBALS['spacep'] = "\n ";
+		}
+		if ($ls0 == 2) {
+			$GLOBALS['spacep'] = "\n\n ";
+		}
+		if ($ls0 == 3) {
+			$GLOBALS['spacep'] = "\n\n\n ";
+		}
+		if ($ls0 == 4) {
+			$GLOBALS['spacep'] = "\n\n\n\n ";
+		}
+		if ($ls0 == 5) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n ";
+		}
+		if ($ls0 == 6) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 7) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 8) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 9) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 10) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls1 == 1) {
+			$GLOBALS['spacek'] = "\n ";
+		}
+		if ($ls1 == 2) {
+			$GLOBALS['spacek'] = "\n\n ";
+		}
+		if ($ls1 == 3) {
+			$GLOBALS['spacek'] = "\n\n\n ";
+		}
+		if ($ls1 == 4) {
+			$GLOBALS['spacek'] = "\n\n\n\n ";
+		}
+		if ($ls1 == 5) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n ";
+		}
+		if ($ls1 == 6) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 7) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 8) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 9) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 10) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls2 == 1) {
+			$GLOBALS['spacet'] = "\n ";
+		}
+		if ($ls2 == 2) {
+			$GLOBALS['spacet'] = "\n\n ";
+		}
+		if ($ls2 == 3) {
+			$GLOBALS['spacet'] = "\n\n\n ";
+		}
+		if ($ls2 == 4) {
+			$GLOBALS['spacet'] = "\n\n\n\n ";
+		}
+		if ($ls2 == 5) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n ";
+		}
+		if ($ls2 == 6) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 7) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 8) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 9) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 10) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls3 == 1) {
+			$GLOBALS['spacer'] = "\n ";
+		}
+		if ($ls3 == 2) {
+			$GLOBALS['spacer'] = "\n\n ";
+		}
+		if ($ls3 == 3) {
+			$GLOBALS['spacer'] = "\n\n\n ";
+		}
+		if ($ls3 == 4) {
+			$GLOBALS['spacer'] = "\n\n\n\n ";
+		}
+		if ($ls3 == 5) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n ";
+		}
+		if ($ls3 == 6) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 7) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 8) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 9) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 10) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$ls1 = $line - $line1;
 		$ls2 = $line - $line2;
 		$ls3 = $line - $line3;
@@ -4542,7 +5563,7 @@ for ($i=26; $i <= 39; $i++) {
 		}
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$ls1 = $line1 - $line;
 		$ls2 = $line1 - $line2;
 		$ls3 = $line1 - $line3;
@@ -4646,7 +5667,7 @@ for ($i=26; $i <= 39; $i++) {
 		}
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$ls1 = $line2 - $line;
 		$ls2 = $line2 - $line1;
 		$ls3 = $line2 - $line3;
@@ -4750,7 +5771,7 @@ for ($i=26; $i <= 39; $i++) {
 		}
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$ls1 = $line3 - $line;
 		$ls2 = $line3 - $line1;
 		$ls3 = $line3 - $line2;
@@ -5020,20 +6041,28 @@ for ($i=40; $i <= 48; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$newLine = $linex;
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$newLine = $line;
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$newLine = $line1;
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$newLine = $line2;
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$newLine = $line3;
 
 	// jika semua kolom memiliki besar yang sama
@@ -5179,8 +6208,148 @@ for ($i=40; $i <= 48; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$ls0 = $linex - $line;
+		$ls1 = $linex - $line1;
+		$ls2 = $linex - $line2;
+		$ls3 = $linex - $line3;
+		$newLine = $linex;
+		$spacek = " ";
+		$spacep = " ";
+		$spacet = " ";
+		$spacer = " ";
+
+		if ($ls0 == 1) {
+			$GLOBALS['spacep'] = "\n ";
+		}
+		if ($ls0 == 2) {
+			$GLOBALS['spacep'] = "\n\n ";
+		}
+		if ($ls0 == 3) {
+			$GLOBALS['spacep'] = "\n\n\n ";
+		}
+		if ($ls0 == 4) {
+			$GLOBALS['spacep'] = "\n\n\n\n ";
+		}
+		if ($ls0 == 5) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n ";
+		}
+		if ($ls0 == 6) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 7) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 8) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 9) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 10) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls1 == 1) {
+			$GLOBALS['spacek'] = "\n ";
+		}
+		if ($ls1 == 2) {
+			$GLOBALS['spacek'] = "\n\n ";
+		}
+		if ($ls1 == 3) {
+			$GLOBALS['spacek'] = "\n\n\n ";
+		}
+		if ($ls1 == 4) {
+			$GLOBALS['spacek'] = "\n\n\n\n ";
+		}
+		if ($ls1 == 5) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n ";
+		}
+		if ($ls1 == 6) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 7) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 8) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 9) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 10) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls2 == 1) {
+			$GLOBALS['spacet'] = "\n ";
+		}
+		if ($ls2 == 2) {
+			$GLOBALS['spacet'] = "\n\n ";
+		}
+		if ($ls2 == 3) {
+			$GLOBALS['spacet'] = "\n\n\n ";
+		}
+		if ($ls2 == 4) {
+			$GLOBALS['spacet'] = "\n\n\n\n ";
+		}
+		if ($ls2 == 5) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n ";
+		}
+		if ($ls2 == 6) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 7) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 8) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 9) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 10) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls3 == 1) {
+			$GLOBALS['spacer'] = "\n ";
+		}
+		if ($ls3 == 2) {
+			$GLOBALS['spacer'] = "\n\n ";
+		}
+		if ($ls3 == 3) {
+			$GLOBALS['spacer'] = "\n\n\n ";
+		}
+		if ($ls3 == 4) {
+			$GLOBALS['spacer'] = "\n\n\n\n ";
+		}
+		if ($ls3 == 5) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n ";
+		}
+		if ($ls3 == 6) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 7) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 8) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 9) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 10) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$ls1 = $line - $line1;
 		$ls2 = $line - $line2;
 		$ls3 = $line - $line3;
@@ -5284,7 +6453,7 @@ for ($i=40; $i <= 48; $i++) {
 		}
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$ls1 = $line1 - $line;
 		$ls2 = $line1 - $line2;
 		$ls3 = $line1 - $line3;
@@ -5388,7 +6557,7 @@ for ($i=40; $i <= 48; $i++) {
 		}
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$ls1 = $line2 - $line;
 		$ls2 = $line2 - $line1;
 		$ls3 = $line2 - $line3;
@@ -5492,7 +6661,7 @@ for ($i=40; $i <= 48; $i++) {
 		}
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$ls1 = $line3 - $line;
 		$ls2 = $line3 - $line1;
 		$ls3 = $line3 - $line2;
@@ -5619,7 +6788,7 @@ for ($i=40; $i <= 48; $i++) {
 	$pdf->SetXY($xPos + $wp , $yPos);
 
 	// $pdf->Cell(30,($newLine * $h),$jawaban[$i-1],1,0,'C');
-
+	$pdf->SetFont('Times','',12);
 	$xPos = $pdf->GetX();
 	$yPos = $pdf->GetY();
 	$pdf->MultiCell(30,$h,$jawaban[$i-1].$spacep,1,'C'); 
@@ -5756,20 +6925,28 @@ for ($i=49; $i <= 52; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$newLine = $linex;
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$newLine = $line;
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$newLine = $line1;
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$newLine = $line2;
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$newLine = $line3;
 
 	// jika semua kolom memiliki besar yang sama
@@ -5902,7 +7079,7 @@ for ($i=49; $i <= 52; $i++) {
 	}
 
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	if (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$ls1 = $line - $line1;
 		$ls2 = $line - $line2;
 		$ls3 = $line - $line3;
@@ -6006,7 +7183,7 @@ for ($i=49; $i <= 52; $i++) {
 		}
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$ls1 = $line1 - $line;
 		$ls2 = $line1 - $line2;
 		$ls3 = $line1 - $line3;
@@ -6110,7 +7287,7 @@ for ($i=49; $i <= 52; $i++) {
 		}
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$ls1 = $line2 - $line;
 		$ls2 = $line2 - $line1;
 		$ls3 = $line2 - $line3;
@@ -6214,7 +7391,7 @@ for ($i=49; $i <= 52; $i++) {
 		}
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$ls1 = $line3 - $line;
 		$ls2 = $line3 - $line1;
 		$ls3 = $line3 - $line2;
@@ -6470,21 +7647,28 @@ for ($i=53; $i <= 55; $i++) {
 		}
 		$line3 = count($textArray3);
 	}
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$newLine = $linex;
 
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$newLine = $line;
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$newLine = $line1;
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$newLine = $line2;
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$newLine = $line3;
 
 	// jika semua kolom memiliki besar yang sama
@@ -6613,8 +7797,148 @@ for ($i=53; $i <= 55; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$ls0 = $linex - $line;
+		$ls1 = $linex - $line1;
+		$ls2 = $linex - $line2;
+		$ls3 = $linex - $line3;
+		$newLine = $linex;
+		$spacek = " ";
+		$spacep = " ";
+		$spacet = " ";
+		$spacer = " ";
+
+		if ($ls0 == 1) {
+			$GLOBALS['spacep'] = "\n ";
+		}
+		if ($ls0 == 2) {
+			$GLOBALS['spacep'] = "\n\n ";
+		}
+		if ($ls0 == 3) {
+			$GLOBALS['spacep'] = "\n\n\n ";
+		}
+		if ($ls0 == 4) {
+			$GLOBALS['spacep'] = "\n\n\n\n ";
+		}
+		if ($ls0 == 5) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n ";
+		}
+		if ($ls0 == 6) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 7) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 8) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 9) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 10) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls1 == 1) {
+			$GLOBALS['spacek'] = "\n ";
+		}
+		if ($ls1 == 2) {
+			$GLOBALS['spacek'] = "\n\n ";
+		}
+		if ($ls1 == 3) {
+			$GLOBALS['spacek'] = "\n\n\n ";
+		}
+		if ($ls1 == 4) {
+			$GLOBALS['spacek'] = "\n\n\n\n ";
+		}
+		if ($ls1 == 5) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n ";
+		}
+		if ($ls1 == 6) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 7) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 8) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 9) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 10) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls2 == 1) {
+			$GLOBALS['spacet'] = "\n ";
+		}
+		if ($ls2 == 2) {
+			$GLOBALS['spacet'] = "\n\n ";
+		}
+		if ($ls2 == 3) {
+			$GLOBALS['spacet'] = "\n\n\n ";
+		}
+		if ($ls2 == 4) {
+			$GLOBALS['spacet'] = "\n\n\n\n ";
+		}
+		if ($ls2 == 5) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n ";
+		}
+		if ($ls2 == 6) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 7) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 8) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 9) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 10) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls3 == 1) {
+			$GLOBALS['spacer'] = "\n ";
+		}
+		if ($ls3 == 2) {
+			$GLOBALS['spacer'] = "\n\n ";
+		}
+		if ($ls3 == 3) {
+			$GLOBALS['spacer'] = "\n\n\n ";
+		}
+		if ($ls3 == 4) {
+			$GLOBALS['spacer'] = "\n\n\n\n ";
+		}
+		if ($ls3 == 5) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n ";
+		}
+		if ($ls3 == 6) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 7) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 8) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 9) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 10) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$ls1 = $line - $line1;
 		$ls2 = $line - $line2;
 		$ls3 = $line - $line3;
@@ -6718,7 +8042,7 @@ for ($i=53; $i <= 55; $i++) {
 		}
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$ls1 = $line1 - $line;
 		$ls2 = $line1 - $line2;
 		$ls3 = $line1 - $line3;
@@ -6822,7 +8146,7 @@ for ($i=53; $i <= 55; $i++) {
 		}
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$ls1 = $line2 - $line;
 		$ls2 = $line2 - $line1;
 		$ls3 = $line2 - $line3;
@@ -6926,7 +8250,7 @@ for ($i=53; $i <= 55; $i++) {
 		}
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$ls1 = $line3 - $line;
 		$ls2 = $line3 - $line1;
 		$ls3 = $line3 - $line2;
@@ -7192,20 +8516,28 @@ for ($i=56; $i <= 61; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$newLine = $linex;
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$newLine = $line;
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$newLine = $line1;
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$newLine = $line2;
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$newLine = $line3;
 
 	// jika semua kolom memiliki besar yang sama
@@ -7343,8 +8675,148 @@ for ($i=56; $i <= 61; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$ls0 = $linex - $line;
+		$ls1 = $linex - $line1;
+		$ls2 = $linex - $line2;
+		$ls3 = $linex - $line3;
+		$newLine = $linex;
+		$spacek = " ";
+		$spacep = " ";
+		$spacet = " ";
+		$spacer = " ";
+
+		if ($ls0 == 1) {
+			$GLOBALS['spacep'] = "\n ";
+		}
+		if ($ls0 == 2) {
+			$GLOBALS['spacep'] = "\n\n ";
+		}
+		if ($ls0 == 3) {
+			$GLOBALS['spacep'] = "\n\n\n ";
+		}
+		if ($ls0 == 4) {
+			$GLOBALS['spacep'] = "\n\n\n\n ";
+		}
+		if ($ls0 == 5) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n ";
+		}
+		if ($ls0 == 6) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 7) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 8) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 9) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 10) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls1 == 1) {
+			$GLOBALS['spacek'] = "\n ";
+		}
+		if ($ls1 == 2) {
+			$GLOBALS['spacek'] = "\n\n ";
+		}
+		if ($ls1 == 3) {
+			$GLOBALS['spacek'] = "\n\n\n ";
+		}
+		if ($ls1 == 4) {
+			$GLOBALS['spacek'] = "\n\n\n\n ";
+		}
+		if ($ls1 == 5) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n ";
+		}
+		if ($ls1 == 6) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 7) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 8) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 9) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 10) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls2 == 1) {
+			$GLOBALS['spacet'] = "\n ";
+		}
+		if ($ls2 == 2) {
+			$GLOBALS['spacet'] = "\n\n ";
+		}
+		if ($ls2 == 3) {
+			$GLOBALS['spacet'] = "\n\n\n ";
+		}
+		if ($ls2 == 4) {
+			$GLOBALS['spacet'] = "\n\n\n\n ";
+		}
+		if ($ls2 == 5) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n ";
+		}
+		if ($ls2 == 6) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 7) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 8) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 9) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 10) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls3 == 1) {
+			$GLOBALS['spacer'] = "\n ";
+		}
+		if ($ls3 == 2) {
+			$GLOBALS['spacer'] = "\n\n ";
+		}
+		if ($ls3 == 3) {
+			$GLOBALS['spacer'] = "\n\n\n ";
+		}
+		if ($ls3 == 4) {
+			$GLOBALS['spacer'] = "\n\n\n\n ";
+		}
+		if ($ls3 == 5) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n ";
+		}
+		if ($ls3 == 6) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 7) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 8) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 9) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 10) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$ls1 = $line - $line1;
 		$ls2 = $line - $line2;
 		$ls3 = $line - $line3;
@@ -7448,7 +8920,7 @@ for ($i=56; $i <= 61; $i++) {
 		}
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$ls1 = $line1 - $line;
 		$ls2 = $line1 - $line2;
 		$ls3 = $line1 - $line3;
@@ -7552,7 +9024,7 @@ for ($i=56; $i <= 61; $i++) {
 		}
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$ls1 = $line2 - $line;
 		$ls2 = $line2 - $line1;
 		$ls3 = $line2 - $line3;
@@ -7656,7 +9128,7 @@ for ($i=56; $i <= 61; $i++) {
 		}
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$ls1 = $line3 - $line;
 		$ls2 = $line3 - $line1;
 		$ls3 = $line3 - $line2;
@@ -7910,20 +9382,28 @@ for ($i=62; $i <= 63; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$newLine = $linex;
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$newLine = $line;
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$newLine = $line1;
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$newLine = $line2;
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$newLine = $line3;
 
 	// jika semua kolom memiliki besar yang sama
@@ -8048,8 +9528,148 @@ for ($i=62; $i <= 63; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$ls0 = $linex - $line;
+		$ls1 = $linex - $line1;
+		$ls2 = $linex - $line2;
+		$ls3 = $linex - $line3;
+		$newLine = $linex;
+		$spacek = " ";
+		$spacep = " ";
+		$spacet = " ";
+		$spacer = " ";
+
+		if ($ls0 == 1) {
+			$GLOBALS['spacep'] = "\n ";
+		}
+		if ($ls0 == 2) {
+			$GLOBALS['spacep'] = "\n\n ";
+		}
+		if ($ls0 == 3) {
+			$GLOBALS['spacep'] = "\n\n\n ";
+		}
+		if ($ls0 == 4) {
+			$GLOBALS['spacep'] = "\n\n\n\n ";
+		}
+		if ($ls0 == 5) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n ";
+		}
+		if ($ls0 == 6) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 7) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 8) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 9) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 10) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls1 == 1) {
+			$GLOBALS['spacek'] = "\n ";
+		}
+		if ($ls1 == 2) {
+			$GLOBALS['spacek'] = "\n\n ";
+		}
+		if ($ls1 == 3) {
+			$GLOBALS['spacek'] = "\n\n\n ";
+		}
+		if ($ls1 == 4) {
+			$GLOBALS['spacek'] = "\n\n\n\n ";
+		}
+		if ($ls1 == 5) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n ";
+		}
+		if ($ls1 == 6) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 7) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 8) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 9) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 10) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls2 == 1) {
+			$GLOBALS['spacet'] = "\n ";
+		}
+		if ($ls2 == 2) {
+			$GLOBALS['spacet'] = "\n\n ";
+		}
+		if ($ls2 == 3) {
+			$GLOBALS['spacet'] = "\n\n\n ";
+		}
+		if ($ls2 == 4) {
+			$GLOBALS['spacet'] = "\n\n\n\n ";
+		}
+		if ($ls2 == 5) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n ";
+		}
+		if ($ls2 == 6) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 7) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 8) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 9) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 10) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls3 == 1) {
+			$GLOBALS['spacer'] = "\n ";
+		}
+		if ($ls3 == 2) {
+			$GLOBALS['spacer'] = "\n\n ";
+		}
+		if ($ls3 == 3) {
+			$GLOBALS['spacer'] = "\n\n\n ";
+		}
+		if ($ls3 == 4) {
+			$GLOBALS['spacer'] = "\n\n\n\n ";
+		}
+		if ($ls3 == 5) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n ";
+		}
+		if ($ls3 == 6) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 7) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 8) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 9) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 10) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$ls1 = $line - $line1;
 		$ls2 = $line - $line2;
 		$ls3 = $line - $line3;
@@ -8153,7 +9773,7 @@ for ($i=62; $i <= 63; $i++) {
 		}
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$ls1 = $line1 - $line;
 		$ls2 = $line1 - $line2;
 		$ls3 = $line1 - $line3;
@@ -8257,7 +9877,7 @@ for ($i=62; $i <= 63; $i++) {
 		}
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$ls1 = $line2 - $line;
 		$ls2 = $line2 - $line1;
 		$ls3 = $line2 - $line3;
@@ -8361,7 +9981,7 @@ for ($i=62; $i <= 63; $i++) {
 		}
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$ls1 = $line3 - $line;
 		$ls2 = $line3 - $line1;
 		$ls3 = $line3 - $line2;

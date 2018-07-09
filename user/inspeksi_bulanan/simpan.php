@@ -7,23 +7,16 @@ $no_tangki = $_POST['noTangki'];
 $nip = $_POST['nip'];
 $tanggal = date('Y-m-d');
 
-// echo $no_form."<br>";
-// echo $jenis."<br>";
-// echo $no_tangki."<br>";
-// echo $nip."<br>";
-// echo $tanggal."<br>";
-
 if ($insert = mysqli_query($conn, "INSERT INTO form_teknisi(`no_form`, `jenis`, `no_tangki`, `tanggal`, `nip`) VALUES ('$no_form','$jenis','$no_tangki','$tanggal','$nip');")) {
 	for ($i=1; $i < 40; $i++) { 
 		if($_FILES['picture'.$i]['size'] > 0 && $_FILES['picture'.$i]['error'] == 0){  
-			// $fileName = $_FILES['picture'.$i]['name'];  
-			// $mimeType = $_FILES['picture'.$i]['type'];  
+  
   			$tmpFile = fopen($_FILES['picture'.$i]['tmp_name'], 'rb');  
   			$fileData = fread($tmpFile, filesize($_FILES['picture'.$i]['tmp_name']));  
   			$fileData = addslashes($fileData);  
 
   			$kodeGambar = mysqli_query($conn, "SELECT kd_gmbar FROM gambar_teknisi ORDER BY ABS(kd_gmbar) DESC LIMIT 1");
-        $kdGambar = mysqli_fetch_assoc($kodeGambar);
+            $kdGambar = mysqli_fetch_assoc($kodeGambar);
 
             if (isset($kdGambar)) {
             	$kode = (int)($kdGambar['kd_gmbar']) + 1;

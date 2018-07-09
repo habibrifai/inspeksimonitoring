@@ -138,8 +138,8 @@ class myPDF extends FPDF {
 		$this->SetFont('Times','',12);
 		$this->Cell(10);
 		$this->Cell(10,8,'No',1,0,'C');
-		$this->Cell(20,8,'Picture',1,0,'C'); 
-		$this->Cell(55,8,'Permasalahan/Pertanyaan',1,0,'C'); 
+		$this->Cell(30,8,'Picture',1,0,'C'); 
+		$this->Cell(45,8,'Permasalahan/Pertanyaan',1,0,'C'); 
 		$this->Cell(30,8,'Hasil/Jawaban',1,0,'C');
 		$this->Cell(50,8,'Kondisi',1,0,'C'); 
 		$this->Cell(50,8,'Keterangan',1,0,'C'); 
@@ -172,10 +172,10 @@ while ($data = mysqli_fetch_array($data_inspeksi)) {
 }
 $no = 1;
 $pdf->SetFont('Times','',12);
-$wp = 55;
+$wp = 45;
 $wk = 50;
 $h = 7;
-$wpict = 20;
+$wpict = 30;
 
 // 5 pertanyaan pertama
 for ($i=1; $i <= 5; $i++) {
@@ -292,16 +292,52 @@ for ($i=1; $i <= 5; $i++) {
 		$line3 = count($textArray3);
 	}
 
-	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
-		$ls1 = $line - $line1;
-		$ls2 = $line - $line2;
-		$ls3 = $line - $line3;
-		$newLine = $line;
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$ls0 = $linex - $line;
+		$ls1 = $linex - $line1;
+		$ls2 = $linex - $line2;
+		$ls3 = $linex - $line3;
+		$newLine = $linex;
 		$spacek = " ";
 		$spacep = " ";
 		$spacet = " ";
 		$spacer = " ";
+
+		if ($ls0 == 1) {
+			$GLOBALS['spacep'] = "\n ";
+		}
+		if ($ls0 == 2) {
+			$GLOBALS['spacep'] = "\n\n ";
+		}
+		if ($ls0 == 3) {
+			$GLOBALS['spacep'] = "\n\n\n ";
+		}
+		if ($ls0 == 4) {
+			$GLOBALS['spacep'] = "\n\n\n\n ";
+		}
+		if ($ls0 == 5) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n ";
+		}
+		if ($ls0 == 6) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 7) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 8) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 9) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 10) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
 
 		if ($ls1 == 1) {
 			$GLOBALS['spacek'] = "\n ";
@@ -396,8 +432,115 @@ for ($i=1; $i <= 5; $i++) {
 			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n\n ";
 		}
 
+	// jika kolom permasalahan lebih besar daripada kolom lain
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
+		$ls1 = $line - $line1;
+		$ls2 = $line - $line2;
+		$ls3 = $line - $line3;
+		$newLine = $line;
+		$spacek = " ";
+		$spacep = " ";
+		$spacet = " ";
+		$spacer = " ";
+
+		if ($ls1 == 0) {
+			$GLOBALS['spacek'] = "    ";
+		}
+		if ($ls1 == 1) {
+			$GLOBALS['spacek'] = "\n ";
+		}
+		if ($ls1 == 2) {
+			$GLOBALS['spacek'] = "\n\n ";
+		}
+		if ($ls1 == 3) {
+			$GLOBALS['spacek'] = "\n\n\n ";
+		}
+		if ($ls1 == 4) {
+			$GLOBALS['spacek'] = "\n\n\n\n ";
+		}
+		if ($ls1 == 5) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n ";
+		}
+		if ($ls1 == 6) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 7) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 8) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 9) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 10) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls2 == 1) {
+			$GLOBALS['spacet'] = "\n ";
+		}
+		if ($ls2 == 2) {
+			$GLOBALS['spacet'] = "\n\n ";
+		}
+		if ($ls2 == 3) {
+			$GLOBALS['spacet'] = "\n\n\n ";
+		}
+		if ($ls2 == 4) {
+			$GLOBALS['spacet'] = "\n\n\n\n ";
+		}
+		if ($ls2 == 5) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n ";
+		}
+		if ($ls2 == 6) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 7) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 8) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 9) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 10) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls3 == 1) {
+			$GLOBALS['spacer'] = "\n ";
+		}
+		if ($ls3 == 2) {
+			$GLOBALS['spacer'] = "\n\n ";
+		}
+		if ($ls3 == 3) {
+			$GLOBALS['spacer'] = "\n\n\n ";
+		}
+		if ($ls3 == 4) {
+			$GLOBALS['spacer'] = "\n\n\n\n ";
+		}
+		if ($ls3 == 5) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n ";
+		}
+		if ($ls3 == 6) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 7) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 8) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 9) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 10) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$ls1 = $line1 - $line;
 		$ls2 = $line1 - $line2;
 		$ls3 = $line1 - $line3;
@@ -501,7 +644,7 @@ for ($i=1; $i <= 5; $i++) {
 		}
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$ls1 = $line2 - $line;
 		$ls2 = $line2 - $line1;
 		$ls3 = $line2 - $line3;
@@ -605,7 +748,7 @@ for ($i=1; $i <= 5; $i++) {
 		}
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$ls1 = $line3 - $line;
 		$ls2 = $line3 - $line1;
 		$ls3 = $line3 - $line2;
@@ -721,16 +864,16 @@ for ($i=1; $i <= 5; $i++) {
 	$pdf->Cell(10);
 	$pdf->Cell(10,($newLine * $h),$no.'.',1,0,'C');
 	// $pdf->Image(base64_encode($picture[$i-1]), 30, 30);
-	;
+	
 	// $pdf->Cell(20,($newLine * $h),$pdf->MemImage($picture[0],NULL,NULL,10,10),1,0,'C');
-	$xPos = $pdf->GetX();
-	$yPos = $pdf->GetY();
-	$pdf->MultiCell($wpict,$h,$pdf->MemImage($picture[0],$xPos,$yPos,$wpict,($h * $newLine)).$spacek,1,'C');
-	$pdf->SetXY($xPos + $wpict , $yPos);
-
-	// $pdf->MemImage($picture[0],10,10);
-
-	// var_dump($picture[$i-1]);
+	if ($picture[$i-1] == NULL) {
+		$pdf->Cell(30,($newLine * $h),'-',1,0,'C');
+	} else {
+		$xPos = $pdf->GetX();
+		$yPos = $pdf->GetY();
+		$pdf->MultiCell($wpict,$h,$pdf->MemImage($picture[$i-1],$xPos+1,$yPos+1,$wpict-2,($h * $newLine)-2),0,'C');
+		$pdf->SetXY($xPos + $wpict , $yPos);
+	}
 
 	$xPos = $pdf->GetX();
 	$yPos = $pdf->GetY();
@@ -873,8 +1016,148 @@ for ($i=6; $i <= 6; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$ls0 = $linex - $line;
+		$ls1 = $linex - $line1;
+		$ls2 = $linex - $line2;
+		$ls3 = $linex - $line3;
+		$newLine = $linex;
+		$spacek = " ";
+		$spacep = " ";
+		$spacet = " ";
+		$spacer = " ";
+
+		if ($ls0 == 1) {
+			$GLOBALS['spacep'] = "\n ";
+		}
+		if ($ls0 == 2) {
+			$GLOBALS['spacep'] = "\n\n ";
+		}
+		if ($ls0 == 3) {
+			$GLOBALS['spacep'] = "\n\n\n ";
+		}
+		if ($ls0 == 4) {
+			$GLOBALS['spacep'] = "\n\n\n\n ";
+		}
+		if ($ls0 == 5) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n ";
+		}
+		if ($ls0 == 6) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 7) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 8) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 9) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 10) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls1 == 1) {
+			$GLOBALS['spacek'] = "\n ";
+		}
+		if ($ls1 == 2) {
+			$GLOBALS['spacek'] = "\n\n ";
+		}
+		if ($ls1 == 3) {
+			$GLOBALS['spacek'] = "\n\n\n ";
+		}
+		if ($ls1 == 4) {
+			$GLOBALS['spacek'] = "\n\n\n\n ";
+		}
+		if ($ls1 == 5) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n ";
+		}
+		if ($ls1 == 6) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 7) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 8) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 9) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 10) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls2 == 1) {
+			$GLOBALS['spacet'] = "\n ";
+		}
+		if ($ls2 == 2) {
+			$GLOBALS['spacet'] = "\n\n ";
+		}
+		if ($ls2 == 3) {
+			$GLOBALS['spacet'] = "\n\n\n ";
+		}
+		if ($ls2 == 4) {
+			$GLOBALS['spacet'] = "\n\n\n\n ";
+		}
+		if ($ls2 == 5) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n ";
+		}
+		if ($ls2 == 6) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 7) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 8) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 9) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 10) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls3 == 1) {
+			$GLOBALS['spacer'] = "\n ";
+		}
+		if ($ls3 == 2) {
+			$GLOBALS['spacer'] = "\n\n ";
+		}
+		if ($ls3 == 3) {
+			$GLOBALS['spacer'] = "\n\n\n ";
+		}
+		if ($ls3 == 4) {
+			$GLOBALS['spacer'] = "\n\n\n\n ";
+		}
+		if ($ls3 == 5) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n ";
+		}
+		if ($ls3 == 6) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 7) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 8) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 9) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 10) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$ls1 = $line - $line1;
 		$ls2 = $line - $line2;
 		$ls3 = $line - $line3;
@@ -978,7 +1261,7 @@ for ($i=6; $i <= 6; $i++) {
 		}
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$ls1 = $line1 - $line;
 		$ls2 = $line1 - $line2;
 		$ls3 = $line1 - $line3;
@@ -1082,7 +1365,7 @@ for ($i=6; $i <= 6; $i++) {
 		}
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$ls1 = $line2 - $line;
 		$ls2 = $line2 - $line1;
 		$ls3 = $line2 - $line3;
@@ -1186,7 +1469,7 @@ for ($i=6; $i <= 6; $i++) {
 		}
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$ls1 = $line3 - $line;
 		$ls2 = $line3 - $line1;
 		$ls3 = $line3 - $line2;
@@ -1301,7 +1584,15 @@ for ($i=6; $i <= 6; $i++) {
 	$pdf->SetFont('Times','',12);
 	$pdf->Cell(10);
 	$pdf->Cell(10,($newLine * $h),'1.',1,0,'C'); 
-	$pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	
+	if ($picture[$i-1] == NULL) {
+		$pdf->Cell(30,($newLine * $h),'-',1,0,'C');
+	} else {
+		$xPos = $pdf->GetX();
+		$yPos = $pdf->GetY();
+		$pdf->MultiCell($wpict,$h,$pdf->MemImage($picture[$i-1],$xPos+1,$yPos+1,$wpict-2,($h * $newLine)-2),0,'C');
+		$pdf->SetXY($xPos + $wpict , $yPos);
+	}
 
 	$xPos = $pdf->GetX();
 	$yPos = $pdf->GetY();
@@ -1354,7 +1645,7 @@ for ($i=7; $i <= 20; $i++) {
 		$pertanyaan = "g. Luas pemanas";
 	}
 	if ($noPertanyaan[$i-1] == 14) {
-		$pertanyaan = "h. Diameter pipa pemanas";
+		$pertanyaan = "h. Diameter pipa pemanas           ";
 	}
 	if ($noPertanyaan[$i-1] == 15) {
 		$pertanyaan = "i. Panjang pipa pemanas";
@@ -1471,20 +1762,28 @@ for ($i=7; $i <= 20; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$newLine = $linex;
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$newLine = $line;
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$newLine = $line1;
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$newLine = $line2;
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$newLine = $line3;
 
 	// jika semua kolom memiliki besar yang sama
@@ -1501,8 +1800,8 @@ $jmlLine4 = array_sum($width4)+1;
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10);
 $pdf->Cell(10,($jmlLine4 * 7),'2.',1,0,'C');
-$pdf->Cell(20,(1 * $h),'',1,0,'C');
-$pdf->Cell(235,7,'Data teknik bejana uap',1,0,'L');
+$pdf->Cell(30,(1 * $h),'',1,0,'C');
+$pdf->Cell(225,7,'Data teknik bejana uap',1,0,'L');
 $pdf->Ln();
 
 for ($i=7; $i <= 20; $i++) {
@@ -1528,7 +1827,7 @@ for ($i=7; $i <= 20; $i++) {
 		$pertanyaan = "g. Luas pemanas";
 	}
 	if ($noPertanyaan[$i-1] == 14) {
-		$pertanyaan = "h. Diameter pipa pemanas";
+		$pertanyaan = "h. Diameter pipa pemanas       ";
 	}
 	if ($noPertanyaan[$i-1] == 15) {
 		$pertanyaan = "i. Panjang pipa pemanas";
@@ -1645,8 +1944,148 @@ for ($i=7; $i <= 20; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$ls0 = $linex - $line;
+		$ls1 = $linex - $line1;
+		$ls2 = $linex - $line2;
+		$ls3 = $linex - $line3;
+		$newLine = $linex;
+		$spacek = " ";
+		$spacep = " ";
+		$spacet = " ";
+		$spacer = " ";
+
+		if ($ls0 == 1) {
+			$GLOBALS['spacep'] = "\n ";
+		}
+		if ($ls0 == 2) {
+			$GLOBALS['spacep'] = "\n\n ";
+		}
+		if ($ls0 == 3) {
+			$GLOBALS['spacep'] = "\n\n\n ";
+		}
+		if ($ls0 == 4) {
+			$GLOBALS['spacep'] = "\n\n\n\n ";
+		}
+		if ($ls0 == 5) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n ";
+		}
+		if ($ls0 == 6) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 7) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 8) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 9) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 10) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls1 == 1) {
+			$GLOBALS['spacek'] = "\n ";
+		}
+		if ($ls1 == 2) {
+			$GLOBALS['spacek'] = "\n\n ";
+		}
+		if ($ls1 == 3) {
+			$GLOBALS['spacek'] = "\n\n\n ";
+		}
+		if ($ls1 == 4) {
+			$GLOBALS['spacek'] = "\n\n\n\n ";
+		}
+		if ($ls1 == 5) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n ";
+		}
+		if ($ls1 == 6) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 7) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 8) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 9) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 10) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls2 == 1) {
+			$GLOBALS['spacet'] = "\n ";
+		}
+		if ($ls2 == 2) {
+			$GLOBALS['spacet'] = "\n\n ";
+		}
+		if ($ls2 == 3) {
+			$GLOBALS['spacet'] = "\n\n\n ";
+		}
+		if ($ls2 == 4) {
+			$GLOBALS['spacet'] = "\n\n\n\n ";
+		}
+		if ($ls2 == 5) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n ";
+		}
+		if ($ls2 == 6) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 7) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 8) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 9) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 10) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls3 == 1) {
+			$GLOBALS['spacer'] = "\n ";
+		}
+		if ($ls3 == 2) {
+			$GLOBALS['spacer'] = "\n\n ";
+		}
+		if ($ls3 == 3) {
+			$GLOBALS['spacer'] = "\n\n\n ";
+		}
+		if ($ls3 == 4) {
+			$GLOBALS['spacer'] = "\n\n\n\n ";
+		}
+		if ($ls3 == 5) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n ";
+		}
+		if ($ls3 == 6) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 7) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 8) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 9) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 10) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$ls1 = $line - $line1;
 		$ls2 = $line - $line2;
 		$ls3 = $line - $line3;
@@ -1750,7 +2189,7 @@ for ($i=7; $i <= 20; $i++) {
 		}
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$ls1 = $line1 - $line;
 		$ls2 = $line1 - $line2;
 		$ls3 = $line1 - $line3;
@@ -1854,7 +2293,7 @@ for ($i=7; $i <= 20; $i++) {
 		}
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$ls1 = $line2 - $line;
 		$ls2 = $line2 - $line1;
 		$ls3 = $line2 - $line3;
@@ -1958,7 +2397,7 @@ for ($i=7; $i <= 20; $i++) {
 		}
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$ls1 = $line3 - $line;
 		$ls2 = $line3 - $line1;
 		$ls3 = $line3 - $line2;
@@ -2070,10 +2509,20 @@ for ($i=7; $i <= 20; $i++) {
 		$spacer = " ";
 	}
 
+	
+
 	$pdf->SetFont('Times','',12);
 	$pdf->Cell(10);
 	$pdf->Cell(10);
-	$pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	// $pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	if ($picture[$i-1] == NULL) {
+		$pdf->Cell(30,($newLine * $h),'-',1,0,'C');
+	} else {
+		$xPos = $pdf->GetX();
+		$yPos = $pdf->GetY();
+		$pdf->MultiCell($wpict,$h,$pdf->MemImage($picture[$i-1],$xPos+1,$yPos+1,$wpict-2,($h * $newLine)-2),0,'C');
+		$pdf->SetXY($xPos + $wpict , $yPos);
+	}
 
 	$xPos = $pdf->GetX();
 	$yPos = $pdf->GetY();
@@ -2228,20 +2677,28 @@ for ($i=21; $i <= 29; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$newLine = $linex;
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$newLine = $line;
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$newLine = $line1;
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$newLine = $line2;
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$newLine = $line3;
 
 	// jika semua kolom memiliki besar yang sama
@@ -2258,8 +2715,8 @@ $jmlLine5 = array_sum($width5)+1;
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10);
 $pdf->Cell(10,($jmlLine5 * $h),'1.',1,0,'C');
-$pdf->Cell(20,(1 * $h),'',1,0,'C');
-$pdf->Cell(235,7,'Apakah bejana uap dilengkapi dengan:',1,0,'L');
+$pdf->Cell(30,(1 * $h),'',1,0,'C');
+$pdf->Cell(225,7,'Apakah bejana uap dilengkapi dengan:',1,0,'L');
 $pdf->Ln();
 
 for ($i=21; $i <= 29; $i++) {
@@ -2387,8 +2844,148 @@ for ($i=21; $i <= 29; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$ls0 = $linex - $line;
+		$ls1 = $linex - $line1;
+		$ls2 = $linex - $line2;
+		$ls3 = $linex - $line3;
+		$newLine = $linex;
+		$spacek = " ";
+		$spacep = " ";
+		$spacet = " ";
+		$spacer = " ";
+
+		if ($ls0 == 1) {
+			$GLOBALS['spacep'] = "\n ";
+		}
+		if ($ls0 == 2) {
+			$GLOBALS['spacep'] = "\n\n ";
+		}
+		if ($ls0 == 3) {
+			$GLOBALS['spacep'] = "\n\n\n ";
+		}
+		if ($ls0 == 4) {
+			$GLOBALS['spacep'] = "\n\n\n\n ";
+		}
+		if ($ls0 == 5) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n ";
+		}
+		if ($ls0 == 6) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 7) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 8) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 9) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 10) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls1 == 1) {
+			$GLOBALS['spacek'] = "\n ";
+		}
+		if ($ls1 == 2) {
+			$GLOBALS['spacek'] = "\n\n ";
+		}
+		if ($ls1 == 3) {
+			$GLOBALS['spacek'] = "\n\n\n ";
+		}
+		if ($ls1 == 4) {
+			$GLOBALS['spacek'] = "\n\n\n\n ";
+		}
+		if ($ls1 == 5) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n ";
+		}
+		if ($ls1 == 6) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 7) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 8) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 9) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 10) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls2 == 1) {
+			$GLOBALS['spacet'] = "\n ";
+		}
+		if ($ls2 == 2) {
+			$GLOBALS['spacet'] = "\n\n ";
+		}
+		if ($ls2 == 3) {
+			$GLOBALS['spacet'] = "\n\n\n ";
+		}
+		if ($ls2 == 4) {
+			$GLOBALS['spacet'] = "\n\n\n\n ";
+		}
+		if ($ls2 == 5) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n ";
+		}
+		if ($ls2 == 6) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 7) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 8) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 9) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 10) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls3 == 1) {
+			$GLOBALS['spacer'] = "\n ";
+		}
+		if ($ls3 == 2) {
+			$GLOBALS['spacer'] = "\n\n ";
+		}
+		if ($ls3 == 3) {
+			$GLOBALS['spacer'] = "\n\n\n ";
+		}
+		if ($ls3 == 4) {
+			$GLOBALS['spacer'] = "\n\n\n\n ";
+		}
+		if ($ls3 == 5) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n ";
+		}
+		if ($ls3 == 6) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 7) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 8) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 9) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 10) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$ls1 = $line - $line1;
 		$ls2 = $line - $line2;
 		$ls3 = $line - $line3;
@@ -2492,7 +3089,7 @@ for ($i=21; $i <= 29; $i++) {
 		}
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$ls1 = $line1 - $line;
 		$ls2 = $line1 - $line2;
 		$ls3 = $line1 - $line3;
@@ -2596,7 +3193,7 @@ for ($i=21; $i <= 29; $i++) {
 		}
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$ls1 = $line2 - $line;
 		$ls2 = $line2 - $line1;
 		$ls3 = $line2 - $line3;
@@ -2700,7 +3297,7 @@ for ($i=21; $i <= 29; $i++) {
 		}
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$ls1 = $line3 - $line;
 		$ls2 = $line3 - $line1;
 		$ls3 = $line3 - $line2;
@@ -2815,7 +3412,15 @@ for ($i=21; $i <= 29; $i++) {
 	$pdf->SetFont('Times','',12);
 	$pdf->Cell(10);
 	$pdf->Cell(10);
-	$pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	// $pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	if ($picture[$i-1] == NULL) {
+		$pdf->Cell(30,($newLine * $h),'-',1,0,'C');
+	} else {
+		$xPos = $pdf->GetX();
+		$yPos = $pdf->GetY();
+		$pdf->MultiCell($wpict,$h,$pdf->MemImage($picture[$i-1],$xPos+1,$yPos+1,$wpict-2,($h * $newLine)-2),0,'C');
+		$pdf->SetXY($xPos + $wpict , $yPos);
+	}
 
 	if ($pertanyaan == "e. Safety Valve" || $pertanyaan == "f. Pressure gauge" || $pertanyaan == "g. Thermometer clock") {
 		$pdf->SetFont('Times','I',12);
@@ -2827,7 +3432,7 @@ for ($i=21; $i <= 29; $i++) {
 	$pdf->SetXY($xPos + $wp , $yPos);
 
 	// $pdf->Cell(30,($newLine * $h),$jawaban[$i-1],1,0,'C');
-
+	$pdf->SetFont('Times','',12);
 	$xPos = $pdf->GetX();
 	$yPos = $pdf->GetY();
 	$pdf->MultiCell(30,$h,$jawaban[$i-1].$spacep,1,'C'); 
@@ -2859,10 +3464,10 @@ for ($i=30; $i <= 32; $i++) {
 		$pertanyaan = "a. Dipasang pada bagian bejana yang mudah dilihat oleh operator";
 	}
 	if ($noPertanyaan[$i-1] == 31) {
-		$pertanyaan = "b. Apakah dapat menunjukkan tekanan kerja yang diperbolehkan";
+		$pertanyaan = "b. Apakah dapat menunjukkan tekanan kerja yang diperbolehkan               ";
 	}
 	if ($noPertanyaan[$i-1] == 32) {
-		$pertanyaan = "c. Terdapat tanda pada tekanan kerja maximum";
+		$pertanyaan = "c. Terdapat tanda pada tekanan kerja maximum       ";
 	}
 
 	if ($pdf->GetStringWidth($pertanyaan) < $wp) {
@@ -2961,20 +3566,28 @@ for ($i=30; $i <= 32; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$newLine = $linex;
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$newLine = $line;
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$newLine = $line1;
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$newLine = $line2;
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$newLine = $line3;
 
 	// jika semua kolom memiliki besar yang sama
@@ -2991,9 +3604,9 @@ $jmlLine6 = array_sum($width6)+1;
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10);
 $pdf->Cell(10,($jmlLine6 * $h),'2.',1,0,'C');
-$pdf->Cell(20,(1 * $h),'',1,0,'C');
+$pdf->Cell(30,(1 * $h),'',1,0,'C');
 $pdf->SetFont('Times','I',12);
-$pdf->Cell(235,7,'Pressure gauge',1,0,'L');
+$pdf->Cell(225,7,'Pressure gauge',1,0,'L');
 $pdf->Ln();
 
 for ($i=30; $i <= 32; $i++) {
@@ -3001,10 +3614,10 @@ for ($i=30; $i <= 32; $i++) {
 		$pertanyaan = "a. Dipasang pada bagian bejana yang mudah dilihat oleh operator";
 	}
 	if ($noPertanyaan[$i-1] == 31) {
-		$pertanyaan = "b. Apakah dapat menunjukkan tekanan kerja yang diperbolehkan";
+		$pertanyaan = "b. Apakah dapat menunjukkan tekanan kerja yang diperbolehkan             ";
 	}
 	if ($noPertanyaan[$i-1] == 32) {
-		$pertanyaan = "c. Terdapat tanda pada tekanan kerja maximum";
+		$pertanyaan = "c. Terdapat tanda pada tekanan kerja maximum       ";
 	}
 
 	if ($pdf->GetStringWidth($pertanyaan) < $wp) {
@@ -3103,8 +3716,148 @@ for ($i=30; $i <= 32; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$ls0 = $linex - $line;
+		$ls1 = $linex - $line1;
+		$ls2 = $linex - $line2;
+		$ls3 = $linex - $line3;
+		$newLine = $linex;
+		$spacek = " ";
+		$spacep = " ";
+		$spacet = " ";
+		$spacer = " ";
+
+		if ($ls0 == 1) {
+			$GLOBALS['spacep'] = "\n ";
+		}
+		if ($ls0 == 2) {
+			$GLOBALS['spacep'] = "\n\n ";
+		}
+		if ($ls0 == 3) {
+			$GLOBALS['spacep'] = "\n\n\n ";
+		}
+		if ($ls0 == 4) {
+			$GLOBALS['spacep'] = "\n\n\n\n ";
+		}
+		if ($ls0 == 5) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n ";
+		}
+		if ($ls0 == 6) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 7) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 8) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 9) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 10) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls1 == 1) {
+			$GLOBALS['spacek'] = "\n ";
+		}
+		if ($ls1 == 2) {
+			$GLOBALS['spacek'] = "\n\n ";
+		}
+		if ($ls1 == 3) {
+			$GLOBALS['spacek'] = "\n\n\n ";
+		}
+		if ($ls1 == 4) {
+			$GLOBALS['spacek'] = "\n\n\n\n ";
+		}
+		if ($ls1 == 5) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n ";
+		}
+		if ($ls1 == 6) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 7) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 8) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 9) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 10) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls2 == 1) {
+			$GLOBALS['spacet'] = "\n ";
+		}
+		if ($ls2 == 2) {
+			$GLOBALS['spacet'] = "\n\n ";
+		}
+		if ($ls2 == 3) {
+			$GLOBALS['spacet'] = "\n\n\n ";
+		}
+		if ($ls2 == 4) {
+			$GLOBALS['spacet'] = "\n\n\n\n ";
+		}
+		if ($ls2 == 5) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n ";
+		}
+		if ($ls2 == 6) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 7) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 8) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 9) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 10) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls3 == 1) {
+			$GLOBALS['spacer'] = "\n ";
+		}
+		if ($ls3 == 2) {
+			$GLOBALS['spacer'] = "\n\n ";
+		}
+		if ($ls3 == 3) {
+			$GLOBALS['spacer'] = "\n\n\n ";
+		}
+		if ($ls3 == 4) {
+			$GLOBALS['spacer'] = "\n\n\n\n ";
+		}
+		if ($ls3 == 5) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n ";
+		}
+		if ($ls3 == 6) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 7) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 8) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 9) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 10) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$ls1 = $line - $line1;
 		$ls2 = $line - $line2;
 		$ls3 = $line - $line3;
@@ -3208,7 +3961,7 @@ for ($i=30; $i <= 32; $i++) {
 		}
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$ls1 = $line1 - $line;
 		$ls2 = $line1 - $line2;
 		$ls3 = $line1 - $line3;
@@ -3312,7 +4065,7 @@ for ($i=30; $i <= 32; $i++) {
 		}
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$ls1 = $line2 - $line;
 		$ls2 = $line2 - $line1;
 		$ls3 = $line2 - $line3;
@@ -3416,7 +4169,7 @@ for ($i=30; $i <= 32; $i++) {
 		}
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$ls1 = $line3 - $line;
 		$ls2 = $line3 - $line1;
 		$ls3 = $line3 - $line2;
@@ -3531,7 +4284,15 @@ for ($i=30; $i <= 32; $i++) {
 	$pdf->SetFont('Times','',12);
 	$pdf->Cell(10);
 	$pdf->Cell(10);
-	$pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	// $pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	if ($picture[$i-1] == NULL) {
+		$pdf->Cell(30,($newLine * $h),'-',1,0,'C');
+	} else {
+		$xPos = $pdf->GetX();
+		$yPos = $pdf->GetY();
+		$pdf->MultiCell($wpict,$h,$pdf->MemImage($picture[$i-1],$xPos+1,$yPos+1,$wpict-2,($h * $newLine)-2),0,'C');
+		$pdf->SetXY($xPos + $wpict , $yPos);
+	}
 
 	$xPos = $pdf->GetX();
 	$yPos = $pdf->GetY();
@@ -3667,20 +4428,28 @@ for ($i=33; $i <= 33; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$newLine = $linex;
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$newLine = $line;
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$newLine = $line1;
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$newLine = $line2;
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$newLine = $line3;
 
 	// jika semua kolom memiliki besar yang sama
@@ -3697,9 +4466,9 @@ $jmlLine7 = array_sum($width7)+1;
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10);
 $pdf->Cell(10,($jmlLine7 * $h),'3.',1,0,'C');
-$pdf->Cell(20,(1 * $h),'',1,0,'C');
+$pdf->Cell(30,(1 * $h),'',1,0,'C');
 $pdf->SetFont('Times','I',12);
-$pdf->Cell(235,7,'Savety valve',1,0,'L');
+$pdf->Cell(225,7,'Savety valve',1,0,'L');
 $pdf->Ln();
 
 for ($i=33; $i <= 33; $i++) {
@@ -3803,8 +4572,148 @@ for ($i=33; $i <= 33; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$ls0 = $linex - $line;
+		$ls1 = $linex - $line1;
+		$ls2 = $linex - $line2;
+		$ls3 = $linex - $line3;
+		$newLine = $linex;
+		$spacek = " ";
+		$spacep = " ";
+		$spacet = " ";
+		$spacer = " ";
+
+		if ($ls0 == 1) {
+			$GLOBALS['spacep'] = "\n ";
+		}
+		if ($ls0 == 2) {
+			$GLOBALS['spacep'] = "\n\n ";
+		}
+		if ($ls0 == 3) {
+			$GLOBALS['spacep'] = "\n\n\n ";
+		}
+		if ($ls0 == 4) {
+			$GLOBALS['spacep'] = "\n\n\n\n ";
+		}
+		if ($ls0 == 5) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n ";
+		}
+		if ($ls0 == 6) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 7) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 8) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 9) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 10) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls1 == 1) {
+			$GLOBALS['spacek'] = "\n ";
+		}
+		if ($ls1 == 2) {
+			$GLOBALS['spacek'] = "\n\n ";
+		}
+		if ($ls1 == 3) {
+			$GLOBALS['spacek'] = "\n\n\n ";
+		}
+		if ($ls1 == 4) {
+			$GLOBALS['spacek'] = "\n\n\n\n ";
+		}
+		if ($ls1 == 5) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n ";
+		}
+		if ($ls1 == 6) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 7) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 8) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 9) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 10) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls2 == 1) {
+			$GLOBALS['spacet'] = "\n ";
+		}
+		if ($ls2 == 2) {
+			$GLOBALS['spacet'] = "\n\n ";
+		}
+		if ($ls2 == 3) {
+			$GLOBALS['spacet'] = "\n\n\n ";
+		}
+		if ($ls2 == 4) {
+			$GLOBALS['spacet'] = "\n\n\n\n ";
+		}
+		if ($ls2 == 5) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n ";
+		}
+		if ($ls2 == 6) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 7) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 8) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 9) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 10) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls3 == 1) {
+			$GLOBALS['spacer'] = "\n ";
+		}
+		if ($ls3 == 2) {
+			$GLOBALS['spacer'] = "\n\n ";
+		}
+		if ($ls3 == 3) {
+			$GLOBALS['spacer'] = "\n\n\n ";
+		}
+		if ($ls3 == 4) {
+			$GLOBALS['spacer'] = "\n\n\n\n ";
+		}
+		if ($ls3 == 5) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n ";
+		}
+		if ($ls3 == 6) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 7) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 8) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 9) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 10) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$ls1 = $line - $line1;
 		$ls2 = $line - $line2;
 		$ls3 = $line - $line3;
@@ -3908,7 +4817,7 @@ for ($i=33; $i <= 33; $i++) {
 		}
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$ls1 = $line1 - $line;
 		$ls2 = $line1 - $line2;
 		$ls3 = $line1 - $line3;
@@ -4012,7 +4921,7 @@ for ($i=33; $i <= 33; $i++) {
 		}
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$ls1 = $line2 - $line;
 		$ls2 = $line2 - $line1;
 		$ls3 = $line2 - $line3;
@@ -4116,7 +5025,7 @@ for ($i=33; $i <= 33; $i++) {
 		}
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$ls1 = $line3 - $line;
 		$ls2 = $line3 - $line1;
 		$ls3 = $line3 - $line2;
@@ -4231,7 +5140,15 @@ for ($i=33; $i <= 33; $i++) {
 	$pdf->SetFont('Times','',12);
 	$pdf->Cell(10);
 	$pdf->Cell(10);
-	$pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	// $pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	if ($picture[$i-1] == NULL) {
+		$pdf->Cell(30,($newLine * $h),'-',1,0,'C');
+	} else {
+		$xPos = $pdf->GetX();
+		$yPos = $pdf->GetY();
+		$pdf->MultiCell($wpict,$h,$pdf->MemImage($picture[$i-1],$xPos+1,$yPos+1,$wpict-2,($h * $newLine)-2),0,'C');
+		$pdf->SetXY($xPos + $wpict , $yPos);
+	}
 
 	$xPos = $pdf->GetX();
 	$yPos = $pdf->GetY();
@@ -4269,7 +5186,7 @@ for ($i=34; $i <= 39; $i++) {
 		$pertanyaan = "b. Ukuran";
 	}
 	if ($noPertanyaan[$i-1] == 36) {
-		$pertanyaan = "c. Memuat identitas bejana uap"."\n"."  - Nama dan tempat pembuatan";
+		$pertanyaan = "c. Memuat identitas bejana uap"."\n"."  - Nama dan tempat pembuatan         ";
 	}
 	if ($noPertanyaan[$i-1] == 37) {
 		$pertanyaan = "  - Tahun pembuatan";
@@ -4377,20 +5294,28 @@ for ($i=34; $i <= 39; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$newLine = $linex;
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$newLine = $line;
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$newLine = $line1;
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$newLine = $line2;
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$newLine = $line3;
 
 	// jika semua kolom memiliki besar yang sama
@@ -4407,8 +5332,8 @@ $jmlLine8 = array_sum($width8)+1;
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10);
 $pdf->Cell(10,($jmlLine8 * $h),'4.',1,0,'C');
-$pdf->Cell(20,(1 * $h),'',1,0,'C');
-$pdf->Cell(235,7,'Pelat nama',1,0,'L');
+$pdf->Cell(30,(1 * $h),'',1,0,'C');
+$pdf->Cell(225,7,'Pelat nama',1,0,'L');
 $pdf->Ln();
 
 for ($i=34; $i <= 39; $i++) {
@@ -4419,7 +5344,7 @@ for ($i=34; $i <= 39; $i++) {
 		$pertanyaan = "b. Ukuran";
 	}
 	if ($noPertanyaan[$i-1] == 36) {
-		$pertanyaan = "c. Memuat identitas bejana uap"."\n"."  - Nama dan tempat pembuatan";
+		$pertanyaan = "c. Memuat identitas bejana uap"."\n"."  - Nama dan tempat pembuatan         ";
 	}
 	if ($noPertanyaan[$i-1] == 37) {
 		$pertanyaan = "  - Tahun pembuatan";
@@ -4527,8 +5452,148 @@ for ($i=34; $i <= 39; $i++) {
 		$line3 = count($textArray3);
 	}
 
+	if ($picture[$i-1] != NULL) {
+		$linex = 3;
+	} else {
+		$linex = 1;
+	}
+	if(($linex >= $line) && ($linex >= $line1) && ($linex >= $line2) && ($linex >= $line3)){
+		$ls0 = $linex - $line;
+		$ls1 = $linex - $line1;
+		$ls2 = $linex - $line2;
+		$ls3 = $linex - $line3;
+		$newLine = $linex;
+		$spacek = " ";
+		$spacep = " ";
+		$spacet = " ";
+		$spacer = " ";
+
+		if ($ls0 == 1) {
+			$GLOBALS['spacep'] = "\n ";
+		}
+		if ($ls0 == 2) {
+			$GLOBALS['spacep'] = "\n\n ";
+		}
+		if ($ls0 == 3) {
+			$GLOBALS['spacep'] = "\n\n\n ";
+		}
+		if ($ls0 == 4) {
+			$GLOBALS['spacep'] = "\n\n\n\n ";
+		}
+		if ($ls0 == 5) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n ";
+		}
+		if ($ls0 == 6) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 7) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 8) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 9) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls0 == 10) {
+			$GLOBALS['spacep'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls1 == 1) {
+			$GLOBALS['spacek'] = "\n ";
+		}
+		if ($ls1 == 2) {
+			$GLOBALS['spacek'] = "\n\n ";
+		}
+		if ($ls1 == 3) {
+			$GLOBALS['spacek'] = "\n\n\n ";
+		}
+		if ($ls1 == 4) {
+			$GLOBALS['spacek'] = "\n\n\n\n ";
+		}
+		if ($ls1 == 5) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n ";
+		}
+		if ($ls1 == 6) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 7) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 8) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 9) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls1 == 10) {
+			$GLOBALS['spacek'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls2 == 1) {
+			$GLOBALS['spacet'] = "\n ";
+		}
+		if ($ls2 == 2) {
+			$GLOBALS['spacet'] = "\n\n ";
+		}
+		if ($ls2 == 3) {
+			$GLOBALS['spacet'] = "\n\n\n ";
+		}
+		if ($ls2 == 4) {
+			$GLOBALS['spacet'] = "\n\n\n\n ";
+		}
+		if ($ls2 == 5) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n ";
+		}
+		if ($ls2 == 6) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 7) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 8) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 9) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls2 == 10) {
+			$GLOBALS['spacet'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
+		if ($ls3 == 1) {
+			$GLOBALS['spacer'] = "\n ";
+		}
+		if ($ls3 == 2) {
+			$GLOBALS['spacer'] = "\n\n ";
+		}
+		if ($ls3 == 3) {
+			$GLOBALS['spacer'] = "\n\n\n ";
+		}
+		if ($ls3 == 4) {
+			$GLOBALS['spacer'] = "\n\n\n\n ";
+		}
+		if ($ls3 == 5) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n ";
+		}
+		if ($ls3 == 6) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 7) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 8) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 9) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n ";
+		}
+		if ($ls3 == 10) {
+			$GLOBALS['spacer'] = "\n\n\n\n\n\n\n\n\n\n ";
+		}
+
 	// jika kolom permasalahan lebih besar daripada kolom lain
-	if (($line > $line1) && ($line > $line2) && ($line > $line3)) {
+	} elseif (($line >= $line1) && ($line >= $line2) && ($line >= $line3)) {
 		$ls1 = $line - $line1;
 		$ls2 = $line - $line2;
 		$ls3 = $line - $line3;
@@ -4632,7 +5697,7 @@ for ($i=34; $i <= 39; $i++) {
 		}
 
 	// jika kolom kodisi lebih besar daripada kolom lain
-	} elseif (($line1 > $line) && ($line1 > $line2) && ($line1 > $line3)) {
+	} elseif (($line1 >= $line) && ($line1 >= $line2) && ($line1 >= $line3)) {
 		$ls1 = $line1 - $line;
 		$ls2 = $line1 - $line2;
 		$ls3 = $line1 - $line3;
@@ -4736,7 +5801,7 @@ for ($i=34; $i <= 39; $i++) {
 		}
 
 	// jika kolom keterangan lebih besar daripada kolom lain
-	} elseif (($line2 > $line) && ($line2 > $line1) && ($line2 > $line3)) {
+	} elseif (($line2 >= $line) && ($line2 >= $line1) && ($line2 >= $line3)) {
 		$ls1 = $line2 - $line;
 		$ls2 = $line2 - $line1;
 		$ls3 = $line2 - $line3;
@@ -4840,7 +5905,7 @@ for ($i=34; $i <= 39; $i++) {
 		}
 
 	// jika kolom rekomendasi lebih besar daripada kolom lain
-	} elseif (($line3 > $line) && ($line3 > $line1) && ($line3 > $line2)) {
+	} elseif (($line3 >= $line) && ($line3 >= $line1) && ($line3 >= $line2)) {
 		$ls1 = $line3 - $line;
 		$ls2 = $line3 - $line1;
 		$ls3 = $line3 - $line2;
@@ -4955,7 +6020,15 @@ for ($i=34; $i <= 39; $i++) {
 	$pdf->SetFont('Times','',12);
 	$pdf->Cell(10);
 	$pdf->Cell(10);
-	$pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	// $pdf->Cell(20,($newLine * $h),'Picture',1,0,'C'); 
+	if ($picture[$i-1] == NULL) {
+		$pdf->Cell(30,($newLine * $h),'-',1,0,'C');
+	} else {
+		$xPos = $pdf->GetX();
+		$yPos = $pdf->GetY();
+		$pdf->MultiCell($wpict,$h,$pdf->MemImage($picture[$i-1],$xPos+1,$yPos+1,$wpict-2,($h * $newLine)-2),0,'C');
+		$pdf->SetXY($xPos + $wpict , $yPos);
+	}
 
 	$xPos = $pdf->GetX();
 	$yPos = $pdf->GetY();

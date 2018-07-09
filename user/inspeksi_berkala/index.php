@@ -261,7 +261,7 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
                                                             <?php echo $no; ?>
                                                             <input type="hidden" <?php echo "name=no".$value['no']; ?> value="<?php echo $value['no']; ?>">
                                                         </td>
-                                                        <td><input type="file" <?php echo "name=picture".$value['no']; ?> style="width: 180px;"></td>
+                                                        <td><input onchange="ValidateSize(this)" type="file" <?php echo "name=picture".$value['no']; ?> style="width: 180px;"></td>
                                                         <td width="150px"><strong><?php echo $value['nama_inspeksi']; ?></strong></td>
                                                         <td width="120px">
                                                             <div class="form_group">
@@ -303,7 +303,7 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
                                                             <td width="10px">
                                                                 <td>
                                                                     <input type="hidden" <?php echo "name=no".$dtUmum5['no']; ?> value="<?php echo $dtUmum5['no']; ?>">
-                                                                    <input type="file" <?php echo "name=picture".$dtUmum5['no']; ?> style="width: 180px;">
+                                                                    <input onchange="ValidateSize(this)" type="file" <?php echo "name=picture".$dtUmum5['no']; ?> style="width: 180px;">
                                                                 </td>
                                                                 <td>
                                                                     <strong><?php echo $dtUmum5['nama_inspeksi']; ?></strong>
@@ -349,7 +349,7 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
                                                             <td width="10px">
                                                                 <td>
                                                                     <input type="hidden" <?php echo "name=no".$dtUmum6['no']; ?> value="<?php echo $dtUmum6['no']; ?>">
-                                                                    <input type="file" <?php echo "name=picture".$dtUmum6['no']; ?> style="width: 180px;">
+                                                                    <input onchange="ValidateSize(this)" type="file" <?php echo "name=picture".$dtUmum6['no']; ?> style="width: 180px;">
                                                                 </td>
                                                                 <td>
                                                                     <strong><?php echo $dtUmum6['nama_inspeksi']; ?></strong>
@@ -395,7 +395,7 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
                                                             <td width="10px">
                                                                 <td>
                                                                     <input type="hidden" <?php echo "name=no".$dtUmum7['no']; ?> value="<?php echo $dtUmum7['no']; ?>">
-                                                                    <input type="file" <?php echo "name=picture".$dtUmum7['no']; ?> style="width: 180px;">
+                                                                    <input onchange="ValidateSize(this)" type="file" <?php echo "name=picture".$dtUmum7['no']; ?> style="width: 180px;">
                                                                 </td>
                                                                 <td>
                                                                     <strong><?php echo $dtUmum7['nama_inspeksi']; ?></strong>
@@ -440,7 +440,7 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
                                                         <td width="10px">1
                                                             <input type="hidden" name="no23" value="23">
                                                         </td>
-                                                        <td><input type="file" name="picture23" style="width: 180px;"></td>
+                                                        <td><input onchange="ValidateSize(this)" type="file" name="picture23" style="width: 180px;"></td>
                                                         <td width="150px"><strong>Bejana uap memiliki ijin sesuai peraturan</strong></td>
                                                         <td width="120px">
                                                             <div class="form_group">
@@ -481,7 +481,7 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
                                                             <td width="10px"></td>
                                                             <td>
                                                                 <input type="hidden" <?php echo "name=no".$dtBjn2['no']; ?> value="<?php echo $dtBjn2['no']; ?>">
-                                                                <input type="file" <?php echo "name=picture".$dtBjn2['no']; ?> style="width: 180px;">
+                                                                <input onchange="ValidateSize(this)" type="file" <?php echo "name=picture".$dtBjn2['no']; ?> style="width: 180px;">
                                                             </td>
                                                             <td>
                                                                 <strong><?php echo $dtBjn2['nama_inspeksi']; ?></strong>
@@ -523,7 +523,7 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
                                                             <td width="10px">
                                                                 <td>
                                                                     <input type="hidden" <?php echo "name=no".$dtBjn3['no']; ?> value="<?php echo $dtBjn3['no']; ?>">
-                                                                    <input type="file" <?php echo "name=picture".$dtBjn3['no']; ?> style="width: 180px;">
+                                                                    <input onchange="ValidateSize(this)" type="file" <?php echo "name=picture".$dtBjn3['no']; ?> style="width: 180px;">
                                                                 </td>
                                                                 <td>
                                                                     <strong><?php echo $dtBjn3['nama_inspeksi']; ?></strong>
@@ -569,7 +569,7 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
                                                             <td width="10px">
                                                                 <td>
                                                                     <input type="hidden" <?php echo "name=no".$dtKel1['no']; ?> value="<?php echo $dtKel1['no']; ?>">
-                                                                    <input type="file" <?php echo "name=picture".$dtKel1['no']; ?> style="width: 180px;">
+                                                                    <input onchange="ValidateSize(this)" type="file" <?php echo "name=picture".$dtKel1['no']; ?> style="width: 180px;">
                                                                 </td>
                                                                 <td>
                                                                     <strong><?php echo $dtKel1['nama_inspeksi']; ?></strong>
@@ -625,7 +625,7 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
                                                             <td width="10px">
                                                                 <td>
                                                                     <input type="hidden" <?php echo "name=no".$dtKel2['no']; ?> value="<?php echo $dtKel2['no']; ?>">
-                                                                    <input type="file" <?php echo "name=picture".$dtKel2['no']; ?> style="width: 180px;">
+                                                                    <input onchange="ValidateSize(this)" type="file" <?php echo "name=picture".$dtKel2['no']; ?> style="width: 180px;">
                                                                 </td>
                                                                 <td>
                                                                     <strong><?php echo $dtKel2['nama_inspeksi']; ?></strong>
@@ -671,7 +671,7 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
                                                             <td width="10px">
                                                                 <td>
                                                                     <input type="hidden" <?php echo "name=no".$dtKel3['no']; ?> value="<?php echo $dtKel3['no']; ?>">
-                                                                    <input type="file" <?php echo "name=picture".$dtKel3['no']; ?> style="width: 180px;">
+                                                                    <input onchange="ValidateSize(this)" type="file" <?php echo "name=picture".$dtKel3['no']; ?> style="width: 180px;">
                                                                 </td>
                                                                 <td>
                                                                     <strong><?php echo $dtKel3['nama_inspeksi']; ?></strong>
@@ -717,7 +717,7 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
                                                             <td width="10px">
                                                                 <td>
                                                                     <input type="hidden" <?php echo "name=no".$dtKel41['no']; ?> value="<?php echo $dtKel41['no']; ?>">
-                                                                    <input type="file" <?php echo "name=picture".$dtKel41['no']; ?> style="width: 180px;">
+                                                                    <input onchange="ValidateSize(this)" type="file" <?php echo "name=picture".$dtKel41['no']; ?> style="width: 180px;">
                                                                 </td>
                                                                 <td>
                                                                     <strong><?php echo $dtKel41['nama_inspeksi']; ?></strong>
@@ -763,7 +763,7 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
                                                             <td width="10px">
                                                                 <td>
                                                                     <input type="hidden" <?php echo "name=no".$dtKel42['no']; ?> value="<?php echo $dtKel42['no']; ?>">
-                                                                    <input type="file" <?php echo "name=picture".$dtKel42['no']; ?> style="width: 180px;">
+                                                                    <input onchange="ValidateSize(this)" type="file" <?php echo "name=picture".$dtKel42['no']; ?> style="width: 180px;">
                                                                 </td>
                                                                 <td>
                                                                     <strong><?php echo $dtKel42['nama_inspeksi']; ?></strong>
@@ -809,7 +809,7 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
                                                             <td width="10px">
                                                                 <td>
                                                                     <input type="hidden" <?php echo "name=no".$dtKel5['no']; ?> value="<?php echo $dtKel5['no']; ?>">
-                                                                    <input type="file" <?php echo "name=picture".$dtKel5['no']; ?> style="width: 180px;">
+                                                                    <input onchange="ValidateSize(this)" type="file" <?php echo "name=picture".$dtKel5['no']; ?> style="width: 180px;">
                                                                 </td>
                                                                 <td>
                                                                     <strong><?php echo $dtKel5['nama_inspeksi']; ?></strong>
@@ -901,6 +901,19 @@ $dataKelengkapan5 = array(array('no' => 62, 'nama_inspeksi' => 'Nama dan tempat 
         document.getElementById('jenis').value = value.substr(0,10);
         document.getElementById('ukuran').value = value.substr(10,value.length);
         document.getElementById('noTangki').value = e.options[e.selectedIndex].text;
+    }
+
+    function ValidateSize(file){
+        var FileSize = file.files[0].size / 1024 / 1024;
+        var FileType = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+        if (FileSize > 2) {
+            alert('Setiap gambar harus kurang dari 2MB');
+            location.reload();  
+        }
+        if (!FileType.exec(file.value)) {
+            alert('File yang anda masukkan harus format gambar');
+            location.reload();  
+        }
     }
 
 </script>
