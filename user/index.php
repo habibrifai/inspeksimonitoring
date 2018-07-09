@@ -55,12 +55,6 @@ if($_SESSION['status'] != "login inspektor"){
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo $base; ?>monitoring">
-                            <i class="material-icons">graphic_eq</i>
-                            <p>Hasil Monitor</p>
-                        </a>
-                    </li>
-                    <li>
                         <a href="<?php echo $base; ?>logout">
                             <i class="material-icons">exit_to_app</i>
                             <p>Logout</p>
@@ -69,7 +63,7 @@ if($_SESSION['status'] != "login inspektor"){
                 </ul>
             </div>
         </div>
-        <div class="main-panel">
+        <!-- <div class="main-panel">
             <nav class="navbar navbar-transparent navbar-absolute">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -140,7 +134,7 @@ if($_SESSION['status'] != "login inspektor"){
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </body>
 <!--   Core JS Files   -->

@@ -69,7 +69,7 @@ if($_SESSION['status'] != "login admin"){
                 </ul>
             </div>
         </div>
-        <div class="main-panel">
+       <!--  <div class="main-panel">
             <nav class="navbar navbar-transparent navbar-absolute">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -140,7 +140,7 @@ if($_SESSION['status'] != "login admin"){
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </body>
 <!--   Core JS Files   -->
