@@ -18,7 +18,6 @@ $sql = "SELECT Tekanan, Time FROM (SELECT * FROM data1 WHERE
 								(MINUTE(Time)='$data2' AND SECOND(Time)='$sqlSecond[0]') OR
 								(MINUTE(Time)='$data3' AND SECOND(Time)='$sqlSecond[0]') ORDER BY ID DESC LIMIT 10) sub ORDER BY ID ASC";
 
-
 $query = mysqli_query($con,$sql);
 
 $arr = array();
@@ -26,10 +25,6 @@ $arr = array();
 while ($array = mysqli_fetch_array($query)) {
 	$arr[] = $array['Tekanan'];
 }
-
-// foreach ($query as $row) {
-// 	$arr[] = $row;
-// }
 
 echo json_encode($arr);
 

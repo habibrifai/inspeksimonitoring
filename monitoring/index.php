@@ -134,15 +134,7 @@ if($_SESSION['status'] != ("login admin" || "login monitoring")){
 <script src="<?php echo $base; ?>assets/js/demo.js"></script>
 <script type="text/javascript">
 
-<?php 
-$dtTekanan = mysqli_query($conn,"SELECT tekanan FROM tekanan ORDER BY id_tekanan ASC");
-foreach ($dtTekanan as $value) {
-    $arr[] = $value;
-}
-?>
-
 var result = [];
-// var time = [];
 
 var ajax = function(){
     $.ajax({                                  
@@ -152,11 +144,6 @@ var ajax = function(){
         success: function(data){
 
             result = data;
-
-            // for(var i in data) {
-            //     time.push(data[i].Time);
-            //     result.push(data[i].Tekanan);
-            // }
 
              $('#output').html("<b>tekanan: </b>"+data);
 

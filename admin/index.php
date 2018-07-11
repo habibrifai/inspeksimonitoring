@@ -69,7 +69,7 @@ if($_SESSION['status'] != "login admin"){
                 </ul>
             </div>
         </div>
-       <!--  <div class="main-panel">
+        <div class="main-panel">
             <nav class="navbar navbar-transparent navbar-absolute">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -89,34 +89,35 @@ if($_SESSION['status'] != "login admin"){
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="orange">
-                                    <i class="material-icons">content_copy</i>
+                                    <i class="material-icons">content_paste</i>
                                 </div>
                                 <div class="card-content">
-                                    <p class="category">Used Space</p>
-                                    <h3 class="title">49/50
-                                        <small>GB</small>
+                                    <h4><p class="category">Inspeksi Berkala</p></h4>
+                                    <h3 class="title">1
+                                        <small> data</small>
                                     </h3>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
-                                        <i class="material-icons text-danger">warning</i>
-                                        <a href="#pablo">Get More Space...</a>
+                                        <i class="material-icons">update</i> Just Updated
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="card card-stats">
-                                <div class="card-header" data-background-color="green">
-                                    <i class="material-icons">store</i>
+                                <div class="card-header" data-background-color="orange">
+                                    <i class="material-icons">content_paste</i>
                                 </div>
                                 <div class="card-content">
-                                    <p class="category">Revenue</p>
-                                    <h3 class="title">$34,245</h3>
+                                    <h4><p class="category">Inspeksi Perbulan</p></h4>
+                                    <h3 class="title">1
+                                        <small> data</small>
+                                    </h3>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
-                                        <i class="material-icons">date_range</i> Last 24 Hours
+                                        <i class="material-icons">update</i> Just Updated
                                     </div>
                                 </div>
                             </div>
@@ -124,11 +125,13 @@ if($_SESSION['status'] != "login admin"){
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="blue">
-                                    <i class="fa fa-twitter"></i>
+                                    <i class="material-icons">graphic_eq</i>
                                 </div>
                                 <div class="card-content">
-                                    <p class="category">Followers</p>
-                                    <h3 class="title">+245</h3>
+                                    <h4><p class="category">Data Monitoring</p></h4>
+                                    <h3 class="title">+245
+                                        <small> data terahir</small>
+                                    </h3>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
@@ -140,7 +143,7 @@ if($_SESSION['status'] != "login admin"){
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
 </body>
 <!--   Core JS Files   -->
