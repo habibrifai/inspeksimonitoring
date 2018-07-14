@@ -141,21 +141,29 @@ if($_SESSION['status'] != "login admin"){
 
                                             $no = 1;
 
-                                            $dataBerkala = mysqli_query($conn, "SELECT form_teknisi.no_form, tanggal, nip, no_tangki FROM form_teknisi JOIN hasil_form_teknisi ON form_teknisi.no_form = hasil_form_teknisi.no_form WHERE form_teknisi.jenis = 'Berkala' GROUP BY ABS(SUBSTRING(form_teknisi.no_form,4,LENGTH(form_teknisi.no_form))) ASC HAVING COUNT(*) > 1");
+                                            $dataBerkala = mysqli_query($conn, "SELECT form_teknisi.no_form, tanggal, nip, no_tangki, status FROM form_teknisi JOIN hasil_form_teknisi ON form_teknisi.no_form = hasil_form_teknisi.no_form WHERE form_teknisi.jenis = 'Berkala' GROUP BY ABS(SUBSTRING(form_teknisi.no_form,4,LENGTH(form_teknisi.no_form))) DESC HAVING COUNT(*) > 1");
 
                                             while($row = mysqli_fetch_array($dataBerkala)) { ?>
-                                            <tr>
-                                                <td><?php echo $no; ?></td>
-                                                <form method="POST" action="detail.php">
+                                                <tr>
+                                                    <td><?php echo $no; ?></td>
                                                     <td><?php echo $row['no_form']; ?></td>
-                                                    <input type="hidden" name="noform" value="<?php echo $row['no_form']; ?>">
-                                                    <input type="hidden" name="nip" value="<?php echo $row['nip']; ?>">
-                                                    <input type="hidden" name="notangki" value="<?php echo $row['no_tangki']; ?>">
-                                                    <input type="hidden" name="tanggal" value="<?php echo tanggal_indo($row['tanggal']); ?>">
                                                     <td><?php echo tanggal_indo($row['tanggal'], true); ?></td>
-                                                    <td class="form-group"><input class="btn btn-primary" type="submit" value="Detail"></td>
-                                                </form>
-                                            </tr>
+                                                    <td style="display: inline-flex;" >
+                                                        <form method="POST" action="detail.php">
+                                                            <input type="hidden" name="noform" value="<?php echo $row['no_form']; ?>">
+                                                            <input type="hidden" name="nip" value="<?php echo $row['nip']; ?>">
+                                                            <input type="hidden" name="notangki" value="<?php echo $row['no_tangki']; ?>">
+                                                            <input type="hidden" name="tanggal" value="<?php echo tanggal_indo($row['tanggal']); ?>">
+                                                            <input class="btn btn-md btn-primary" type="submit" value="Detail">
+                                                        </form>
+                                                        <?php if ($row['status'] == 'Belum Disetujui') { ?>
+                                                        <form method="POST" action="acc.php">
+                                                            <input type="hidden" name="noform" value="<?php echo $row['no_form']; ?>">
+                                                            <input class="btn btn-md btn-success" type="submit" value="Setujui">
+                                                        </form>
+                                                        <?php } ?>
+                                                    </td>
+                                                </tr>
                                             <?php $no++; } ?>
                                         </tbody>
                                     </table>

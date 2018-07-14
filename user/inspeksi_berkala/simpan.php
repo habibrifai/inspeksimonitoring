@@ -13,7 +13,7 @@ $tanggal = date('Y-m-d');
 // echo $nip."<br>";
 // echo $tanggal."<br>";
 
-if ($insert = mysqli_query($conn, "INSERT INTO form_teknisi(`no_form`, `jenis`, `no_tangki`, `tanggal`, `nip`) VALUES ('$no_form','$jenis','$no_tangki','$tanggal','$nip');")) {
+if ($insert = mysqli_query($conn, "INSERT INTO form_teknisi(`no_form`, `jenis`, `no_tangki`, `tanggal`, `nip`, `status`) VALUES ('$no_form','$jenis','$no_tangki','$tanggal','$nip', 'Belum Disetujui');")) {
 	for ($i=1; $i < 64; $i++) { 
 		if($_FILES['picture'.$i]['size'] > 0 && $_FILES['picture'.$i]['error'] == 0){  
 			// $fileName = $_FILES['picture'.$i]['name'];  

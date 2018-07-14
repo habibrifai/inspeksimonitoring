@@ -2,7 +2,7 @@
 
 $conn = mysqli_connect('localhost','root','');
 
-mysqli_select_db($conn, 'monitoring_inspeksi'); 
+mysqli_select_db($conn, 'network_project'); 
 
 $noForm = $_POST['noform'];
 
@@ -105,7 +105,7 @@ class myPDF extends FPDF {
 	function headerContent()
 	{
 		$conn = mysqli_connect('localhost','root','');
-		mysqli_select_db($conn, 'monitoring_inspeksi');
+		mysqli_select_db($conn, 'network_project');
 
 		$noTangki = $_POST['notangki'];
 
@@ -6062,6 +6062,37 @@ for ($i=34; $i <= 39; $i++) {
 
 	$pdf->Ln();
 }
+
+$n = $_POST['nip'];
+
+$nama_petugas = mysqli_query($conn, "SELECT nama FROM user WHERE nip='$n'");
+$namaPetugas = mysqli_fetch_assoc($nama_petugas);
+
+$nama_pj = mysqli_query($conn, "SELECT nama FROM user WHERE jabatan='Admin'");
+$namaPj = mysqli_fetch_assoc($nama_pj);
+
+$status_form = mysqli_query($conn, "SELECT status FROM form_teknisi WHERE no_form='$noForm'");
+$statusForm = mysqli_fetch_assoc($status_form);
+
+$pdf->Ln(20);
+$pdf->Cell(10);
+$pdf->Cell(70,10,'Pemeriksa,',0,0,'C');
+$pdf->Cell(118,10,'',0,0,'L');
+$pdf->Cell(70,10,'Penanggungjawab,',0,0,'C');
+$pdf->Ln();
+$pdf->Cell(10);
+$pdf->Cell(70,25,$pdf->Image('../../assets/gambar/'.$_POST['nip'].'.png',$pdf->GetX(), $pdf->GetY(), 65),0,0,'C',false);
+$pdf->Cell(118,25,'',0,0,'L');
+if ($statusForm['status'] == 'Disetujui') {
+	$pdf->Cell(70,25,$pdf->Image('../../assets/gambar/ttd_pj.png',$pdf->GetX(), $pdf->GetY(), 65),0,0,'C',false);
+} else {
+	// $pdf->Cell(70,25,$pdf->Image('../../assets/gambar/ttd_pj.png',$pdf->GetX(), $pdf->GetY(), 65),0,0,'C',false);
+}
+$pdf->Ln();
+$pdf->Cell(10);
+$pdf->Cell(70,10,'( '.$namaPetugas['nama'].' )',0,0,'C');
+$pdf->Cell(118,10,'',0,0,'L');
+$pdf->Cell(70,10,'( '.$namaPj['nama'].' )',0,0,'C');
 
 $pdf->Output('test.pdf','I');
 
