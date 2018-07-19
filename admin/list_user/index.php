@@ -3,7 +3,7 @@
 
 <?php
 $base = "http://localhost/inspeksimonitoring/";
-
+include '../../config.php';
 session_start();
 
 if($_SESSION['status'] != "login admin"){
@@ -31,12 +31,12 @@ if($_SESSION['status'] != "login admin"){
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons" rel='stylesheet'>
 </head>
 
-<body>
+<body onload="UploadTtd();">
     <div class="wrapper">
         <div class="sidebar" data-color="purple" data-image="<?php echo $base; ?>assets/img/sidebar-1.jpg">
             <div class="sidebar-wrapper">
                 <ul class="nav">
-                    <li class="active">
+                    <li>
                         <a href="<?php echo $base; ?>admin">
                             <i class="material-icons">dashboard</i>
                             <p>Dashboard</p>
@@ -48,7 +48,7 @@ if($_SESSION['status'] != "login admin"){
                             <p>Tambah User</p>
                         </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="<?php echo $base; ?>admin/list_user">
                             <i class="material-icons">person</i>
                             <p>List User</p>
@@ -91,73 +91,77 @@ if($_SESSION['status'] != "login admin"){
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#"> Admin Dashboard </a>
+                        <a class="navbar-brand" href="#"> List User </a>
                     </div>
                 </div>
             </nav>
             <div class="content">
                 <div class="container-fluid">
-                    <div class="row">
-                        <!-- <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="card card-stats">
+                    <div class="row">                     
+                        <div class="col-md-12">
+                            <div class="card">
                                 <div class="card-header" data-background-color="orange">
-                                    <i class="material-icons">content_paste</i>
+                                    <h4 class="title"> List User</h4>
                                 </div>
-                                <div class="card-content">
-                                    <h4><p class="category">Inspeksi Berkala</p></h4>
-                                    <h3 class="title">1
-                                        <small> data</small>
-                                    </h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">update</i> Just Updated
-                                    </div>
+                                <div class="card-content table-responsive">
+                                	<div class="col-md-12">
+                                		<table class="table">
+                                			<thead class="text-primary">
+                                				<th>No</th>
+                                				<th>NIP</th>
+                                				<th>Nama</th>
+                                				<th>Divisi</th>
+                                				<th>Jabatan</th>
+                                				<th>Keterangan</th>
+                                			</thead>
+                                			<tbody>
+                                				<?php
+                                					$no = 1;
+                                					$data = mysqli_query($conn, "SELECT * FROM user WHERE jabatan = 'Inspektor' OR jabatan = 'Monitoring'");
+
+                                					while ($dt = mysqli_fetch_array($data)) { 
+                                						if ($dt['jabatan'] == 'Inspektor') {
+                                							$j = 'Petugas Inspeksi';
+                                						} elseif ($dt['jabatan'] == 'Monitoring') {
+                                							$j = 'Petugas Monitoring';
+                                						}
+                                						?>
+		                                				<tr>
+		                                					<td>
+		                                						<?php echo $no; ?>
+		                                					</td>
+		                                					<td>
+		                                						<?php echo $dt['nip']; ?>
+		                                					</td>
+		                                					<td>
+		                                						<?php echo $dt['nama']; ?>
+		                                					</td>
+		                                					<td>
+		                                						<?php echo $dt['divisi']; ?>
+		                                					</td>
+		                                					<td>
+		                                						<?php echo $j; ?>
+		                                					</td>
+		                                					<td>
+		                                						<form action="hapus.php" method="POST">
+		                                							<input type="hidden" name="nip" value="<?php echo $dt['nip']; ?>">
+		                                							<input class="btn btn-sm btn-danger" type="submit" name="submit" value="Hapus">
+		                                						</form>
+		                                					</td>
+		                                				</tr>
+		                                			<?php $no++; } ?>
+                                			</tbody>
+                                		</table>
+                                	</div>                                	
                                 </div>
                             </div>
-                        </div> -->
-                        <!-- <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="card card-stats">
-                                <div class="card-header" data-background-color="orange">
-                                    <i class="material-icons">content_paste</i>
-                                </div>
-                                <div class="card-content">
-                                    <h4><p class="category">Inspeksi Perbulan</p></h4>
-                                    <h3 class="title">1
-                                        <small> data</small>
-                                    </h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">update</i> Just Updated
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="card card-stats">
-                                <div class="card-header" data-background-color="blue">
-                                    <i class="material-icons">graphic_eq</i>
-                                </div>
-                                <div class="card-content">
-                                    <h4><p class="category">Data Monitoring</p></h4>
-                                    <h3 class="title">+245
-                                        <small> data terahir</small>
-                                    </h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">update</i> Just Updated
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
+
 <!--   Core JS Files   -->
 <script src="<?php echo $base; ?>assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="<?php echo $base; ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
@@ -173,4 +177,5 @@ if($_SESSION['status'] != "login admin"){
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="<?php echo $base; ?>assets/js/demo.js"></script>
 
+</body>
 </html>

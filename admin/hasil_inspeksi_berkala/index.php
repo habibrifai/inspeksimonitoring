@@ -44,6 +44,18 @@ if($_SESSION['status'] != "login admin"){
                             <p>Dashboard</p>
                         </a>
                     </li>
+                    <li>
+                        <a href="<?php echo $base; ?>admin/tambah_user">
+                            <i class="material-icons">person_add</i>
+                            <p>Tambah User</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $base; ?>admin/list_user">
+                            <i class="material-icons">person</i>
+                            <p>List User</p>
+                        </a>
+                    </li>
                     <li class="active">
                     	<a href="<?php echo $base; ?>admin/hasil_inspeksi_berkala">
                     		<i class="material-icons">content_paste</i>
