@@ -32,7 +32,7 @@ if($_SESSION['status'] != ("login admin" || "login monitoring")){
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons" rel='stylesheet'>
 </head>
-<meta http-equiv="refresh" content="120">
+
 <body>
     <div class="wrapper">
         <div class="sidebar" data-color="purple" data-image="<?php echo $base; ?>assets/img/sidebar-1.jpg">
@@ -70,13 +70,13 @@ if($_SESSION['status'] != ("login admin" || "login monitoring")){
             						<p>Inspeksi Bulanan</p>
             					</a>
             				</li>
-            				<li class="active">
+            				<li>
             					<a href="<?php echo $base; ?>monitoring">
             						<i class="material-icons">graphic_eq</i>
             						<p>Hasil Monitor</p>
             					</a>
             				</li>
-                            <li>
+                            <li class="active">
                                 <a href="<?php echo $base; ?>laporan_monitoring">
                                     <i class="material-icons">graphic_eq</i>
                                     <p>Laporan Monitoring</p>
@@ -93,13 +93,13 @@ if($_SESSION['status'] != ("login admin" || "login monitoring")){
             <?php } elseif ($_SESSION['status'] == "login monitoring") { ?>
             	<div class="sidebar-wrapper">
             		<ul class="nav">
-            			<li class="active">
+            			<li>
             				<a href="<?php echo $base; ?>monitoring">
             					<i class="material-icons">graphic_eq</i>
             					<p>Hasil Monitor</p>
             				</a>
             			</li>
-                        <li>
+                        <li class="active">
                             <a href="<?php echo $base; ?>laporan_monitoring">
                                 <i class="material-icons">graphic_eq</i>
                                 <p>Laporan Monitoring</p>
@@ -126,15 +126,88 @@ if($_SESSION['status'] != ("login admin" || "login monitoring")){
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#"> Monitoring Dashboard </a>
+                        <a class="navbar-brand" href="#"> Laporan Monitoring </a>
                     </div>
                 </div>
             </nav>
             <div class="content">
                 <div class="container-fluid">
-                    <div class="row">
-                        <canvas id="tekanan" width="600" height="290"></canvas>
-                        <p id="output"></p>
+                    <div class="row">                     
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header" data-background-color="orange">
+                                    <h4 class="title"> List Laporan Monitoring</h4>
+                                </div>
+                                <div class="card-content table-responsive">
+                                    <div class="col-md-12">
+                                        <table class="table">
+                                            <thead class="text-primary">
+                                                <th>No</th>
+                                                <th>Tanggal Monitoring</th>
+                                                <th>Keterangan</th>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+
+                                                function tanggal_indo($tanggal, $cetak_hari = false)
+                                                {
+                                                    $hari = array ( 1 =>    'Senin',
+                                                        'Selasa',
+                                                        'Rabu',
+                                                        'Kamis',
+                                                        'Jumat',
+                                                        'Sabtu',
+                                                        'Minggu'
+                                                    );
+
+                                                    $bulan = array (1 =>   'Januari',
+                                                        'Februari',
+                                                        'Maret',
+                                                        'April',
+                                                        'Mei',
+                                                        'Juni',
+                                                        'Juli',
+                                                        'Agustus',
+                                                        'September',
+                                                        'Oktober',
+                                                        'November',
+                                                        'Desember'
+                                                    );
+                                                    $split    = explode('-', $tanggal);
+                                                    $tgl_indo = $split[2] . ' ' . $bulan[ (int)$split[1] ] . ' ' . $split[0];
+
+                                                    if ($cetak_hari) {
+                                                        $num = date('N', strtotime($tanggal));
+                                                        return $hari[$num] . ', ' . $tgl_indo;
+                                                    }
+                                                    return $tgl_indo;
+                                                }
+                                                $no = 1;
+                                                $data = mysqli_query($conn, "SELECT SUBSTRING(Time,1,10) as time FROM data1 GROUP BY SUBSTRING(Time,1,10) DESC HAVING COUNT(*) > 1");
+
+                                                while ($dt = mysqli_fetch_array($data)) { ?>
+                                                    <tr>
+                                                        <td>
+                                                            <?php echo $no; ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo tanggal_indo($dt['time'], true); ?>
+                                                        </td>
+                                                        <td>
+                                                            <form action="detail.php" method="POST">
+                                                                <input type="hidden" name="time" value="<?php echo tanggal_indo($dt['time']); ?>">
+                                                                <input type="hidden" name="time1" value="<?php echo $dt['time']; ?>">
+                                                                <input class="btn btn-md btn-info" type="submit" name="submit" value="DETAIL">
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                <?php $no++; } ?>
+                                            </tbody>
+                                        </table>
+                                    </div>                                  
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -143,7 +216,6 @@ if($_SESSION['status'] != ("login admin" || "login monitoring")){
 </body>
 <!--   Core JS Files   -->
 <script src="<?php echo $base; ?>assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
-<script src="<?php echo $base; ?>assets/js/jspdf.min.js" type="text/javascript"></script>
 <script src="<?php echo $base; ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="<?php echo $base; ?>assets/js/material.min.js" type="text/javascript"></script>
 <script src="<?php echo $base; ?>assets/js/Chart.min.js"></script>
@@ -157,67 +229,5 @@ if($_SESSION['status'] != ("login admin" || "login monitoring")){
 <script src="<?php echo $base; ?>assets/js/material-dashboard.js?v=1.2.0"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="<?php echo $base; ?>assets/js/demo.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script> -->
-
-
-<script type="text/javascript">
-
-var result = [];
-var ajax = function(){
-    $.ajax({                                  
-        url: 'php_handler.php',                     
-        data: "",                             
-        dataType: 'json',          
-        success: function(data){
-
-            result = data;
-
-             $('#output').html("<b>tekanan: </b>"+data);
-
-            var pressureCanvas = document.getElementById("tekanan");
-
-            Chart.defaults.global.defaultFontFamily = "Lato";
-            Chart.defaults.global.defaultFontSize = 14;
-
-            var chartOptions = {
-                legend: {
-                    display: true,
-                    position: 'top',
-                    labels: {
-                        boxWidth: 80,
-                        fontColor: 'black'
-                    }
-                },
-                animation: {
-                    duration: 0
-                },
-                showTooltips: true
-            };
-            var dataTekanan = {
-                labels: [1,2,3,4,5,6,7,8,9,10],
-                datasets: [{
-                    label: "Tekanan",
-                    data: result,
-                    backgroundColor: '#663096',
-                    fill: false,
-                    radius:3,
-                    borderColor: '#663096'
-                }]
-            };
-
-            var lineChart = new Chart(pressureCanvas, {
-                type: 'line',
-                data: dataTekanan,
-                options: chartOptions,
-                animation: false
-            });
-        }
-    });
-}
-// document.getElementById("tekanan").toDataURL();
-setTimeout(ajax, 0);
-setInterval(ajax, 1000 * 60 * 0.066);
-
-</script>
 
 </html>

@@ -6,7 +6,7 @@ mysqli_select_db($conn, 'network_project');
 
 $noForm = $_POST['noform'];
 
-require_once('fpdf/fpdf.php');
+require_once('../../fpdf/fpdf.php');
 
 class VariableStream
 {
@@ -10342,6 +10342,6 @@ $pdf->Cell(70,10,'( '.$namaPetugas['nama'].' )',0,0,'C');
 $pdf->Cell(118,10,'',0,0,'L');
 $pdf->Cell(70,10,'( '.$namaPj['nama'].' )',0,0,'C');
 
-$pdf->Output('test.pdf','I');
+$pdf->Output($_POST['tanggal'].'.pdf','I');
 
 ?>

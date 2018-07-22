@@ -4,19 +4,32 @@ $con = mysqli_connect('localhost','root','');
 // ini nama database yang di mysql
 mysqli_select_db($con, 'network_project'); 
 
-$sqlMinute = mysqli_fetch_row(mysqli_query($con, "SELECT MINUTE(Time) FROM data1 LIMIT 1"));
-$sqlSecond = mysqli_fetch_row(mysqli_query($con, "SELECT SECOND(Time) FROM data1 LIMIT 1"));
+$d = date('Y-m-d');
 
-$data1 = ($sqlMinute[0] + 15) % 60;
-$data2 = ($data1 + 15) % 60;
-$data3 = ($data2 + 15) % 60;
-$data4 = ($data3 + 15) % 60;
+$sqlMinute = mysqli_fetch_row(mysqli_query($con, "SELECT MINUTE(Time) FROM data1 WHERE SUBSTRING(Time,1,10)= '$d' LIMIT 1"));
+$sqlSecond = mysqli_fetch_row(mysqli_query($con, "SELECT SECOND(Time) FROM data1 WHERE SUBSTRING(Time,1,10)= '$d' LIMIT 1"));
 
-$sql = "SELECT Tekanan, Time FROM (SELECT * FROM data1 WHERE 
-								(MINUTE(Time)='$data4' AND SECOND(Time)='$sqlSecond[0]') OR
-								(MINUTE(Time)='$data1' AND SECOND(Time)='$sqlSecond[0]') OR
-								(MINUTE(Time)='$data2' AND SECOND(Time)='$sqlSecond[0]') OR
-								(MINUTE(Time)='$data3' AND SECOND(Time)='$sqlSecond[0]') ORDER BY ID DESC LIMIT 10) sub ORDER BY ID ASC";
+$data1 = ($sqlMinute[0] + 15) % 60; // data kedua
+$data2 = ($data1 + 15) % 60; // data ketiga
+$data3 = ($data2 + 15) % 60; // data keempat
+$data4 = ($data3 + 15) % 60; // data pertama
+
+$sql = "SELECT Tekanan, Time 
+			FROM 
+			(
+				SELECT Tekanan, Time, ID 
+					FROM data1 
+					WHERE SUBSTRING(Time,1,10)='$d' 
+					AND 
+					(
+						(MINUTE(Time)='$data4' AND SECOND(Time)='$sqlSecond[0]') OR 
+						(MINUTE(Time)='$data1' AND SECOND(Time)='$sqlSecond[0]') OR 
+						(MINUTE(Time)='$data2' AND SECOND(Time)='$sqlSecond[0]') OR 
+						(MINUTE(Time)='$data3' AND SECOND(Time)='$sqlSecond[0]')
+					) 
+					ORDER BY ID DESC LIMIT 10
+			) 
+			sub ORDER BY ID ASC";
 
 $query = mysqli_query($con,$sql);
 
@@ -29,12 +42,6 @@ while ($array = mysqli_fetch_array($query)) {
 echo json_encode($arr);
 
 // $query->close();
-
-
-
-
-
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

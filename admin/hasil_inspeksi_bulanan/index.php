@@ -75,6 +75,12 @@ if($_SESSION['status'] != "login admin"){
                         </a>
                     </li>
                     <li>
+                        <a href="<?php echo $base; ?>laporan_monitoring">
+                            <i class="material-icons">graphic_eq</i>
+                            <p>Laporan Monitoring</p>
+                        </a>
+                    </li>
+                    <li>
                         <a href="<?php echo $base; ?>logout">
                             <i class="material-icons">exit_to_app</i>
                             <p>Logout</p>

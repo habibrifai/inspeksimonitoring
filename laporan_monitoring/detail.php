@@ -3,7 +3,9 @@
 
 <?php
 $base = "http://localhost/inspeksimonitoring/";
+$conn = mysqli_connect('localhost','root','');
 
+mysqli_select_db($conn, 'network_project'); 
 include "../config.php";
 
 session_start();
@@ -32,7 +34,7 @@ if($_SESSION['status'] != ("login admin" || "login monitoring")){
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons" rel='stylesheet'>
 </head>
-<meta http-equiv="refresh" content="120">
+<meta>
 <body>
     <div class="wrapper">
         <div class="sidebar" data-color="purple" data-image="<?php echo $base; ?>assets/img/sidebar-1.jpg">
@@ -70,13 +72,13 @@ if($_SESSION['status'] != ("login admin" || "login monitoring")){
             						<p>Inspeksi Bulanan</p>
             					</a>
             				</li>
-            				<li class="active">
+            				<li>
             					<a href="<?php echo $base; ?>monitoring">
             						<i class="material-icons">graphic_eq</i>
             						<p>Hasil Monitor</p>
             					</a>
             				</li>
-                            <li>
+                            <li class="active">
                                 <a href="<?php echo $base; ?>laporan_monitoring">
                                     <i class="material-icons">graphic_eq</i>
                                     <p>Laporan Monitoring</p>
@@ -93,13 +95,13 @@ if($_SESSION['status'] != ("login admin" || "login monitoring")){
             <?php } elseif ($_SESSION['status'] == "login monitoring") { ?>
             	<div class="sidebar-wrapper">
             		<ul class="nav">
-            			<li class="active">
+            			<li>
             				<a href="<?php echo $base; ?>monitoring">
             					<i class="material-icons">graphic_eq</i>
             					<p>Hasil Monitor</p>
             				</a>
             			</li>
-                        <li>
+                        <li class="active">
                             <a href="<?php echo $base; ?>laporan_monitoring">
                                 <i class="material-icons">graphic_eq</i>
                                 <p>Laporan Monitoring</p>
@@ -133,6 +135,9 @@ if($_SESSION['status'] != ("login admin" || "login monitoring")){
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
+                        <button class="btn btn-sm btn-info" type="button" id="download-pdf">
+                            GET PDF
+                        </button>
                         <canvas id="tekanan" width="600" height="290"></canvas>
                         <p id="output"></p>
                     </div>
@@ -159,64 +164,129 @@ if($_SESSION['status'] != ("login admin" || "login monitoring")){
 <script src="<?php echo $base; ?>assets/js/demo.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script> -->
 
+<?php
+
+if (isset($_POST['time']) && isset($_POST['time1'])) {
+	$time = $_POST['time'];
+	$time1 = $_POST['time1'];
+
+	$sqlMinute = mysqli_fetch_row(mysqli_query($conn, "SELECT MINUTE(Time) FROM data1 WHERE SUBSTRING(Time,1,10)='$time1' LIMIT 1"));
+	$sqlSecond = mysqli_fetch_row(mysqli_query($conn, "SELECT SECOND(Time) FROM data1 WHERE SUBSTRING(Time,1,10)='$time1' LIMIT 1"));
+
+	$data1 = ($sqlMinute[0] + 15) % 60; // data kedua
+	$data2 = ($data1 + 15) % 60; // data ketiga
+	$data3 = ($data2 + 15) % 60; // data keempat
+	$data4 = ($data3 + 15) % 60; // data pertama
+
+	$sql = "SELECT Tekanan, SUBSTRING(Time,12,16) as time 
+		FROM 
+	(
+		SELECT Tekanan, Time, ID 
+		FROM data1 
+		WHERE SUBSTRING(Time,1,10)='$time1' 
+		AND 
+		(
+		(MINUTE(Time)='$data4' AND SECOND(Time)='$sqlSecond[0]') OR 
+		(MINUTE(Time)='$data1' AND SECOND(Time)='$sqlSecond[0]') OR 
+		(MINUTE(Time)='$data2' AND SECOND(Time)='$sqlSecond[0]') OR 
+		(MINUTE(Time)='$data3' AND SECOND(Time)='$sqlSecond[0]')
+		) 
+		ORDER BY ID DESC
+		) 
+		sub ORDER BY ID ASC";
+
+		$query = mysqli_query($conn,$sql);
+
+        $arr = array();
+		$arr1 = array();
+
+		while ($array = mysqli_fetch_array($query)) {
+            $arr[] = $array['Tekanan'];
+			$arr1[] = $array['time'];
+		}
+
+        $arrLength = count($arr);
+}
+
+?>
 
 <script type="text/javascript">
 
-var result = [];
-var ajax = function(){
-    $.ajax({                                  
-        url: 'php_handler.php',                     
-        data: "",                             
-        dataType: 'json',          
-        success: function(data){
+	var result = [];
+    var label = [];
 
-            result = data;
+    var arrLength = "<?php echo $arrLength; ?>";
+    
+    "<?php foreach($arr1 as $val){ ?>"
 
-             $('#output').html("<b>tekanan: </b>"+data);
+        label.push("<?php echo $val; ?>");
 
-            var pressureCanvas = document.getElementById("tekanan");
+    "<?php } ?>"
+    
 
-            Chart.defaults.global.defaultFontFamily = "Lato";
-            Chart.defaults.global.defaultFontSize = 14;
+    "<?php foreach($arr as $val){ ?>"
 
-            var chartOptions = {
-                legend: {
-                    display: true,
-                    position: 'top',
-                    labels: {
-                        boxWidth: 80,
-                        fontColor: 'black'
-                    }
-                },
-                animation: {
-                    duration: 0
-                },
-                showTooltips: true
-            };
-            var dataTekanan = {
-                labels: [1,2,3,4,5,6,7,8,9,10],
-                datasets: [{
-                    label: "Tekanan",
-                    data: result,
-                    backgroundColor: '#663096',
-                    fill: false,
-                    radius:3,
-                    borderColor: '#663096'
-                }]
-            };
+        result.push("<?php echo $val; ?>");
 
-            var lineChart = new Chart(pressureCanvas, {
-                type: 'line',
-                data: dataTekanan,
-                options: chartOptions,
-                animation: false
-            });
-        }
-    });
+    "<?php } ?>"
+ 
+	$('#output').html("<b>tekanan: </b>"+result);
+
+	var pressureCanvas = document.getElementById("tekanan");
+
+	Chart.defaults.global.defaultFontFamily = "Lato";
+	Chart.defaults.global.defaultFontSize = 14;
+
+	var chartOptions = {
+		legend: {
+			display: true,
+			position: 'top',
+			labels: {
+				boxWidth: 80,
+				fontColor: 'black'
+			}
+		},
+		// animation: {
+		// 	duration: 1
+		// },
+		showTooltips: true
+	};
+	var dataTekanan = {
+		labels: label,
+		datasets: [{
+			label: "Tekanan",
+			data: result,
+			backgroundColor: '#663096',
+			fill: false,
+			radius:3,
+			borderColor: '#663096'
+		}]
+	};
+
+	var lineChart = new Chart(pressureCanvas, {
+		type: 'line',
+		data: dataTekanan,
+		options: chartOptions,
+		animation: false
+	});
+        
+
+document.getElementById('download-pdf').addEventListener("click", downloadPDF);
+
+function downloadPDF() {
+    var newCanvas = document.querySelector('#tekanan');
+
+    //create image from dummy canvas
+    var newCanvasImg = newCanvas.toDataURL("image/png", 1.0);
+  
+    //creates PDF from img
+    var doc = new jsPDF('landscape');
+    doc.setFontSize(13);
+    doc.addImage(newCanvasImg, 'JPEG', 10, 10, 278, 150);
+    // doc.save('new-canvas.pdf');
+    doc.text(10, 170, "Tekanan : "+result);
+    doc.output('dataurlnewwindow');
 }
-// document.getElementById("tekanan").toDataURL();
-setTimeout(ajax, 0);
-setInterval(ajax, 1000 * 60 * 0.066);
 
 </script>
 

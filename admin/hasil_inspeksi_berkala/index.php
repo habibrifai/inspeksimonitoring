@@ -75,6 +75,12 @@ if($_SESSION['status'] != "login admin"){
                         </a>
                     </li>
                     <li>
+                        <a href="<?php echo $base; ?>laporan_monitoring">
+                            <i class="material-icons">graphic_eq</i>
+                            <p>Laporan Monitoring</p>
+                        </a>
+                    </li>
+                    <li>
                         <a href="<?php echo $base; ?>logout">
                             <i class="material-icons">exit_to_app</i>
                             <p>Logout</p>
@@ -160,7 +166,7 @@ if($_SESSION['status'] != "login admin"){
                                                     <td><?php echo $no; ?></td>
                                                     <td><?php echo $row['no_form']; ?></td>
                                                     <td><?php echo tanggal_indo($row['tanggal'], true); ?></td>
-                                                    <td style="display: inline-flex;" >
+                                                    <td style="display: inline-flex;">
                                                         <form method="POST" action="detail.php">
                                                             <input type="hidden" name="noform" value="<?php echo $row['no_form']; ?>">
                                                             <input type="hidden" name="nip" value="<?php echo $row['nip']; ?>">
