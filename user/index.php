@@ -3,7 +3,7 @@
 
 <?php
 $base = "http://localhost/inspeksimonitoring/";
-
+include "../config.php";
 session_start();
 
 if($_SESSION['status'] != "login inspektor"){
@@ -63,7 +63,7 @@ if($_SESSION['status'] != "login inspektor"){
                 </ul>
             </div>
         </div>
-        <!-- <div class="main-panel">
+        <div class="main-panel">
             <nav class="navbar navbar-transparent navbar-absolute">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -73,68 +73,91 @@ if($_SESSION['status'] != "login inspektor"){
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#"> Admin Dashboard </a>
+                        <!-- <a class="navbar-brand" href="#"> Admin Dashboard </a> -->
                     </div>
                 </div>
             </nav>
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="card card-stats">
+                        <div class="col-md-12">
+                            <div class="card">
                                 <div class="card-header" data-background-color="orange">
-                                    <i class="material-icons">content_copy</i>
+                                    <h4 class="title">Inspeksi</h4>
+                                    <!-- <p class="category">Here is a subtitle for this table</p> -->
                                 </div>
-                                <div class="card-content">
-                                    <p class="category">Used Space</p>
-                                    <h3 class="title">49/50
-                                        <small>GB</small>
-                                    </h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons text-danger">warning</i>
-                                        <a href="#pablo">Get More Space...</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="card card-stats">
-                                <div class="card-header" data-background-color="green">
-                                    <i class="material-icons">store</i>
-                                </div>
-                                <div class="card-content">
-                                    <p class="category">Revenue</p>
-                                    <h3 class="title">$34,245</h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">date_range</i> Last 24 Hours
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="card card-stats">
-                                <div class="card-header" data-background-color="blue">
-                                    <i class="fa fa-twitter"></i>
-                                </div>
-                                <div class="card-content">
-                                    <p class="category">Followers</p>
-                                    <h3 class="title">+245</h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">update</i> Just Updated
-                                    </div>
+                                <div class="card-content table-responsive">
+                                    <table class="table">
+                                        <thead class="text-warning">
+                                            <th>No</th>
+                                            <th>Nomor Form</th>
+                                            <th>Tanggal Inspeksi</th>
+                                            <th>Status</th>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+
+                                            function tanggal_indo($tanggal, $cetak_hari = false)
+                                            {
+                                                $hari = array ( 1 =>    'Senin',
+                                                    'Selasa',
+                                                    'Rabu',
+                                                    'Kamis',
+                                                    'Jumat',
+                                                    'Sabtu',
+                                                    'Minggu'
+                                                );
+
+                                                $bulan = array (1 =>   'Januari',
+                                                    'Februari',
+                                                    'Maret',
+                                                    'April',
+                                                    'Mei',
+                                                    'Juni',
+                                                    'Juli',
+                                                    'Agustus',
+                                                    'September',
+                                                    'Oktober',
+                                                    'November',
+                                                    'Desember'
+                                                );
+                                                $split    = explode('-', $tanggal);
+                                                $tgl_indo = $split[2] . ' ' . $bulan[ (int)$split[1] ] . ' ' . $split[0];
+
+                                                if ($cetak_hari) {
+                                                    $num = date('N', strtotime($tanggal));
+                                                    return $hari[$num] . ', ' . $tgl_indo;
+                                                }
+                                                return $tgl_indo;
+                                            }
+
+                                            $no = 1;
+
+                                            $dataBerkala = mysqli_query($conn, "SELECT form_teknisi.no_form, tanggal, nip, no_tangki, status FROM form_teknisi WHERE form_teknisi.jenis = 'Berkala' OR form_teknisi.jenis = 'Bulanan'");
+
+                                            while($row = mysqli_fetch_array($dataBerkala)) { ?>
+                                                <tr>
+                                                    <td><?php echo $no; ?></td>
+                                                    <td><?php echo $row['no_form']; ?></td>
+                                                    <td><?php echo tanggal_indo($row['tanggal'], true); ?></td>
+                                                    <td>
+                                                        <?php if ($row['status'] == 'Belum Disetujui') { ?>
+                                                            <input class="btn btn-sm btn-warning" type="submit" value="Belum Disetujui">
+                                                        <?php } elseif ($row['status'] == 'Disetujui') { ?>
+                                                            <input class="btn btn-sm btn-success" type="submit" value="Disetujui">
+                                                        <?php } ?>
+                                                    </td>
+                                                </tr>
+                                            <?php $no++; } ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
 </body>
 <!--   Core JS Files   -->
