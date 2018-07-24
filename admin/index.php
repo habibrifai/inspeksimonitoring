@@ -5,7 +5,7 @@
 $base = "http://localhost/inspeksimonitoring/";
 
 session_start();
-
+include "../config.php";
 if($_SESSION['status'] != "login admin"){
     header("location:". $base."login");
 }
@@ -55,16 +55,43 @@ if($_SESSION['status'] != "login admin"){
                         </a>
                     </li>
                     <li>
-                    	<a href="<?php echo $base; ?>admin/hasil_inspeksi_berkala">
-                    		<i class="material-icons">content_paste</i>
-                    		<p>Inspeksi Berkala</p>
-                    	</a>
+
+                        <?php
+                            $notif_berkala = mysqli_query($conn, "SELECT COUNT(*) FROM form_teknisi WHERE status = 'Belum Disetujui' AND jenis = 'Berkala'") or die(mysqli_error());
+                            $not_berkala = mysqli_fetch_assoc($notif_berkala);
+
+                            // echo $not_berkala['COUNT(*)'];
+
+                            if ($not_berkala['COUNT(*)'] > 0) { ?>
+                                <a href="<?php echo $base; ?>admin/hasil_inspeksi_berkala">
+                                    <i class="material-icons">content_paste</i>
+                                    <p>Inspeksi Berkala&nbsp;<span class="label label-danger">!</span></p>
+                                </a>
+                            <?php } else { ?>
+                                <a href="<?php echo $base; ?>admin/hasil_inspeksi_berkala">
+                                    <i class="material-icons">content_paste</i>
+                                    <p>Inspeksi Berkala</p>
+                                </a>
+                            <?php } ?>	
                     </li>
                     <li>
-                    	<a href="<?php echo $base; ?>admin/hasil_inspeksi_bulanan">
-                    		<i class="material-icons">content_paste</i>
-                    		<p>Inspeksi Bulanan</p>
-                    	</a>
+                    	<?php
+                            $notif_berkala = mysqli_query($conn, "SELECT COUNT(*) FROM form_teknisi WHERE status = 'Belum Disetujui' AND jenis = 'Bulanan'") or die(mysqli_error());
+                            $not_berkala = mysqli_fetch_assoc($notif_berkala);
+
+                            // echo $not_berkala['COUNT(*)'];
+
+                            if ($not_berkala['COUNT(*)'] > 0) { ?>
+                                <a href="<?php echo $base; ?>admin/hasil_inspeksi_bulanan">
+                                    <i class="material-icons">content_paste</i>
+                                    <p>Inspeksi Bulanan&nbsp;<span class="label label-danger">!</span></p>
+                                </a>
+                            <?php } else { ?>
+                                <a href="<?php echo $base; ?>admin/hasil_inspeksi_bulanan">
+                                    <i class="material-icons">content_paste</i>
+                                    <p>Inspeksi Bulanan</p>
+                                </a>
+                            <?php } ?>  
                     </li>
                     <li>
                         <a href="<?php echo $base; ?>monitoring">
