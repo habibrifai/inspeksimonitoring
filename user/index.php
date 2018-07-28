@@ -73,7 +73,7 @@ if($_SESSION['status'] != "login inspektor"){
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <!-- <a class="navbar-brand" href="#"> Admin Dashboard </a> -->
+                        <a class="navbar-brand" href="#"> User Dashboard </a>
                     </div>
                 </div>
             </nav>
@@ -82,10 +82,9 @@ if($_SESSION['status'] != "login inspektor"){
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
-                                <div class="card-header" data-background-color="orange">
+                                <!-- <div class="card-header" data-background-color="orange">
                                     <h4 class="title">Inspeksi</h4>
-                                    <!-- <p class="category">Here is a subtitle for this table</p> -->
-                                </div>
+                                </div> -->
                                 <div class="card-content table-responsive">
                                     <table class="table">
                                         <thead class="text-warning">
@@ -133,7 +132,7 @@ if($_SESSION['status'] != "login inspektor"){
 
                                             $no = 1;
 
-                                            $dataBerkala = mysqli_query($conn, "SELECT form_teknisi.no_form, tanggal, nip, no_tangki, status FROM form_teknisi WHERE form_teknisi.jenis = 'Berkala' OR form_teknisi.jenis = 'Bulanan'");
+                                            $dataBerkala = mysqli_query($conn, "SELECT form_teknisi.no_form, tanggal, nip, no_tangki, status FROM form_teknisi WHERE form_teknisi.jenis = 'Berkala' OR form_teknisi.jenis = 'Bulanan' ORDER BY tanggal DESC");
 
                                             while($row = mysqli_fetch_array($dataBerkala)) { ?>
                                                 <tr>

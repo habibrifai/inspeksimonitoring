@@ -124,13 +124,25 @@ if($_SESSION['status'] != "login admin"){
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#"> Admin Dashboard </a>
+                        <a class="navbar-brand" href="#"></a>
                     </div>
                 </div>
             </nav>
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
+                        <div style="text-align: center;" class="col-md-12">
+
+                            <?php
+                                $nip = $_SESSION['nip'];
+                                $nama = mysqli_query($conn, "SELECT nama FROM user WHERE nip = '$nip'") or die(mysqli_error());
+                                $nm = mysqli_fetch_assoc($nama);
+                            ?>
+
+                            <h3>Selamat Datang Admin</h3>
+                            <h4>Selamat datang di website inspeksi dan monitoring PTPN X</h4>
+                            <img style="width: 70%;" src="<?php echo $base;?>assets/gambar/logo.png">
+                        </div>
                         <!-- <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="orange">

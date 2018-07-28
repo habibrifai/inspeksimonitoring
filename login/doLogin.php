@@ -7,9 +7,10 @@ $n = $_POST['nip'];
  // $password = md5($_POST['password']);
 
  //waktu input password adi, inputannya ditangkep disini
-$pass = $_POST['password'];
+$pas = $_POST['password'];
 
 $nip = mysqli_real_escape_string($conn, $n);
+$pass = mysqli_real_escape_string($conn, $pas);
 // $password = md5(mysqli_real_escape_string($conn, $pass));
 
 // cek apakah inputan username password sama dengan yang di database
